@@ -41,7 +41,6 @@ module Top_Student (
     // current_main_mode is a register (2 bits). new_mode is produced by
     // the welcome (and other) modules and must be a wire (module output).
     // reg [1:0] current_main_mode;
-    wire [1:0] new_mode;
 
     // MAIN OPERATION MODES
     localparam MODE_OFF           = 2'b00; // Off Screen
@@ -61,7 +60,7 @@ module Top_Student (
     wire [15:0] welcome_screen_oled;
     wire [15:0] calculator_screen_oled;
     wire [15:0] grapher_screen_oled;
-    
+
     // OLED Screen Data
     assign oled_data = 
         (current_main_mode == MODE_OFF)        ? off_screen_oled :
@@ -113,6 +112,11 @@ module Top_Student (
         .vga_y(vga_y)
     );
 
+    // Handshake wires
+    wire        welcome_mode_req;
+    wire [1:0]  welcome_mode_target;
+    reg         welcome_mode_ack;
+
     // ------------------------
     // --- BUTTON DEBOUNCER ---
     // ------------------------
@@ -143,8 +147,10 @@ module Top_Student (
         .btn(btn_debounced),
         .clk(clk),
 
-        // New Mode Output
-        .new_mode(new_mode),  
+        // New Mode Handshake
+        .mode_req(welcome_mode_req),
+        .mode_target(welcome_mode_target),
+        .mode_ack(welcome_mode_ack),
         
         // OLED Interface
         .pixel_index(pixel_index),
@@ -165,18 +171,31 @@ module Top_Student (
     // --- GRAPHER MODULE ---
     // ----------------------
     
-    // New Mode Logic
+    // New Mode Logic: accept handshake requests from submodules
     reg resetted;
     always @ (posedge clk or posedge reset) begin
         if (reset) begin
             current_main_mode <= MODE_OFF;
             resetted <= 1'b0;
+            welcome_mode_ack <= 1'b0;
         end else begin
             if (~resetted) begin
                 current_main_mode <= MODE_WELCOME;
                 resetted <= 1'b1;
+                welcome_mode_ack <= 1'b0;
             end else begin
-                current_main_mode <= new_mode;
+                // Only accept requests relevant to the current mode.
+                // For now we accept welcome requests when in MODE_WELCOME.
+                if (current_main_mode == MODE_WELCOME) begin
+                    if (welcome_mode_req) begin
+                        current_main_mode <= welcome_mode_target;
+                        welcome_mode_ack <= 1'b1; // one-cycle acknowledgement
+                    end else begin
+                        welcome_mode_ack <= 1'b0;
+                    end
+                end else begin
+                    welcome_mode_ack <= 1'b0;
+                end
             end
         end
     end
