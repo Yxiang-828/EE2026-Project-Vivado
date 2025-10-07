@@ -10,8 +10,10 @@ module welcome_mode_module (
     input         clk,
     input  [15:0] sw,
 
-    // New Mode Output
-    output [1:0] new_mode,
+    // New Mode Handshake
+    output        mode_req,
+    output [1:0]  mode_target,
+    input         mode_ack,
 
     // OLED Interface
     input  [12:0] pixel_index,
@@ -37,7 +39,9 @@ module welcome_mode_module (
         .vga_x(vga_x),
         .vga_y(vga_y),
         .vga_data(vga_data),
-        .new_mode(new_mode)
+        .mode_req(mode_req),
+        .mode_target(mode_target),
+        .mode_ack(mode_ack)
     );
     
 endmodule
