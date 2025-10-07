@@ -190,14 +190,32 @@ module welcome_drawer_vga(
                 row_index_reg  <= vga_y - Y_START_ROW_2;
                 pixel_column_d <= (vga_x - X_START_ROW_2) % FONT_WIDTH;
             end
-            // Row 3
+            // Arrow column immediately left of Row 3 (when Calculator selected)
+            else if ((selection == 1'b0) &&
+                     (vga_x >= (X_START_ROW_3 - FONT_WIDTH)) && (vga_x < X_START_ROW_3) &&
+                     (vga_y >= Y_START_ROW_3) && (vga_y < (Y_START_ROW_3 + FONT_HEIGHT))) begin
+                char_index_reg <= 4'b0;
+                char_code_reg  <= 8'h10; // arrow glyph
+                row_index_reg  <= vga_y - Y_START_ROW_3;
+                pixel_column_d <= (vga_x - (X_START_ROW_3 - FONT_WIDTH)) % FONT_WIDTH;
+            end
+            // Row 3 text
             else if (in_row_3) begin
                 char_index_reg <= (vga_x - X_START_ROW_3) / FONT_WIDTH;
                 char_code_reg  <= row_3_rom[(vga_x - X_START_ROW_3) / FONT_WIDTH];
                 row_index_reg  <= vga_y - Y_START_ROW_3;
                 pixel_column_d <= (vga_x - X_START_ROW_3) % FONT_WIDTH;
             end
-            // Row 4
+            // Arrow column immediately left of Row 4 (when Grapher selected)
+            else if ((selection == 1'b1) &&
+                     (vga_x >= (X_START_ROW_4 - FONT_WIDTH)) && (vga_x < X_START_ROW_4) &&
+                     (vga_y >= Y_START_ROW_4) && (vga_y < (Y_START_ROW_4 + FONT_HEIGHT))) begin
+                char_index_reg <= 4'b0;
+                char_code_reg  <= 8'h10; // arrow glyph
+                row_index_reg  <= vga_y - Y_START_ROW_4;
+                pixel_column_d <= (vga_x - (X_START_ROW_4 - FONT_WIDTH)) % FONT_WIDTH;
+            end
+            // Row 4 text
             else if (in_row_4) begin
                 char_index_reg <= (vga_x - X_START_ROW_4) / FONT_WIDTH;
                 char_code_reg  <= row_4_rom[(vga_x - X_START_ROW_4) / FONT_WIDTH];
@@ -230,15 +248,35 @@ module welcome_drawer_vga(
                     vga_data <= BG_COLOR;
                 end
             end
+            // Arrow column immediately left of Row 3 (when Calculator selected) -- draw arrow with TEXT_COLOR
+            else if ((selection == 1'b0) &&
+                     (vga_x_d >= (X_START_ROW_3 - FONT_WIDTH)) && (vga_x_d < X_START_ROW_3) &&
+                     (vga_y_d >= Y_START_ROW_3) && (vga_y_d < (Y_START_ROW_3 + FONT_HEIGHT))) begin
+                if (font_data_eff[font_bit_index] == 1'b1) begin
+                    vga_data <= TEXT_COLOR;
+                end else begin
+                    vga_data <= BG_COLOR;
+                end
+            end
             // Row 3
             else if ( (vga_x_d >= X_START_ROW_3) && (vga_x_d < (X_START_ROW_3 + CHAR_COUNT_ROW_3 * FONT_WIDTH)) &&
                     (vga_y_d >= Y_START_ROW_3) && (vga_y_d < (Y_START_ROW_3 + FONT_HEIGHT)) ) 
             begin
                 if ((font_data_eff[font_bit_index] == 1'b1) && (~selection)) begin
-                    vga_data <= SELECTION_COLOR;
+                    vga_data <= TEXT_COLOR;
                 end else if (~(font_data_eff[font_bit_index]) && (~selection)) begin
-                    vga_data <= SELECTION_BG_COLOR;
+                    vga_data <= BG_COLOR;
                 end else if ((font_data_eff[font_bit_index] == 1'b1) && (selection)) begin
+                    vga_data <= TEXT_COLOR;
+                end else begin
+                    vga_data <= BG_COLOR;
+                end
+            end
+            // Arrow column immediately left of Row 4 (when Grapher selected) -- draw arrow with TEXT_COLOR
+            else if ((selection == 1'b1) &&
+                     (vga_x_d >= (X_START_ROW_4 - FONT_WIDTH)) && (vga_x_d < X_START_ROW_4) &&
+                     (vga_y_d >= Y_START_ROW_4) && (vga_y_d < (Y_START_ROW_4 + FONT_HEIGHT))) begin
+                if (font_data_eff[font_bit_index] == 1'b1) begin
                     vga_data <= TEXT_COLOR;
                 end else begin
                     vga_data <= BG_COLOR;
@@ -249,9 +287,9 @@ module welcome_drawer_vga(
                     (vga_y_d >= Y_START_ROW_4) && (vga_y_d < (Y_START_ROW_4 + FONT_HEIGHT)) ) 
             begin
                 if ((font_data_eff[font_bit_index] == 1'b1) && (selection)) begin
-                    vga_data <= SELECTION_COLOR;
+                    vga_data <= TEXT_COLOR;
                 end else if (~(font_data_eff[font_bit_index]) && (selection)) begin
-                    vga_data <= SELECTION_BG_COLOR;
+                    vga_data <= BG_COLOR;
                 end else if ((font_data_eff[font_bit_index] == 1'b1) && (~selection)) begin
                     vga_data <= TEXT_COLOR;
                 end else begin
