@@ -4,6 +4,7 @@ Need to add font.coe as a new IP
 
 Under Project Manager -> IP Catalog -> Memories & Storage Elements -> RAMs & ROMs -> Block Memory Generator
 
+# CHANGE COMPONENT NAME TO blk_mem_gen_font
 BASIC
 Interface Type: Native
 Memory Type: Single Port ROM
