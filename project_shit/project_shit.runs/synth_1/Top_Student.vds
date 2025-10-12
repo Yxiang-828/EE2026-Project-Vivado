@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Mon Oct 13 03:19:10 2025
-# Process ID: 58796
+# Start of session at: Mon Oct 13 03:44:03 2025
+# Process ID: 29904
 # Current directory: C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1
 # Command line: vivado.exe -log Top_Student.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top_Student.tcl
 # Log file: C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/Top_Student.vds
@@ -15,11 +15,11 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 62816 
+INFO: Helper process launched with PID 58504 
 WARNING: [Synth 8-2539] port vga_expression must not be declared to be an array [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:16]
 WARNING: [Synth 8-2611] redeclaration of ansi port current_main_mode is not allowed [C:/Users/xiang/ee2026_Project/project_vivado/main.v:188]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 398.164 ; gain = 111.688
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 397.469 ; gain = 111.410
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/xiang/ee2026_Project/project_vivado/main.v:13]
 	Parameter MODE_OFF bound to: 2'b00 
@@ -136,8 +136,8 @@ INFO: [Synth 8-6157] synthesizing module 'welcome_drawer_vga' [C:/Users/xiang/ee
 	Parameter SELECTION_BG_COLOR bound to: 12'b111111111111 
 	Parameter TEXT_COLOR bound to: 12'b111111111111 
 	Parameter BG_COLOR bound to: 12'b000000000000 
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_font' [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-58796-Plup1/realtime/blk_mem_gen_font_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_font' (9#1) [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-58796-Plup1/realtime/blk_mem_gen_font_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_font' [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-29904-Plup1/realtime/blk_mem_gen_font_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_font' (9#1) [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-29904-Plup1/realtime/blk_mem_gen_font_stub.v:6]
 WARNING: [Synth 8-350] instance 'font_rom_inst' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_drawer_vga.v:110]
 WARNING: [Synth 8-6014] Unused sequential element char_index_reg_reg was removed.  [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_drawer_vga.v:174]
 INFO: [Synth 8-6155] done synthesizing module 'welcome_drawer_vga' (10#1) [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_drawer_vga.v:3]
@@ -149,7 +149,7 @@ INFO: [Synth 8-6157] synthesizing module 'oled_keypad' [C:/Users/xiang/ee2026_Pr
 	Parameter FONT_WIDTH bound to: 8 - type: integer 
 	Parameter FONT_HEIGHT bound to: 8 - type: integer 
 	Parameter INPUT_Y_START bound to: 0 - type: integer 
-	Parameter INPUT_Y_END bound to: 11 - type: integer 
+	Parameter INPUT_Y_END bound to: 7 - type: integer 
 	Parameter KEYPAD_Y_START bound to: 12 - type: integer 
 	Parameter PAGE_NUMBERS bound to: 1'b0 
 	Parameter PAGE_FUNCTIONS bound to: 1'b1 
@@ -227,7 +227,7 @@ WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[2]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[1]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 493.387 ; gain = 206.910
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 493.199 ; gain = 207.141
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -241,10 +241,10 @@ WARNING: [Synth 8-3295] tying undriven pin oled_display_inst:reset to constant 0
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.387 ; gain = 206.910
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.199 ; gain = 207.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.387 ; gain = 206.910
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.199 ; gain = 207.141
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -289,18 +289,18 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 826.879 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 826.324 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'oled_keypad_inst/font_rom' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 828.137 ; gain = 541.660
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 827.605 ; gain = 541.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 828.137 ; gain = 541.660
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 827.605 ; gain = 541.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -308,7 +308,7 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property DONT_TOUCH = true for oled_keypad_inst/font_rom. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 828.137 ; gain = 541.660
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 827.605 ; gain = 541.547
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
@@ -557,7 +557,7 @@ INFO: [Synth 8-5544] ROM "oled_data1" won't be mapped to Block RAM because addre
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 828.137 ; gain = 541.660
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 827.605 ; gain = 541.547
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -951,11 +951,11 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keyp
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][3] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][4] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][6] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\s1_char_col_calc_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][6] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][7] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 828.137 ; gain = 541.660
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 827.605 ; gain = 541.547
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -967,13 +967,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 828.137 ; gain = 541.660
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 827.605 ; gain = 541.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 870.422 ; gain = 583.945
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 865.430 ; gain = 579.371
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -985,7 +985,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1027,7 +1027,7 @@ CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has unconnected pin dina[1]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has unconnected pin dina[0]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1040,7 +1040,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1052,25 +1052,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1092,49 +1092,48 @@ Report Cell Usage:
 |3     |BUFG                |     2|
 |4     |CARRY4              |    82|
 |5     |LUT1                |    33|
-|6     |LUT2                |   130|
+|6     |LUT2                |   139|
 |7     |LUT3                |   145|
-|8     |LUT4                |   109|
-|9     |LUT5                |   191|
-|10    |LUT6                |   668|
-|11    |MUXF7               |    33|
-|12    |MUXF8               |    12|
-|13    |FDCE                |    29|
-|14    |FDE_1               |    32|
-|15    |FDRE                |   643|
-|16    |FDSE                |    11|
-|17    |IBUF                |     7|
-|18    |OBUF                |    23|
-|19    |OBUFT               |     1|
+|8     |LUT4                |   123|
+|9     |LUT5                |   175|
+|10    |LUT6                |   714|
+|11    |MUXF7               |    30|
+|12    |FDCE                |    29|
+|13    |FDE_1               |    32|
+|14    |FDRE                |   645|
+|15    |FDSE                |    11|
+|16    |IBUF                |     7|
+|17    |OBUF                |    23|
+|18    |OBUFT               |     1|
 +------+--------------------+------+
 
 Report Instance Areas: 
 +------+------------------------------+-----------------------+------+
 |      |Instance                      |Module                 |Cells |
 +------+------------------------------+-----------------------+------+
-|1     |top                           |                       |  2167|
+|1     |top                           |                       |  2207|
 |2     |  button_debouncer_array_inst |button_debouncer_array |   224|
 |3     |    debouncer_inst_0          |debouncer              |    45|
-|4     |    debouncer_inst_1          |debouncer_0            |    45|
+|4     |    debouncer_inst_1          |debouncer_0            |    47|
 |5     |    debouncer_inst_2          |debouncer_1            |    44|
 |6     |    debouncer_inst_3          |debouncer_2            |    44|
-|7     |    debouncer_inst_4          |debouncer_3            |    46|
-|8     |  display_handler_inst        |display_handler        |   676|
+|7     |    debouncer_inst_4          |debouncer_3            |    44|
+|8     |  display_handler_inst        |display_handler        |   683|
 |9     |    clk_6p25m                 |flexible_timer         |    57|
-|10    |    oled_display_inst         |Oled_Display           |   501|
+|10    |    oled_display_inst         |Oled_Display           |   508|
 |11    |    vga_sync_unit             |vga_sync               |   117|
-|12    |  oled_keypad_inst            |oled_keypad            |  1138|
+|12    |  oled_keypad_inst            |oled_keypad            |  1171|
 |13    |  welcome_mode_module_inst    |welcome_mode_module    |    88|
 |14    |    welcome_drawer_vga_inst   |welcome_drawer_vga     |    88|
 +------+------------------------------+-----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 18 critical warnings and 297 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:27 . Memory (MB): peak = 905.418 ; gain = 284.191
-Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 905.418 ; gain = 618.941
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:25 . Memory (MB): peak = 899.809 ; gain = 279.344
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 899.809 ; gain = 613.750
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 166 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 151 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -1145,9 +1144,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 305 Infos, 207 Warnings, 18 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 905.418 ; gain = 630.453
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 899.809 ; gain = 625.266
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/Top_Student.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_Student_utilization_synth.rpt -pb Top_Student_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 905.418 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Oct 13 03:19:49 2025...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 899.809 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 13 03:44:40 2025...

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Mon Oct 13 03:20:40 2025
+| Date             : Mon Oct 13 03:45:27 2025
 | Host             : Plup1 running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Student_power_routed.rpt -pb Top_Student_power_summary_routed.pb -rpx Top_Student_power_routed.rpx
 | Design           : Top_Student
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.088        |
+| Total On-Chip Power (W)  | 0.089        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.017        |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.003 |        3 |       --- |             --- |
-| Slice Logic    |     0.003 |     2132 |       --- |             --- |
-|   LUT as Logic |     0.003 |     1090 |     20800 |            5.24 |
+| Slice Logic    |     0.004 |     2172 |       --- |             --- |
+|   LUT as Logic |     0.004 |     1138 |     20800 |            5.47 |
 |   CARRY4       |    <0.001 |       82 |      8150 |            1.01 |
-|   Register     |    <0.001 |      715 |     41600 |            1.72 |
-|   F7/F8 Muxes  |    <0.001 |       45 |     32600 |            0.14 |
+|   Register     |    <0.001 |      717 |     41600 |            1.72 |
+|   F7/F8 Muxes  |    <0.001 |       30 |     32600 |            0.09 |
 |   BUFG         |     0.000 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |       26 |       --- |             --- |
-| Signals        |     0.003 |     1621 |       --- |             --- |
+| Signals        |     0.004 |     1691 |       --- |             --- |
 | Block RAM      |     0.002 |        1 |        50 |            2.00 |
 | I/O            |     0.005 |       31 |       106 |           29.25 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.088 |          |           |                 |
+| Total          |     0.089 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.021 |       0.011 |      0.010 |
+| Vccint    |       1.000 |     0.022 |       0.012 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -154,7 +154,7 @@ Table of Contents
 |     clk_6p25m                                    |    <0.001 |
 |     oled_display_inst                            |    <0.001 |
 |     vga_sync_unit                                |    <0.001 |
-|   oled_keypad_inst                               |     0.008 |
+|   oled_keypad_inst                               |     0.009 |
 |     font_rom                                     |    <0.001 |
 |       U0                                         |    <0.001 |
 |         inst_blk_mem_gen                         |    <0.001 |

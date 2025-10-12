@@ -3,16 +3,13 @@
 ## 🎯 Issues Fixed
 
 ### 1. **Text Input Box Duplication & Fuzzing** ✅
-**Root Cause 1**: Input rendering extended beyond Y=11 (INPUT_Y_END) due to missing `input_font_row < 8` bounds check.
-**Root Cause 2**: **Subpixel leakage** from gap pixels - when transitioning between characters, the 9th pixel (gap) was still entering the if-block, causing `input_font_col = 8` which failed validation BUT left stale `input_char_idx` in pipeline.
+**Root Cause**: Input rendering extended beyond Y=11 (INPUT_Y_END) due to missing `input_font_row < 8` bounds check.
 
-**Fixes Applied**:
-
-#### a) **Y-Bounds Checking**
+**Fix Applied**:
 ```verilog
 if (oled_y >= INPUT_Y_START && oled_y <= INPUT_Y_END) begin
     input_font_row = oled_y - INPUT_Y_START;
-    
+
     // ✅ CRITICAL FIX: Only process if within font height bounds
     if (input_font_row < 8) begin
         // ... character rendering logic ...
@@ -20,49 +17,7 @@ if (oled_y >= INPUT_Y_START && oled_y <= INPUT_Y_END) begin
 end
 ```
 
-#### b) **Tightened X-Bounds (ANTI-GHOSTING)**
-**Before:**
-```verilog
-if (oled_x >= 2 && oled_x < 11) begin  // Includes gap pixel x=10
-    input_font_col = oled_x - 2;       // When x=10, font_col=8 (invalid!)
-    if (input_font_col < 8 && ...) in_input_area = 1;  // Fails check but sets input_char_idx
-end
-```
-
-**After:**
-```verilog
-if (oled_x >= 2 && oled_x < 10) begin  // ✅ EXCLUDES gap pixel x=10
-    input_font_col = oled_x - 2;       // Max font_col=7 (valid)
-    if (input_font_col < 8 && ...) in_input_area = 1;
-end
-// When x=10: Falls through to else, in_input_area stays 0, pipeline zeroed
-```
-
-**All 10 character slots updated:**
-- Char 0: `< 10` (was `< 11`) → Gap at x=10
-- Char 1: `< 19` (was `< 20`) → Gap at x=19
-- Char 2: `< 28` (was `< 29`) → Gap at x=28
-- Char 3: `< 37` (was `< 38`) → Gap at x=37
-- Char 4: `< 46` (was `< 47`) → Gap at x=46
-- Char 5: `< 55` (was `< 56`) → Gap at x=55
-- Char 6: `< 64` (was `< 65`) → Gap at x=64
-- Char 7: `< 73` (was `< 74`) → Gap at x=73
-- Char 8: `< 82` (was `< 83`) → Gap at x=82
-- Char 9: `< 91` (was `< 92`) → Gap at x=91
-
-#### c) **Explicit Flag Zeroing**
-```verilog
-always @(*) begin
-    // **CRITICAL: Default ALL flags to OFF**
-    in_input_area = 0;  // **EXPLICIT OFF**
-    in_cursor_pos = 0;  // **EXPLICIT OFF**
-    // ... rest of defaults
-```
-
-**Impact**: 
-- Prevents input text from "bleeding" below (Y-axis fix)
-- Prevents ghosting to the right (X-axis gap pixel fix)
-- Eliminates all subpixel leakage artifacts
+**Impact**: Prevents input text from "bleeding" into keypad area (Y=12+), eliminating duplicate ghosts.
 
 ---
 
@@ -156,7 +111,7 @@ output reg vga_output_complete           // Pulse: '=' pressed
         end
         vga_expr_length <= expression_length;
         vga_output_valid <= 1;
-        
+
         // Insert operator as first character
         expression_buffer[0] <= operator_char;
         expression_length <= 1;
@@ -189,7 +144,7 @@ User: "5" → OLED shows: "+5"
         end
         vga_expr_length <= expression_length;
         vga_output_complete <= 1;
-        
+
         // Clear completely
         expression_length <= 0;
         cursor_pos <= 0;
