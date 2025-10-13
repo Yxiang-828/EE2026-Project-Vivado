@@ -9,6 +9,9 @@ Under Project Manager -> IP Catalog -> Memories & Storage Elements -> RAMs & ROM
 Interface Type: Native
 Memory Type: Single Port ROM
 
+## Component Name
+blk_mem_gen_font
+
 ### Port A Options
 Port A Width: 8
 Port A Depth: 2048
