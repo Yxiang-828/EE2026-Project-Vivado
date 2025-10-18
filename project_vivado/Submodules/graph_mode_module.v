@@ -60,10 +60,9 @@ module graph_mode_module(
         .invalid_input_error()
     );
     
-    // VGA Display Layout:
-    // - Top section: Text box for equation input (40 pixels tall)
-    // - Bottom section: Graph display area
-    
+    // ========================================================================
+    // VGA TEXT RENDERING & GRAPHING
+    // ========================================================================
     localparam TEXT_BOX_Y_START = 10;
     localparam TEXT_BOX_Y_END = 50;
     localparam TEXT_BOX_X_START = 10;
@@ -72,29 +71,56 @@ module graph_mode_module(
     localparam GRAPH_Y_START = 60;
     localparam GRAPH_Y_END = 470;
     
+    // Text rendering parameters (8x8 font, same as OLED)
+    localparam CHAR_WIDTH = 8;
+    localparam CHAR_HEIGHT = 8;
+    localparam TEXT_START_X = 15;
+    localparam TEXT_START_Y = 15;
+    
+    // Calculate which character and pixel within character
+    wire [9:0] text_x = vga_x - TEXT_START_X;
+    wire [9:0] text_y = vga_y - TEXT_START_Y;
+    wire [5:0] char_index = text_x[9:3];  // Divide by 8
+    wire [2:0] char_col = text_x[2:0];    // Mod 8
+    wire [2:0] char_row = text_y[2:0];    // Mod 8
+    
+    // Font ROM (same as oled_keypad)
+    wire [7:0] current_char = (char_index < equation_length) ? equation_buffer[char_index] : 8'h20;
+    wire [10:0] font_addr = {current_char, char_row};
+    wire [7:0] font_row_data;
+    
+    blk_mem_gen_font font_rom (
+        .clka(clk),
+        .ena(1'b1),
+        .addra(font_addr),
+        .douta(font_row_data)
+    );
+    
+    // Font pixel extraction
+    wire font_pixel = font_row_data[7 - char_col];
+    
+    // VGA output logic
+    wire in_text_box = (vga_y >= TEXT_BOX_Y_START && vga_y <= TEXT_BOX_Y_END &&
+                        vga_x >= TEXT_BOX_X_START && vga_x <= TEXT_BOX_X_END);
+    wire is_border = (vga_y == TEXT_BOX_Y_START || vga_y == TEXT_BOX_Y_END ||
+                      vga_x == TEXT_BOX_X_START || vga_x == TEXT_BOX_X_END);
+    wire in_text_area = (vga_y >= TEXT_START_Y && vga_y < TEXT_START_Y + CHAR_HEIGHT &&
+                         vga_x >= TEXT_START_X && vga_x < TEXT_START_X + (equation_length * CHAR_WIDTH));
+    wire in_graph_area = (vga_y >= GRAPH_Y_START && vga_y <= GRAPH_Y_END);
+    
     always @(*) begin
-        // Draw text box at top for equation input
-        if (vga_y >= TEXT_BOX_Y_START && vga_y <= TEXT_BOX_Y_END &&
-            vga_x >= TEXT_BOX_X_START && vga_x <= TEXT_BOX_X_END) begin
-            
-            // Border pixels (black)
-            if (vga_y == TEXT_BOX_Y_START || vga_y == TEXT_BOX_Y_END ||
-                vga_x == TEXT_BOX_X_START || vga_x == TEXT_BOX_X_END) begin
-                vga_data = 12'h000; // Black border
+        if (in_text_box) begin
+            if (is_border) begin
+                vga_data = 12'h000;  // Black border
+            end else if (in_text_area && font_pixel) begin
+                vga_data = 12'h000;  // Black text
             end else begin
-                vga_data = 12'hFFF; // White text box interior
-                // TODO: Render equation text from equation_buffer here
+                vga_data = 12'hFFF;  // White background
             end
-            
-        // Draw graph area
-        end else if (vga_y >= GRAPH_Y_START && vga_y <= GRAPH_Y_END) begin
-            // Black background for graph
-            vga_data = 12'h000;
-            // TODO: Draw axes and plot function here
-            
+        end else if (in_graph_area) begin
+            vga_data = 12'h000;  // Black graph area (TODO: draw graph)
         end else begin
-            // Gray background for rest of screen
-            vga_data = 12'h888;
+            vga_data = 12'h888;  // Gray background
         end
     end
 

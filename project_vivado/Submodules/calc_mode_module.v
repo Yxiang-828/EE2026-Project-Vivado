@@ -60,29 +60,61 @@ module calc_mode_module(
         .invalid_input_error()
     );
     
-    // VGA Display: Draw white background with black text box
-    // Text box position: top of screen, 40 pixels tall
+    // ========================================================================
+    // VGA TEXT RENDERING - Using same font ROM as OLED keypad
+    // ========================================================================
     localparam TEXT_BOX_Y_START = 10;
     localparam TEXT_BOX_Y_END = 50;
     localparam TEXT_BOX_X_START = 10;
     localparam TEXT_BOX_X_END = 630;
     
+    // Text rendering parameters (8x8 font, same as OLED)
+    localparam CHAR_WIDTH = 8;
+    localparam CHAR_HEIGHT = 8;
+    localparam TEXT_START_X = 15;
+    localparam TEXT_START_Y = 15;
+    
+    // Calculate which character and pixel within character
+    wire [9:0] text_x = vga_x - TEXT_START_X;
+    wire [9:0] text_y = vga_y - TEXT_START_Y;
+    wire [5:0] char_index = text_x[9:3];  // Divide by 8
+    wire [2:0] char_col = text_x[2:0];    // Mod 8
+    wire [2:0] char_row = text_y[2:0];    // Mod 8
+    
+    // Font ROM (same as oled_keypad)
+    wire [7:0] current_char = (char_index < display_length) ? display_buffer[char_index] : 8'h20;
+    wire [10:0] font_addr = {current_char, char_row};
+    wire [7:0] font_row_data;
+    
+    blk_mem_gen_font font_rom (
+        .clka(clk),
+        .ena(1'b1),
+        .addra(font_addr),
+        .douta(font_row_data)
+    );
+    
+    // Font pixel extraction
+    wire font_pixel = font_row_data[7 - char_col];
+    
+    // VGA output logic
+    wire in_text_box = (vga_y >= TEXT_BOX_Y_START && vga_y <= TEXT_BOX_Y_END &&
+                        vga_x >= TEXT_BOX_X_START && vga_x <= TEXT_BOX_X_END);
+    wire is_border = (vga_y == TEXT_BOX_Y_START || vga_y == TEXT_BOX_Y_END ||
+                      vga_x == TEXT_BOX_X_START || vga_x == TEXT_BOX_X_END);
+    wire in_text_area = (vga_y >= TEXT_START_Y && vga_y < TEXT_START_Y + CHAR_HEIGHT &&
+                         vga_x >= TEXT_START_X && vga_x < TEXT_START_X + (display_length * CHAR_WIDTH));
+    
     always @(*) begin
-        // Draw text box border (white background, black border)
-        if (vga_y >= TEXT_BOX_Y_START && vga_y <= TEXT_BOX_Y_END &&
-            vga_x >= TEXT_BOX_X_START && vga_x <= TEXT_BOX_X_END) begin
-            
-            // Border pixels (black)
-            if (vga_y == TEXT_BOX_Y_START || vga_y == TEXT_BOX_Y_END ||
-                vga_x == TEXT_BOX_X_START || vga_x == TEXT_BOX_X_END) begin
-                vga_data = 12'h000; // Black border
+        if (in_text_box) begin
+            if (is_border) begin
+                vga_data = 12'h000;  // Black border
+            end else if (in_text_area && font_pixel) begin
+                vga_data = 12'h000;  // Black text
             end else begin
-                vga_data = 12'hFFF; // White text box interior
-                // TODO: Render text from input_buffer here
+                vga_data = 12'hFFF;  // White background
             end
         end else begin
-            // Gray background outside text box
-            vga_data = 12'h888;
+            vga_data = 12'h888;  // Gray outside text box
         end
     end
 
