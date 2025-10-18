@@ -32,7 +32,8 @@ module Top_Student (
     output [11:0] VGA_RGB,
 
     // LEDs (for user feedback and debugging)
-    output [15:0] led,
+    // Basys3 only has 14 LEDs (LED0-LED13)
+    output [13:0] led,
 
     // 7-Segment Display (for status feedback)
     output [7:0] seg,
@@ -210,15 +211,13 @@ module Top_Student (
         .dot_pressed(parser_dot_pressed)
     );
     
-    // Debug: Show parser outputs on LEDs
+    // Debug: Show parser outputs on LEDs (Basys3 has only 14 LEDs)
     // LED[4:0]   = key_code from keypad
     // LED[8:5]   = digit_value
     // LED[9]     = digit_valid
     // LED[13:10] = operator_code
-    // LED[14:15] are not physically available on Basys3, tie to 0
-    // Note: operator_valid and dot_pressed will be shown on 7-segment display
+    // Note: operator_valid and dot_pressed shown on 7-segment instead
     assign led = {
-        2'b00,  // LED[15:14] - not available on Basys3
         parser_operator_code,  // LED[13:10]
         parser_digit_valid,    // LED[9]
         parser_digit_value,    // LED[8:5]
@@ -230,15 +229,39 @@ module Top_Student (
     // Format: Display "----" when idle, flash patterns for loading/completion
     // TODO: Add proper 7-segment controller in future phases for better UX
     assign seg = {parser_dot_pressed, 7'b1111111};  // Dot on seg[7] (DP), all segments off
-    assign an = {2'b11, parser_operator_valid, ~parser_operator_valid};  // Flash digit 0/1 when operator pressed        // -------------------------
-        // --- CALCULATOR MODULE ---
-        // -------------------------
+    assign an = {2'b11, parser_operator_valid, ~parser_operator_valid};  // Flash digit 0/1 when operator pressed
+    
+    // -------------------------
+    // --- CALCULATOR MODULE ---
+    // -------------------------
+    calc_mode_module calc_mode_module_inst(
+        .clk(clk),
+        .reset(reset),
+        .key_code(keypad_key_code),
+        .key_valid(keypad_key_valid),
+        .pixel_index(pixel_index),
+        .oled_data(calculator_screen_oled),
+        .vga_x(vga_x),
+        .vga_y(vga_y),
+        .vga_data(calculator_screen_vga)
+    );
 
-        // ----------------------
-        // --- GRAPHER MODULE ---
-        // ----------------------
+    // ----------------------
+    // --- GRAPHER MODULE ---
+    // ----------------------
+    graph_mode_module graph_mode_module_inst(
+        .clk(clk),
+        .reset(reset),
+        .key_code(keypad_key_code),
+        .key_valid(keypad_key_valid),
+        .pixel_index(pixel_index),
+        .oled_data(grapher_screen_oled),
+        .vga_x(vga_x),
+        .vga_y(vga_y),
+        .vga_data(grapher_screen_vga)
+    );
 
-        // New Mode Logic: accept handshake requests from submodules
+    // New Mode Logic: accept handshake requests from submodules
         reg [1:0] current_main_mode;
         reg resetted;
         always @ (posedge clk or posedge reset) begin
