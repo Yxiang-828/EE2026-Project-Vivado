@@ -8,6 +8,7 @@
 module oled_keypad (
     input clk,
     input reset,
+    input enable,              // NEW: Enable signal - only process inputs when high
     input [12:0] pixel_index,  // Pixel index (0 to 6143 for 96x64 OLED)
     input [4:0] btn_debounced, // [4:0] = [down, right, left, up, centre]
     output reg [15:0] oled_data,
@@ -16,8 +17,8 @@ module oled_keypad (
     output reg [4:0] key_code,               // 5-bit code (0-28 for different keys)
     output reg key_valid,                    // 1-cycle pulse when key pressed
 
-    // VGA Output Interface (legacy - will be phased out)
-    output reg [7:0] vga_expression [0:31],  // Expression buffer for VGA
+    // VGA Output Interface (legacy - PACKED for synthesis compatibility)
+    output reg [255:0] vga_expression,       // Packed expression buffer (32 chars × 8 bits)
     output reg [5:0] vga_expr_length,        // Length of expression sent to VGA
     output reg vga_output_valid,             // Pulse: expression data is valid (intermediate operator)
     output reg vga_output_complete           // Pulse: '=' pressed, calculation complete
@@ -73,14 +74,14 @@ module oled_keypad (
     localparam KEY_7 = 5'd7;
     localparam KEY_8 = 5'd8;
     localparam KEY_9 = 5'd9;
-    
+
     // BINARY OPERATORS
     localparam KEY_ADD = 5'd10;     // '+'
     localparam KEY_SUB = 5'd11;     // '-'
     localparam KEY_MUL = 5'd12;     // '*'
     localparam KEY_DIV = 5'd13;     // '/'
     localparam KEY_POW = 5'd14;     // '^'
-    
+
     // UNARY OPERATORS
     localparam KEY_SIN = 5'd15;     // 'sin'
     localparam KEY_COS = 5'd16;     // 'cos'
@@ -89,20 +90,20 @@ module oled_keypad (
     localparam KEY_EXP = 5'd19;     // 'e^x'
     localparam KEY_SQRT = 5'd20;    // '√'
     localparam KEY_NEG = 5'd21;     // '±' (negate)
-    
+
     // CONSTANTS
     localparam KEY_PI = 5'd22;      // 'π'
     localparam KEY_E  = 5'd23;      // 'e'
-    
+
     // UTILITY
     localparam KEY_DOT   = 5'd24;   // '.'
     localparam KEY_EQUAL = 5'd25;   // '='
     localparam KEY_CLEAR = 5'd26;   // 'C'
-    
+
     // PARENTHESES
     localparam KEY_LPAREN = 5'd27;  // '('
     localparam KEY_RPAREN = 5'd28;  // ')'
-    
+
     // CONTROL
     localparam KEY_DELETE = 5'd29;  // 'D' (delete)
 
@@ -180,16 +181,18 @@ module oled_keypad (
         vga_output_valid = 0;
         vga_output_complete = 0;
         vga_expr_length = 0;
-        for (i = 0; i < 32; i = i + 1) begin
-            vga_expression[i] = 8'h00;
-        end
+        // Initialize all 256 bits (32 chars × 8 bits) to zero
+        vga_expression = 256'h0;
     end
 
     // ============================================================================
     // BUTTON NAVIGATION (SYNCHRONOUS) - ONE ACTION PER PRESS
     // ============================================================================
     reg [4:0] btn_prev = 5'b11111;
-    wire [4:0] btn_pressed = ~btn_debounced & btn_prev;
+    // Detect falling edge (button press): ~btn_debounced & btn_prev
+    // But only report presses when enabled
+    wire [4:0] btn_pressed_raw = ~btn_debounced & btn_prev;
+    wire [4:0] btn_pressed = enable ? btn_pressed_raw : 5'b00000;
 
     always @(posedge clk) begin
         if (reset) begin
@@ -206,6 +209,7 @@ module oled_keypad (
             key_code <= 5'b00000;
             key_valid <= 0;
         end else begin
+            // ALWAYS update button state to detect clean edges
             btn_prev <= btn_debounced;
 
             // NEW: Default - clear key_valid pulse every cycle
@@ -216,15 +220,16 @@ module oled_keypad (
             vga_output_complete <= 0;
 
             // ONLY ONE BUTTON ACTION PER CLOCK - prevent multiple triggers
-            if (btn_pressed[1]) begin  // Up
+            // Only process when enabled
+            if (enable && btn_pressed[1]) begin  // Up
                 if (selected_row > 0) selected_row <= selected_row - 1;
-            end else if (btn_pressed[4]) begin  // Down
+            end else if (enable && btn_pressed[4]) begin  // Down
                 if (current_page == PAGE_NUMBERS) begin
                     if (selected_row < 3) selected_row <= selected_row + 1;
                 end else begin
                     if (selected_row < 2) selected_row <= selected_row + 1;
                 end
-            end else if (btn_pressed[2]) begin  // Left
+            end else if (enable && btn_pressed[2]) begin  // Left
                 if (selected_col == 0 && current_page == PAGE_FUNCTIONS) begin
                     current_page <= PAGE_NUMBERS;
                     selected_row <= 0;
@@ -232,7 +237,7 @@ module oled_keypad (
                 end else if (selected_col > 0) begin
                     selected_col <= selected_col - 1;
                 end
-            end else if (btn_pressed[3]) begin  // Right
+            end else if (enable && btn_pressed[3]) begin  // Right
                 if (current_page == PAGE_NUMBERS) begin
                     if (selected_col == 4) begin
                         current_page <= PAGE_FUNCTIONS;
@@ -244,10 +249,10 @@ module oled_keypad (
                 end else begin
                     if (selected_col < 2) selected_col <= selected_col + 1;
                 end
-            end else if (btn_pressed[0]) begin  // Centre - select key
+            end else if (enable && btn_pressed[0]) begin  // Centre - select key
                 // NEW: Set key_valid pulse for all key presses
                 key_valid <= 1;
-                
+
                 if (current_page == PAGE_NUMBERS) begin
                     case ({selected_row[2:0], selected_col[2:0]})
                         6'b000_100: begin  // 'C' - Clear
@@ -274,11 +279,11 @@ module oled_keypad (
                                 6'b010_011: key_code <= KEY_SUB;  // '-'
                                 6'b010_100: key_code <= KEY_ADD;  // '+'
                             endcase
-                            
+
                             if (expression_length > 0) begin  // Only if expression not empty
-                                // Copy expression to VGA buffer
+                                // Copy expression to VGA buffer (packed format)
                                 for (i = 0; i < 32; i = i + 1) begin
-                                    vga_expression[i] <= expression_buffer[i];
+                                    vga_expression[i*8 +: 8] <= expression_buffer[i];
                                 end
                                 vga_expr_length <= expression_length;
                                 vga_output_valid <= 1;  // Pulse for 1 cycle
@@ -298,9 +303,9 @@ module oled_keypad (
                         6'b011_100: begin  // '=' - Equals
                             key_code <= KEY_EQUAL;
                             if (expression_length > 0) begin  // Only if expression not empty
-                                // Copy expression to VGA buffer
+                                // Copy expression to VGA buffer (packed format)
                                 for (i = 0; i < 32; i = i + 1) begin
-                                    vga_expression[i] <= expression_buffer[i];
+                                    vga_expression[i*8 +: 8] <= expression_buffer[i];
                                 end
                                 vga_expr_length <= expression_length;
                                 vga_output_complete <= 1;  // Pulse for 1 cycle
@@ -329,7 +334,7 @@ module oled_keypad (
                                 6'b011_011: key_code <= KEY_SQRT;    // '√'
                                 default: key_code <= 5'b11111;       // Invalid
                             endcase
-                            
+
                             if (expression_length < 31) begin
                                 case ({selected_row[2:0], selected_col[2:0]})
                                     6'b000_000: expression_buffer[expression_length] <= 8'h37;  // '7'

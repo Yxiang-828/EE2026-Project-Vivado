@@ -12,8 +12,8 @@ module oled_keypad (
     input [4:0] btn_debounced, // [4:0] = [down, right, left, up, centre]
     output reg [15:0] oled_data,
     
-    // VGA Output Interface
-    output reg [7:0] vga_expression [0:31],  // Expression buffer for VGA
+    // VGA Output Interface - PACKED for synthesis compatibility
+    output reg [255:0] vga_expression,       // Packed expression buffer (32 chars × 8 bits)
     output reg [5:0] vga_expr_length,        // Length of expression sent to VGA
     output reg vga_output_valid,             // Pulse: expression data is valid (intermediate operator)
     output reg vga_output_complete           // Pulse: '=' pressed, calculation complete
@@ -129,9 +129,8 @@ module oled_keypad (
         vga_output_valid = 0;
         vga_output_complete = 0;
         vga_expr_length = 0;
-        for (i = 0; i < 32; i = i + 1) begin
-            vga_expression[i] = 8'h00;
-        end
+        // Initialize all 256 bits (32 chars × 8 bits) to zero
+        vga_expression = 256'h0;
     end
 
     // ============================================================================
@@ -206,9 +205,9 @@ module oled_keypad (
                         6'b010_011,  // '-' - Subtraction
                         6'b010_100: begin  // '+' - Addition
                             if (expression_length > 0) begin  // Only if expression not empty
-                                // Copy expression to VGA buffer
+                                // Copy expression to VGA buffer (packed format)
                                 for (i = 0; i < 32; i = i + 1) begin
-                                    vga_expression[i] <= expression_buffer[i];
+                                    vga_expression[i*8 +: 8] <= expression_buffer[i];
                                 end
                                 vga_expr_length <= expression_length;
                                 vga_output_valid <= 1;  // Pulse for 1 cycle
@@ -227,9 +226,9 @@ module oled_keypad (
                         // Final operator: =
                         6'b011_100: begin  // '=' - Equals
                             if (expression_length > 0) begin  // Only if expression not empty
-                                // Copy expression to VGA buffer
+                                // Copy expression to VGA buffer (packed format)
                                 for (i = 0; i < 32; i = i + 1) begin
-                                    vga_expression[i] <= expression_buffer[i];
+                                    vga_expression[i*8 +: 8] <= expression_buffer[i];
                                 end
                                 vga_expr_length <= expression_length;
                                 vga_output_complete <= 1;  // Pulse for 1 cycle

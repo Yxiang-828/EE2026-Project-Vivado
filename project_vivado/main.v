@@ -66,7 +66,11 @@ module Top_Student (
         wire [15:0] welcome_screen_oled;
         wire [15:0] calculator_screen_oled;
         wire [15:0] grapher_screen_oled;
-        wire [15:0] keypad_oled;
+        wire [15:0] keypad_oled_raw;
+
+        // EFFICIENT FIX: Blank keypad OLED when not in calc/graph mode (16 LUTs)
+        wire [15:0] keypad_oled = (current_main_mode == MODE_CALCULATOR ||
+                                    current_main_mode == MODE_GRAPHER) ? keypad_oled_raw : 16'h0000;
 
         // OLED Screen Data
         assign oled_data =
@@ -173,32 +177,39 @@ module Top_Student (
     // -------------------
     // --- OLED KEYPAD ---
     // -------------------
-    
+
     // Keypad-to-Parser wires
     wire [4:0] keypad_key_code;
-    wire keypad_key_valid;
+    wire keypad_key_valid_raw;
+
+    // Enable keypad only in calculator or grapher mode
+    wire keypad_enable = (current_main_mode == MODE_CALCULATOR | current_main_mode == MODE_GRAPHER);
+    
+    // NO DOUBLE-GATING! Keypad already handles enable internally
+    wire keypad_key_valid = keypad_key_valid_raw;  // Direct connection
 
     oled_keypad oled_keypad_inst(
         .clk(clk),
         .reset(reset),
+        .enable(keypad_enable),       // Keypad gates internally
         .pixel_index(pixel_index),
         .btn_debounced(btn_debounced),
-        .oled_data(keypad_oled),
+        .oled_data(keypad_oled_raw),  // Raw output, gated in main
         .key_code(keypad_key_code),
-        .key_valid(keypad_key_valid)
+        .key_valid(keypad_key_valid_raw)
     );
-    
+
     // -------------------
     // --- DATA PARSER ---
     // -------------------
-    
+
     // Parser outputs
     wire [3:0] parser_digit_value;
     wire parser_digit_valid;
     wire [3:0] parser_operator_code;
     wire parser_operator_valid;
     wire parser_dot_pressed;
-    
+
     data_parser data_parser_inst(
         .clk(clk),
         .rst(reset),
@@ -210,30 +221,35 @@ module Top_Student (
         .operator_valid(parser_operator_valid),
         .dot_pressed(parser_dot_pressed)
     );
-    
+
     // Debug: Show parser outputs on LEDs (Basys3 has only 14 LEDs)
-    // LED[4:0]   = key_code from keypad
-    // LED[8:5]   = digit_value
-    // LED[9]     = digit_valid
-    // LED[13:10] = operator_code
-    // Note: operator_valid and dot_pressed shown on 7-segment instead
+    // EFFICIENT DEBUG DISPLAY:
+    // LED[13:12] = current_mode (2 bits)
+    // LED[11:6]  = display_length from active mode (6 bits)
+    // LED[5]     = key_valid (gated)
+    // LED[4:0]   = key_code (5 bits)
+    wire [5:0] active_display_length = (current_main_mode == MODE_CALCULATOR) ? calc_display_length :
+                                       (current_main_mode == MODE_GRAPHER) ? graph_equation_length : 6'h0;
+
     assign led = {
-        parser_operator_code,  // LED[13:10]
-        parser_digit_valid,    // LED[9]
-        parser_digit_value,    // LED[8:5]
-        keypad_key_code        // LED[4:0]
+        current_main_mode,      // LED[13:12] - Mode indicator
+        active_display_length,  // LED[11:6]  - Text buffer length
+        keypad_key_valid,       // LED[5]     - Key press indicator (gated)
+        keypad_key_code         // LED[4:0]   - Current key code
     };
-    
+
     // 7-Segment Display: Show status feedback
     // For now, display operator_valid and dot_pressed as simple indicators
     // Format: Display "----" when idle, flash patterns for loading/completion
     // TODO: Add proper 7-segment controller in future phases for better UX
     assign seg = {parser_dot_pressed, 7'b1111111};  // Dot on seg[7] (DP), all segments off
     assign an = {2'b11, parser_operator_valid, ~parser_operator_valid};  // Flash digit 0/1 when operator pressed
-    
+
     // -------------------------
     // --- CALCULATOR MODULE ---
     // -------------------------
+    wire [5:0] calc_display_length;
+
     calc_mode_module calc_mode_module_inst(
         .clk(clk),
         .reset(reset),
@@ -243,12 +259,15 @@ module Top_Student (
         .oled_data(calculator_screen_oled),
         .vga_x(vga_x),
         .vga_y(vga_y),
-        .vga_data(calculator_screen_vga)
+        .vga_data(calculator_screen_vga),
+        .debug_display_length(calc_display_length)
     );
 
     // ----------------------
     // --- GRAPHER MODULE ---
     // ----------------------
+    wire [5:0] graph_equation_length;
+
     graph_mode_module graph_mode_module_inst(
         .clk(clk),
         .reset(reset),
@@ -258,7 +277,8 @@ module Top_Student (
         .oled_data(grapher_screen_oled),
         .vga_x(vga_x),
         .vga_y(vga_y),
-        .vga_data(grapher_screen_vga)
+        .vga_data(grapher_screen_vga),
+        .debug_equation_length(graph_equation_length)
     );
 
     // New Mode Logic: accept handshake requests from submodules

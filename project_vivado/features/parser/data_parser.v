@@ -32,7 +32,7 @@
 // Output Mapping:
 //   digit_value[3:0]: 0-9 for digit keys, else 0
 //   digit_valid: 1 if key_code was 0-9, else 0
-//   operator_code[3:0]: 
+//   operator_code[3:0]:
 //     0: Add
 //     1: Sub
 //     2: Mul
@@ -54,15 +54,15 @@ module data_parser(
     input wire rst,
     input wire [4:0] key_code,      // From OLED keypad
     input wire key_valid,            // Pulse when key pressed
-    
+
     // Digit outputs
     output reg [3:0] digit_value,    // 0-9
     output reg digit_valid,           // Pulse when digit key pressed
-    
+
     // Operator outputs
     output reg [3:0] operator_code,  // See mapping above
     output reg operator_valid,        // Pulse when operator key pressed
-    
+
     // Special outputs
     output reg dot_pressed            // Pulse when decimal point pressed
 );
@@ -97,7 +97,7 @@ module data_parser(
     localparam KEY_EQUAL  = 5'd26;
     localparam KEY_CLEAR  = 5'd27;
     localparam KEY_DELETE = 5'd28;
-    
+
     // Operator code constants
     localparam OP_ADD    = 4'd0;
     localparam OP_SUB    = 4'd1;
@@ -131,7 +131,7 @@ module data_parser(
             digit_valid <= 1'b0;
             operator_valid <= 1'b0;
             dot_pressed <= 1'b0;
-            
+
             if (key_valid) begin
                 // Decode key_code
                 case (key_code)
@@ -176,7 +176,7 @@ module data_parser(
                         digit_value <= 4'd9;
                         digit_valid <= 1'b1;
                     end
-                    
+
                     // Operators
                     KEY_ADD: begin
                         operator_code <= OP_ADD;
@@ -198,7 +198,7 @@ module data_parser(
                         operator_code <= OP_POW;
                         operator_valid <= 1'b1;
                     end
-                    
+
                     // Functions
                     KEY_SIN: begin
                         operator_code <= OP_SIN;
@@ -232,7 +232,7 @@ module data_parser(
                         operator_code <= OP_NEG;
                         operator_valid <= 1'b1;
                     end
-                    
+
                     // Special keys
                     KEY_DOT: begin
                         dot_pressed <= 1'b1;
@@ -249,12 +249,12 @@ module data_parser(
                         operator_code <= OP_DELETE;
                         operator_valid <= 1'b1;
                     end
-                    
+
                     // Parentheses - ignore for now (Phase 3+)
                     KEY_LPAREN, KEY_RPAREN: begin
                         // No action - parentheses not supported yet
                     end
-                    
+
                     default: begin
                         // Invalid key code - do nothing
                     end
