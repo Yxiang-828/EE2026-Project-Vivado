@@ -12,7 +12,11 @@ module oled_keypad (
     input [4:0] btn_debounced, // [4:0] = [down, right, left, up, centre]
     output reg [15:0] oled_data,
 
-    // VGA Output Interface
+    // NEW: 5-bit key code output (for data parser integration)
+    output reg [4:0] key_code,               // 5-bit code (0-28 for different keys)
+    output reg key_valid,                    // 1-cycle pulse when key pressed
+
+    // VGA Output Interface (legacy - will be phased out)
     output reg [7:0] vga_expression [0:31],  // Expression buffer for VGA
     output reg [5:0] vga_expr_length,        // Length of expression sent to VGA
     output reg vga_output_valid,             // Pulse: expression data is valid (intermediate operator)
@@ -54,6 +58,53 @@ module oled_keypad (
     // CORRECT UNICODE CHARACTER CODES (from your mapping)
     localparam CHAR_SQRT = 8'hFB;   // U+221A SQUARE ROOT (Extended ASCII position)
     localparam CHAR_PI = 8'hE3;     // U+03C0 GREEK SMALL LETTER PI
+
+    // ============================================================================
+    // KEY CODE CONSTANTS (5-bit codes for data parser integration)
+    // ============================================================================
+    // DIGITS (0-9)
+    localparam KEY_0 = 5'd0;
+    localparam KEY_1 = 5'd1;
+    localparam KEY_2 = 5'd2;
+    localparam KEY_3 = 5'd3;
+    localparam KEY_4 = 5'd4;
+    localparam KEY_5 = 5'd5;
+    localparam KEY_6 = 5'd6;
+    localparam KEY_7 = 5'd7;
+    localparam KEY_8 = 5'd8;
+    localparam KEY_9 = 5'd9;
+    
+    // BINARY OPERATORS
+    localparam KEY_ADD = 5'd10;     // '+'
+    localparam KEY_SUB = 5'd11;     // '-'
+    localparam KEY_MUL = 5'd12;     // '*'
+    localparam KEY_DIV = 5'd13;     // '/'
+    localparam KEY_POW = 5'd14;     // '^'
+    
+    // UNARY OPERATORS
+    localparam KEY_SIN = 5'd15;     // 'sin'
+    localparam KEY_COS = 5'd16;     // 'cos'
+    localparam KEY_TAN = 5'd17;     // 'tan'
+    localparam KEY_LN  = 5'd18;     // 'ln'
+    localparam KEY_EXP = 5'd19;     // 'e^x'
+    localparam KEY_SQRT = 5'd20;    // '√'
+    localparam KEY_NEG = 5'd21;     // '±' (negate)
+    
+    // CONSTANTS
+    localparam KEY_PI = 5'd22;      // 'π'
+    localparam KEY_E  = 5'd23;      // 'e'
+    
+    // UTILITY
+    localparam KEY_DOT   = 5'd24;   // '.'
+    localparam KEY_EQUAL = 5'd25;   // '='
+    localparam KEY_CLEAR = 5'd26;   // 'C'
+    
+    // PARENTHESES
+    localparam KEY_LPAREN = 5'd27;  // '('
+    localparam KEY_RPAREN = 5'd28;  // ')'
+    
+    // CONTROL
+    localparam KEY_DELETE = 5'd29;  // 'D' (delete)
 
     // Character arrays for keypad (LUT-based symbol drawing)
     reg [7:0] page1_chars [0:3][0:4];  // 4x5 array for numbers/operators
@@ -151,8 +202,14 @@ module oled_keypad (
             vga_output_valid <= 0;
             vga_output_complete <= 0;
             vga_expr_length <= 0;
+            // NEW: Initialize key code outputs
+            key_code <= 5'b00000;
+            key_valid <= 0;
         end else begin
             btn_prev <= btn_debounced;
+
+            // NEW: Default - clear key_valid pulse every cycle
+            key_valid <= 0;
 
             // Default: clear 1-cycle pulses
             vga_output_valid <= 0;
@@ -188,13 +245,18 @@ module oled_keypad (
                     if (selected_col < 2) selected_col <= selected_col + 1;
                 end
             end else if (btn_pressed[0]) begin  // Centre - select key
+                // NEW: Set key_valid pulse for all key presses
+                key_valid <= 1;
+                
                 if (current_page == PAGE_NUMBERS) begin
                     case ({selected_row[2:0], selected_col[2:0]})
                         6'b000_100: begin  // 'C' - Clear
+                            key_code <= KEY_CLEAR;
                             expression_length <= 0;
                             cursor_pos <= 0;
                         end
                         6'b001_100: begin  // 'D' - Delete
+                            key_code <= KEY_DELETE;
                             if (expression_length > 0) begin
                                 expression_length <= expression_length - 1;
                                 cursor_pos <= cursor_pos - 1;
@@ -205,6 +267,14 @@ module oled_keypad (
                         6'b001_011,  // '*' - Multiplication
                         6'b010_011,  // '-' - Subtraction
                         6'b010_100: begin  // '+' - Addition
+                            // NEW: Set key codes for operators
+                            case ({selected_row[2:0], selected_col[2:0]})
+                                6'b000_011: key_code <= KEY_DIV;  // '/'
+                                6'b001_011: key_code <= KEY_MUL;  // '*'
+                                6'b010_011: key_code <= KEY_SUB;  // '-'
+                                6'b010_100: key_code <= KEY_ADD;  // '+'
+                            endcase
+                            
                             if (expression_length > 0) begin  // Only if expression not empty
                                 // Copy expression to VGA buffer
                                 for (i = 0; i < 32; i = i + 1) begin
@@ -226,6 +296,7 @@ module oled_keypad (
                         end
                         // Final operator: =
                         6'b011_100: begin  // '=' - Equals
+                            key_code <= KEY_EQUAL;
                             if (expression_length > 0) begin  // Only if expression not empty
                                 // Copy expression to VGA buffer
                                 for (i = 0; i < 32; i = i + 1) begin
@@ -241,6 +312,24 @@ module oled_keypad (
                         end
                         // Regular number/operator input
                         default: begin
+                            // NEW: Set key codes for digits and symbols
+                            case ({selected_row[2:0], selected_col[2:0]})
+                                6'b000_000: key_code <= KEY_7;       // '7'
+                                6'b000_001: key_code <= KEY_8;       // '8'
+                                6'b000_010: key_code <= KEY_9;       // '9'
+                                6'b001_000: key_code <= KEY_4;       // '4'
+                                6'b001_001: key_code <= KEY_5;       // '5'
+                                6'b001_010: key_code <= KEY_6;       // '6'
+                                6'b010_000: key_code <= KEY_1;       // '1'
+                                6'b010_001: key_code <= KEY_2;       // '2'
+                                6'b010_010: key_code <= KEY_3;       // '3'
+                                6'b011_000: key_code <= KEY_0;       // '0'
+                                6'b011_001: key_code <= KEY_DOT;     // '.'
+                                6'b011_010: key_code <= KEY_POW;     // '^'
+                                6'b011_011: key_code <= KEY_SQRT;    // '√'
+                                default: key_code <= 5'b11111;       // Invalid
+                            endcase
+                            
                             if (expression_length < 31) begin
                                 case ({selected_row[2:0], selected_col[2:0]})
                                     6'b000_000: expression_buffer[expression_length] <= 8'h37;  // '7'
@@ -265,6 +354,7 @@ module oled_keypad (
                 end else begin  // PAGE_FUNCTIONS
                     case ({selected_row[1:0], selected_col[1:0]})
                         4'b00_00: begin  // sin
+                            key_code <= KEY_SIN;
                             if (expression_length + 2 < 31) begin
                                 expression_buffer[expression_length] <= 8'h73;      // 's'
                                 expression_buffer[expression_length+1] <= 8'h69;   // 'i'
@@ -274,6 +364,7 @@ module oled_keypad (
                             end
                         end
                         4'b00_01: begin  // cos
+                            key_code <= KEY_COS;
                             if (expression_length + 2 < 31) begin
                                 expression_buffer[expression_length] <= 8'h63;      // 'c'
                                 expression_buffer[expression_length+1] <= 8'h6F;   // 'o'
@@ -283,6 +374,7 @@ module oled_keypad (
                             end
                         end
                         4'b00_10: begin  // tan
+                            key_code <= KEY_TAN;
                             if (expression_length + 2 < 31) begin
                                 expression_buffer[expression_length] <= 8'h74;      // 't'
                                 expression_buffer[expression_length+1] <= 8'h61;   // 'a'
@@ -292,6 +384,7 @@ module oled_keypad (
                             end
                         end
                         4'b01_00: begin  // (
+                            key_code <= KEY_LPAREN;
                             if (expression_length < 31) begin
                                 expression_buffer[expression_length] <= 8'h28;
                                 expression_length <= expression_length + 1;
@@ -299,13 +392,15 @@ module oled_keypad (
                             end
                         end
                         4'b01_01: begin  // )
+                            key_code <= KEY_RPAREN;
                             if (expression_length < 31) begin
                                 expression_buffer[expression_length] <= 8'h29;
                                 expression_length <= expression_length + 1;
                                 cursor_pos <= cursor_pos + 1;
                             end
                         end
-                        4'b01_10: begin  // !
+                        4'b01_10: begin  // ! (factorial - we'll map to NEG for now since factorial not in key list)
+                            key_code <= KEY_NEG;  // Repurpose factorial key as NEG
                             if (expression_length < 31) begin
                                 expression_buffer[expression_length] <= 8'h21;  // '!'
                                 expression_length <= expression_length + 1;
@@ -313,6 +408,7 @@ module oled_keypad (
                             end
                         end
                         4'b10_00: begin  // ln
+                            key_code <= KEY_LN;
                             if (expression_length + 1 < 31) begin
                                 expression_buffer[expression_length] <= 8'h6C;      // 'l'
                                 expression_buffer[expression_length+1] <= 8'h6E;   // 'n'
@@ -320,7 +416,8 @@ module oled_keypad (
                                 cursor_pos <= cursor_pos + 2;
                             end
                         end
-                        4'b10_01: begin  // ?
+                        4'b10_01: begin  // π
+                            key_code <= KEY_PI;
                             if (expression_length < 31) begin
                                 expression_buffer[expression_length] <= CHAR_PI;
                                 expression_length <= expression_length + 1;
@@ -328,6 +425,7 @@ module oled_keypad (
                             end
                         end
                         4'b10_10: begin  // e
+                            key_code <= KEY_E;
                             if (expression_length < 31) begin
                                 expression_buffer[expression_length] <= 8'h65;
                                 expression_length <= expression_length + 1;

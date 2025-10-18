@@ -10,32 +10,33 @@
     //
     //////////////////////////////////////////////////////////////////////////////////
 
-    module Top_Student (
+module Top_Student (
 
-        // Clock
-        input clk,
+    // Clock
+    input clk,
 
-        // Buttons and Switches
-        input [4:0] btn,
-        input [15:0] sw,
+    // Buttons and Switches
+    input [4:0] btn,
+    input [15:0] sw,
 
-        // PS2 Interface
-        inout PS2Clk,
-        inout PS2Data,
+    // PS2 Interface
+    inout PS2Clk,
+    inout PS2Data,
 
-        // OLED Interface
-        output [7:0] JB,
+    // OLED Interface
+    output [7:0] JB,
 
-        // VGA Interface
-        output VGA_Hsync,
-        output VGA_Vsync,
-        output [11:0] VGA_RGB,
+    // VGA Interface
+    output VGA_Hsync,
+    output VGA_Vsync,
+    output [11:0] VGA_RGB,
 
-        // DEBUGGING
-        output [1:0] current_main_mode
-    );
+    // LEDs (for debugging)
+    output [15:0] led,
 
-        // ON/OFF CALCULATOR (driven by sw[15])
+    // DEBUGGING
+    output [1:0] current_main_mode
+);        // ON/OFF CALCULATOR (driven by sw[15])
         wire reset = ~sw[15];
 
         // current_main_mode is a register (2 bits). new_mode is produced by
@@ -164,19 +165,62 @@
 
         );
 
-        // -------------------
-        // --- OLED KEYPAD ---
-        // -------------------
+    // -------------------
+    // --- OLED KEYPAD ---
+    // -------------------
+    
+    // Keypad-to-Parser wires
+    wire [4:0] keypad_key_code;
+    wire keypad_key_valid;
 
-        oled_keypad oled_keypad_inst(
-            .clk(clk),
-            .reset(reset),
-            .pixel_index(pixel_index),
-            .btn_debounced(btn_debounced),
-            .oled_data(keypad_oled)
-        );
-
-        // -------------------------
+    oled_keypad oled_keypad_inst(
+        .clk(clk),
+        .reset(reset),
+        .pixel_index(pixel_index),
+        .btn_debounced(btn_debounced),
+        .oled_data(keypad_oled),
+        .key_code(keypad_key_code),
+        .key_valid(keypad_key_valid)
+    );
+    
+    // -------------------
+    // --- DATA PARSER ---
+    // -------------------
+    
+    // Parser outputs
+    wire [3:0] parser_digit_value;
+    wire parser_digit_valid;
+    wire [3:0] parser_operator_code;
+    wire parser_operator_valid;
+    wire parser_dot_pressed;
+    
+    data_parser data_parser_inst(
+        .clk(clk),
+        .rst(reset),
+        .key_code(keypad_key_code),
+        .key_valid(keypad_key_valid),
+        .digit_value(parser_digit_value),
+        .digit_valid(parser_digit_valid),
+        .operator_code(parser_operator_code),
+        .operator_valid(parser_operator_valid),
+        .dot_pressed(parser_dot_pressed)
+    );
+    
+    // Debug: Show parser outputs on LEDs
+    // LED[4:0]   = key_code from keypad
+    // LED[8:5]   = digit_value
+    // LED[9]     = digit_valid
+    // LED[13:10] = operator_code
+    // LED[14]    = operator_valid
+    // LED[15]    = dot_pressed
+    assign led = {
+        parser_dot_pressed,
+        parser_operator_valid,
+        parser_operator_code,
+        parser_digit_valid,
+        parser_digit_value,
+        keypad_key_code
+    };        // -------------------------
         // --- CALCULATOR MODULE ---
         // -------------------------
 
