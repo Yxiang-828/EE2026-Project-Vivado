@@ -1,0 +1,23 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb_vga_rendering.uut.font_rom.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+=== VGA RENDERING TEST ===
+
+After typing '1':
+  display_length =  1
+  buffer[0] = 0x31 (should be 0x31 '1')
+  ✓ PARSER WORKS!
+
+VGA Test at (15,16):
+  vga_data = 0xfff
+  Black pixels in char 0:           3
+  ✓ RENDERING WORKS!
+
+Tessellation test at y=24:
+  Black pixels:           0 (should be 0)
+  ✓ NO TESSELLATION!
+
+=== TEST COMPLETE ===
+$finish called at time : 290 ns : File "C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_vga_simple.v" Line 104

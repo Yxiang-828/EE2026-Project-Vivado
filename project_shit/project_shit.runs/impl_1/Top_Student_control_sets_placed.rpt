@@ -1,0 +1,187 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sun Oct 19 02:50:03 2025
+| Host         : Plup1 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
+| Design       : Top_Student
+| Device       : xc7a35t
+----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |   121 |
+| Unused register locations in slices containing registers |    82 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|     10 |            1 |
+|     12 |            3 |
+|    16+ |          117 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             142 |           35 |
+| No           | No                    | Yes                    |              16 |            5 |
+| No           | Yes                   | No                     |             390 |           64 |
+| Yes          | No                    | No                     |             648 |          144 |
+| Yes          | No                    | Yes                    |              56 |           10 |
+| Yes          | Yes                   | No                     |            1418 |          415 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+---------------------------------------------------------------------+-------------------------------------------------------------+------------------+----------------+
+|  Clock Signal  |                            Enable Signal                            |                       Set/Reset Signal                      | Slice Load Count | Bel Load Count |
++----------------+---------------------------------------------------------------------+-------------------------------------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG | welcome_mode_module_inst/welcome_drawer_vga_inst/vga_x_d[9]_i_1_n_0 | display_handler_inst/vga_sync_unit/char_code_reg_reg[6]     |                4 |             10 |
+|  clk_IBUF_BUFG |                                                                     | oled_keypad_inst/s2_font_col                                |                1 |             12 |
+|  clk_IBUF_BUFG |                                                                     | display_handler_inst/oled_display_inst/SR[0]                |                2 |             12 |
+|  clk_IBUF_BUFG | welcome_mode_module_inst/welcome_drawer_vga_inst/vga_x_d[9]_i_1_n_0 | display_handler_inst/vga_sync_unit/row_index_reg_reg[0][0]  |                1 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[504]                | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[28][7]_i_1_n_0                   |                                                             |                6 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[2][7]_i_1_n_0                    |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[29][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[30][7]_i_1_n_0                   |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG |                                                                     | oled_keypad_inst/s2_char_code[7]_i_1_n_0                    |                5 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[4][7]_i_1_n_0                    |                                                             |                5 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[6][7]_i_1_n_0                    |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[3][7]_i_1_n_0                    |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[72]                 | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[80]                 | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[8]                  | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[56]                 | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[176]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[496]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[64]                 | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[88]                 | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[96]                 | oled_keypad_inst/reset                                      |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[5][7]_i_1_n_0                    |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[8][7]_i_1_n_0                    |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[9][7]_i_1_n_0                    |                                                             |                5 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[7][7]_i_1_n_0                    |                                                             |                2 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[488]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[392]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[40]                 | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[48]                 | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[128]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[320]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[312]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[136]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[384]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[16]                 | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[328]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[416]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[144]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[224]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[192]                | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[280]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[184]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[352]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[376]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[200]                | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[432]                | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[264]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[336]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[168]                | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[160]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[440]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[232]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[368]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[408]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[304]                | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[256]                | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[288]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[296]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[216]                | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[272]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[448]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[248]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[456]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[152]                | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[208]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[24]                 | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[464]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[472]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[240]                | oled_keypad_inst/reset                                      |                7 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[424]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[32]                 | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[400]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[344]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[360]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[480]                | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[0]                  | oled_keypad_inst/reset                                      |                5 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[104]                | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[120]                | oled_keypad_inst/reset                                      |                4 |             16 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[112]                | oled_keypad_inst/reset                                      |                6 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[0][7]_i_1_n_0                    |                                                             |                7 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[10][7]_i_1_n_0                   |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[15][7]_i_1_n_0                   |                                                             |                6 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[14][7]_i_1_n_0                   |                                                             |                5 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[11][7]_i_1_n_0                   |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[12][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[13][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[18][7]_i_1_n_0                   |                                                             |                6 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[16][7]_i_1_n_0                   |                                                             |                2 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[19][7]_i_1_n_0                   |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[1][7]_i_1_n_0                    |                                                             |                5 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[17][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[20][7]_i_1_n_0                   |                                                             |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[22][7]_i_1_n_0                   |                                                             |                6 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[21][7]_i_1_n_0                   |                                                             |                2 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[23][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[24][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[27][7]_i_1_n_0                   |                                                             |                2 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[26][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_buffer[25][7]_i_1_n_0                   |                                                             |                4 |             16 |
+|  clk_IBUF_BUFG | display_handler_inst/vga_sync_unit/v_count_reg0                     | oled_keypad_inst/reset                                      |                3 |             20 |
+|  clk_IBUF_BUFG | oled_keypad_inst/key_code[4]_i_1_n_0                                | oled_keypad_inst/reset                                      |                3 |             20 |
+|  clk_IBUF_BUFG | oled_keypad_inst/expression_length[4]_i_2_n_0                       | oled_keypad_inst/reset                                      |                7 |             20 |
+|  clk_IBUF_BUFG | oled_keypad_inst/led_OBUF[5]                                        | oled_keypad_inst/reset                                      |                5 |             26 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_length_reg[6]_rep              | oled_keypad_inst/reset                                      |               10 |             36 |
+| ~clk6p25m      |                                                                     |                                                             |                6 |             36 |
+| ~clk6p25m      | display_handler_inst/oled_display_inst/delay[0]_i_1_n_0             |                                                             |                5 |             40 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_0/count                  | button_debouncer_array_inst/debouncer_inst_0/btn_out0       |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_1/count                  | button_debouncer_array_inst/debouncer_inst_1/btn_out0       |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_2/count                  | button_debouncer_array_inst/debouncer_inst_2/btn_out0       |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_3/count                  | button_debouncer_array_inst/debouncer_inst_3/btn_out0       |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_4/count                  | button_debouncer_array_inst/debouncer_inst_4/btn_out0       |                6 |             46 |
+|  clk_IBUF_BUFG | welcome_mode_module_inst/welcome_drawer_vga_inst/vga_x_d[9]_i_1_n_0 |                                                             |                7 |             48 |
+|  clk_IBUF_BUFG |                                                                     | calc_mode_module_inst/blink_counter[0]_i_1__0_n_0           |                7 |             52 |
+|  clk_IBUF_BUFG |                                                                     | oled_keypad_inst/blink_counter[0]_i_1_n_0                   |                7 |             52 |
+|  clk_IBUF_BUFG |                                                                     | display_handler_inst/clk_6p25m/clear                        |                8 |             64 |
+| ~clk6p25m      | display_handler_inst/oled_display_inst/state                        |                                                             |                9 |             64 |
+|  clk_IBUF_BUFG | display_handler_inst/vga_sync_unit/E[0]                             | oled_keypad_inst/reset                                      |               15 |             76 |
+| ~clk6p25m      |                                                                     | display_handler_inst/oled_display_inst/spi_word[39]_i_1_n_0 |               18 |             90 |
+|  clk_IBUF_BUFG |                                                                     |                                                             |               29 |            106 |
+|  clk_IBUF_BUFG |                                                                     | oled_keypad_inst/reset                                      |               21 |            108 |
++----------------+---------------------------------------------------------------------+-------------------------------------------------------------+------------------+----------------+
+
+
