@@ -31,8 +31,12 @@ module Top_Student (
     output VGA_Vsync,
     output [11:0] VGA_RGB,
 
-    // LEDs (for debugging)
+    // LEDs (for user feedback and debugging)
     output [15:0] led,
+
+    // 7-Segment Display (for status feedback)
+    output [7:0] seg,
+    output [3:0] an,
 
     // DEBUGGING
     output [1:0] current_main_mode
@@ -211,16 +215,22 @@ module Top_Student (
     // LED[8:5]   = digit_value
     // LED[9]     = digit_valid
     // LED[13:10] = operator_code
-    // LED[14]    = operator_valid
-    // LED[15]    = dot_pressed
+    // LED[14:15] are not physically available on Basys3, tie to 0
+    // Note: operator_valid and dot_pressed will be shown on 7-segment display
     assign led = {
-        parser_dot_pressed,
-        parser_operator_valid,
-        parser_operator_code,
-        parser_digit_valid,
-        parser_digit_value,
-        keypad_key_code
-    };        // -------------------------
+        2'b00,  // LED[15:14] - not available on Basys3
+        parser_operator_code,  // LED[13:10]
+        parser_digit_valid,    // LED[9]
+        parser_digit_value,    // LED[8:5]
+        keypad_key_code        // LED[4:0]
+    };
+    
+    // 7-Segment Display: Show status feedback
+    // For now, display operator_valid and dot_pressed as simple indicators
+    // Format: Display "----" when idle, flash patterns for loading/completion
+    // TODO: Add proper 7-segment controller in future phases for better UX
+    assign seg = {parser_dot_pressed, 7'b1111111};  // Dot on seg[7] (DP), all segments off
+    assign an = {2'b11, parser_operator_valid, ~parser_operator_valid};  // Flash digit 0/1 when operator pressed        // -------------------------
         // --- CALCULATOR MODULE ---
         // -------------------------
 
