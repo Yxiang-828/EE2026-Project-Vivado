@@ -29,24 +29,36 @@ module calc_mode_module(
     // OLED not used in calculator mode
     assign oled_data = 16'h0000;
     
-    // Input buffer to store what user types (up to 32 characters)
-    reg [7:0] input_buffer [0:31];
-    reg [5:0] input_length;
+    // ========================================================================
+    // DATA PARSER ACCUMULATOR - Converts keypad to Q16.8 numbers
+    // ========================================================================
+    wire [24:0] parsed_number;
+    wire number_ready;
+    wire [3:0] operator_code;
+    wire operator_ready;
+    wire [1:0] precedence;
+    wire equals_pressed, clear_pressed, delete_pressed;
+    wire [7:0] display_buffer [0:31];
+    wire [5:0] display_length;
     
-    // Capture keypad input and store in buffer
-    integer i;
-    always @(posedge clk) begin
-        if (reset) begin
-            input_length <= 0;
-            for (i = 0; i < 32; i = i + 1) begin
-                input_buffer[i] <= 8'h00;
-            end
-        end else if (key_valid && input_length < 32) begin
-            // TODO: Convert key_code to ASCII and store in buffer
-            // For now, just increment length
-            input_length <= input_length + 1;
-        end
-    end
+    data_parser_accumulator parser_inst(
+        .clk(clk),
+        .rst(reset),
+        .key_code(key_code),
+        .key_valid(key_valid),
+        .parsed_number(parsed_number),
+        .number_ready(number_ready),
+        .operator_code(operator_code),
+        .operator_ready(operator_ready),
+        .precedence(precedence),
+        .equals_pressed(equals_pressed),
+        .clear_pressed(clear_pressed),
+        .delete_pressed(delete_pressed),
+        .display_text(display_buffer),
+        .text_length(display_length),
+        .overflow_error(),
+        .invalid_input_error()
+    );
     
     // VGA Display: Draw white background with black text box
     // Text box position: top of screen, 40 pixels tall

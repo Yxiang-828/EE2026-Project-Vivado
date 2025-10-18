@@ -29,24 +29,36 @@ module graph_mode_module(
     // OLED not used in grapher mode
     assign oled_data = 16'h0000;
     
-    // Equation input buffer to store what user types (up to 32 characters)
-    reg [7:0] equation_buffer [0:31];
-    reg [5:0] equation_length;
+    // ========================================================================
+    // DATA PARSER ACCUMULATOR - Converts keypad to equation text
+    // ========================================================================
+    wire [24:0] parsed_number;
+    wire number_ready;
+    wire [3:0] operator_code;
+    wire operator_ready;
+    wire [1:0] precedence;
+    wire equals_pressed, clear_pressed, delete_pressed;
+    wire [7:0] equation_buffer [0:31];
+    wire [5:0] equation_length;
     
-    // Capture keypad input and store in buffer
-    integer i;
-    always @(posedge clk) begin
-        if (reset) begin
-            equation_length <= 0;
-            for (i = 0; i < 32; i = i + 1) begin
-                equation_buffer[i] <= 8'h00;
-            end
-        end else if (key_valid && equation_length < 32) begin
-            // TODO: Convert key_code to ASCII and store in buffer
-            // For now, just increment length
-            equation_length <= equation_length + 1;
-        end
-    end
+    data_parser_accumulator parser_inst(
+        .clk(clk),
+        .rst(reset),
+        .key_code(key_code),
+        .key_valid(key_valid),
+        .parsed_number(parsed_number),
+        .number_ready(number_ready),
+        .operator_code(operator_code),
+        .operator_ready(operator_ready),
+        .precedence(precedence),
+        .equals_pressed(equals_pressed),
+        .clear_pressed(clear_pressed),
+        .delete_pressed(delete_pressed),
+        .display_text(equation_buffer),
+        .text_length(equation_length),
+        .overflow_error(),
+        .invalid_input_error()
+    );
     
     // VGA Display Layout:
     // - Top section: Text box for equation input (40 pixels tall)
