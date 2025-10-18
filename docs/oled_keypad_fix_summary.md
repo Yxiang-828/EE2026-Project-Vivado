@@ -166,13 +166,13 @@ User: "2+3=" → Press '='
 
 ### Working Code vs. Broken Code
 
-| Aspect | ❌ Broken Code | ✅ Working Code |
-|--------|---------------|----------------|
-| **Input Y Bounds** | No `input_font_row < 8` check | Wrapped in `if (input_font_row < 8)` |
+| Aspect              | ❌ Broken Code                              | ✅ Working Code                                      |
+| ------------------- | ------------------------------------------ | --------------------------------------------------- |
+| **Input Y Bounds**  | No `input_font_row < 8` check              | Wrapped in `if (input_font_row < 8)`                |
 | **Pipeline Gating** | `font_data_reg <= font_row_data;` (always) | `font_data_reg <= (valid) ? font_row_data : 8'h00;` |
-| **Invalid Regions** | No explicit default | `s2_char_code <= 8'h20;` (space) |
-| **Font Address** | Combinational wire | Registered through Stage 2 |
-| **Signal Validity** | No tracking of `in_keypad_cell` | Explicit `in_keypad_reg` tracking |
+| **Invalid Regions** | No explicit default                        | `s2_char_code <= 8'h20;` (space)                    |
+| **Font Address**    | Combinational wire                         | Registered through Stage 2                          |
+| **Signal Validity** | No tracking of `in_keypad_cell`            | Explicit `in_keypad_reg` tracking                   |
 
 ---
 

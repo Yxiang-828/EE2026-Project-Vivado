@@ -1,0 +1,26 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module calc_mode_module
+WARNING: [VRFC 10-756] identifier display_length is used before its declaration [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:36]
+WARNING: [VRFC 10-756] identifier is_border is used before its declaration [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:126]
+WARNING: [VRFC 10-756] identifier in_text_box is used before its declaration [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:127]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/xiang/ee2026_Project/project_vivado/features/parser/data_parser_accumulator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_parser_accumulator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_quick_test
+ERROR: [VRFC 10-1412] syntax error near x [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:147]
+ERROR: [VRFC 10-1412] syntax error near wire [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:178]
+ERROR: [VRFC 10-2790] Verilog 2000 keyword wire used in incorrect context [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:178]
+ERROR: [VRFC 10-1412] syntax error near wire [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:179]
+ERROR: [VRFC 10-2790] Verilog 2000 keyword wire used in incorrect context [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:179]
+ERROR: [VRFC 10-1412] syntax error near wire [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:180]
+ERROR: [VRFC 10-2790] Verilog 2000 keyword wire used in incorrect context [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:180]
+ERROR: [VRFC 10-91] black_pixels is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:148]
+ERROR: [VRFC 10-91] x is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:151]
+ERROR: [VRFC 10-91] x is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:152]
+ERROR: [VRFC 10-91] black_pixels is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:155]
+ERROR: [VRFC 10-91] black_pixels is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:162]
+ERROR: [VRFC 10-91] text_x is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:178]
+ERROR: [VRFC 10-91] text_y is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:179]
+ERROR: [VRFC 10-91] char_index_raw is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:180]
+ERROR: [VRFC 10-91] black_pixels is not declared [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:204]
+ERROR: [VRFC 10-2787] module tb_quick_test ignored due to previous errors [C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_quick_test.v:7]

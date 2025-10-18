@@ -117,11 +117,11 @@ module oled_keypad (
 module data_parser (
     input clk,
     input reset,
-    
+
     // Input from OLED Keypad
     input [4:0] key_code,
     input key_valid,
-    
+
     // Output to Calculator (MINIMAL)
     output reg [3:0] digit_value,      // 0-9 (for digits)
     output reg digit_valid,            // Pulse: digit ready
@@ -138,7 +138,7 @@ module data_parser (
     localparam KEY_MUL = 5'd12;
     localparam KEY_DIV = 5'd13;
     localparam KEY_EQUAL = 5'd14;
-    
+
     // PASSTHROUGH LOGIC (NO FSM YET)
     always @(posedge clk) begin
         if (reset) begin
@@ -148,7 +148,7 @@ module data_parser (
             // Default: clear pulses
             digit_valid <= 0;
             operator_valid <= 0;
-            
+
             if (key_valid) begin
                 // Check if digit (0-9)
                 if (key_code >= KEY_0 && key_code <= 5'd9) begin
@@ -245,7 +245,7 @@ always @(posedge clk) begin
         number_ready <= 0;
     end else begin
         number_ready <= 0;
-        
+
         case (state)
             IDLE: begin
                 if (digit_valid) begin
@@ -254,7 +254,7 @@ always @(posedge clk) begin
                     state <= ACCUMULATING;
                 end
             end
-            
+
             ACCUMULATING: begin
                 if (digit_valid) begin
                     // Multiply by 10 and add new digit
@@ -287,13 +287,13 @@ end
 module simple_calculator (
     input clk,
     input reset,
-    
+
     // From Parser
     input [23:0] parsed_number,
     input number_ready,
     input [3:0] operator_code,
     input operator_valid,
-    
+
     // Output
     output reg [23:0] result,
     output reg result_valid
@@ -301,18 +301,18 @@ module simple_calculator (
 
     localparam WAIT_FIRST = 0, WAIT_OP = 1, WAIT_SECOND = 2, COMPUTE = 3;
     reg [1:0] state;
-    
+
     reg [23:0] first_operand;
     reg [23:0] second_operand;
     reg [3:0] saved_operator;
-    
+
     always @(posedge clk) begin
         if (reset) begin
             state <= WAIT_FIRST;
             result_valid <= 0;
         end else begin
             result_valid <= 0;
-            
+
             case (state)
                 WAIT_FIRST: begin
                     if (number_ready) begin
@@ -320,21 +320,21 @@ module simple_calculator (
                         state <= WAIT_OP;
                     end
                 end
-                
+
                 WAIT_OP: begin
                     if (operator_valid && operator_code != 4'd15) begin
                         saved_operator <= operator_code;
                         state <= WAIT_SECOND;
                     end
                 end
-                
+
                 WAIT_SECOND: begin
                     if (number_ready) begin
                         second_operand <= parsed_number;
                         state <= COMPUTE;
                     end
                 end
-                
+
                 COMPUTE: begin
                     if (operator_valid && operator_code == 4'd15) begin  // '='
                         case (saved_operator)
@@ -412,7 +412,7 @@ module alu_multiplier (
     reg [23:0] multiplicand;
     reg [23:0] multiplier_reg;
     reg active;
-    
+
     always @(posedge clk) begin
         if (reset) begin
             done <= 0;
@@ -430,7 +430,7 @@ module alu_multiplier (
             end
             multiplier_reg <= multiplier_reg >> 1;
             cycle_counter <= cycle_counter + 1;
-            
+
             if (cycle_counter == 23) begin
                 // Result is Q32.16, need to convert to Q16.8
                 // Shift right by 8 to compensate for double scaling
@@ -619,14 +619,14 @@ end
 module tb_parser;
     reg clk = 0;
     always #5 clk = ~clk;
-    
+
     reg [4:0] key_code;
     reg key_valid = 0;
     wire [23:0] parsed_number;
     wire number_ready;
-    
+
     data_parser dut(...);
-    
+
     initial begin
         // Simulate typing "123"
         #10 key_code = 5'd1; key_valid = 1;
@@ -642,11 +642,11 @@ module tb_parser;
         #10 key_code = 5'd10; key_valid = 1;
         #10 key_valid = 0;
         #50;
-        
+
         // Check parsed_number = 0x007B00 (123 in Q16.8)
         if (parsed_number == 24'h007B00) $display("PASS");
         else $display("FAIL: got %h", parsed_number);
-        
+
         $finish;
     end
 endmodule

@@ -48,7 +48,7 @@ User presses "="
 ```verilog
 module oled_keypad (
     // ... existing ports ...
-    
+
     // VGA Output Interface
     output reg [7:0] vga_expression [0:31],  // Expression buffer for VGA
     output reg [5:0] vga_expr_length,        // Length of expression sent to VGA
@@ -59,12 +59,12 @@ module oled_keypad (
 
 ### Signal Descriptions
 
-| Signal | Type | Description |
-|--------|------|-------------|
-| `vga_expression[0:31]` | `output reg [7:0]` | 32-character buffer sent to VGA (snapshot of expression_buffer) |
-| `vga_expr_length` | `output reg [5:0]` | Number of valid characters in vga_expression (0-31) |
-| `vga_output_valid` | `output reg` | 1-cycle pulse when intermediate operator pressed (`+`, `-`, `*`, `/`) |
-| `vga_output_complete` | `output reg` | 1-cycle pulse when `=` pressed (final output) |
+| Signal                 | Type               | Description                                                           |
+| ---------------------- | ------------------ | --------------------------------------------------------------------- |
+| `vga_expression[0:31]` | `output reg [7:0]` | 32-character buffer sent to VGA (snapshot of expression_buffer)       |
+| `vga_expr_length`      | `output reg [5:0]` | Number of valid characters in vga_expression (0-31)                   |
+| `vga_output_valid`     | `output reg`       | 1-cycle pulse when intermediate operator pressed (`+`, `-`, `*`, `/`) |
+| `vga_output_complete`  | `output reg`       | 1-cycle pulse when `=` pressed (final output)                         |
 
 ---
 
@@ -101,7 +101,7 @@ always @(posedge clk) begin
         // Default: clear pulses
         vga_output_valid <= 0;
         vga_output_complete <= 0;
-        
+
         if (btn_pressed[0] && current_page == PAGE_NUMBERS) begin
             case ({selected_row[2:0], selected_col[2:0]})
                 // Intermediate operators
@@ -115,13 +115,13 @@ always @(posedge clk) begin
                     end
                     vga_expr_length <= expression_length;
                     vga_output_valid <= 1;  // Pulse for 1 cycle
-                    
+
                     // Clear local expression
                     expression_length <= 1;  // Start with operator
                     cursor_pos <= 1;
                     expression_buffer[0] <= selected_operator_char;  // Insert operator
                 end
-                
+
                 // Final operator
                 6'b011_100: begin  // '='
                     // Copy expression to VGA buffer
@@ -130,7 +130,7 @@ always @(posedge clk) begin
                     end
                     vga_expr_length <= expression_length;
                     vga_output_complete <= 1;  // Pulse for 1 cycle
-                    
+
                     // Clear local expression completely
                     expression_length <= 0;
                     cursor_pos <= 0;
@@ -185,10 +185,10 @@ Cycle    Event
 
 1. **Empty Expression**:
    - If user presses operator with `expression_length == 0`, do nothing
-   
+
 2. **Buffer Overflow**:
    - Already handled by `expression_length < 31` check
-   
+
 3. **Multiple Operators**:
    - Each intermediate operator sends current state and replaces with itself
    - Example: "2+3+" → sends "2+3", displays "+", user continues "5" → displays "+5"

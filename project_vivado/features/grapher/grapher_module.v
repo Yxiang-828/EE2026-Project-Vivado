@@ -11,7 +11,7 @@ module oled_keypad (
     input [12:0] pixel_index,  // Pixel index (0 to 6143 for 96x64 OLED)
     input [4:0] btn_debounced, // [4:0] = [down, right, left, up, centre]
     output reg [15:0] oled_data,
-    
+
     // VGA Output Interface - PACKED for synthesis compatibility
     output reg [255:0] vga_expression,       // Packed expression buffer (32 chars × 8 bits)
     output reg [5:0] vga_expr_length,        // Length of expression sent to VGA
@@ -122,7 +122,7 @@ module oled_keypad (
     reg current_page = PAGE_NUMBERS;
     reg [2:0] selected_row = 0;
     reg [2:0] selected_col = 0;
-    
+
     // VGA Output state initialization
     integer i;
     initial begin
@@ -152,7 +152,7 @@ module oled_keypad (
             vga_expr_length <= 0;
         end else begin
             btn_prev <= btn_debounced;
-            
+
             // Default: clear 1-cycle pulses
             vga_output_valid <= 0;
             vga_output_complete <= 0;
@@ -211,7 +211,7 @@ module oled_keypad (
                                 end
                                 vga_expr_length <= expression_length;
                                 vga_output_valid <= 1;  // Pulse for 1 cycle
-                                
+
                                 // Insert operator as first character
                                 case ({selected_row[2:0], selected_col[2:0]})
                                     6'b000_011: expression_buffer[0] <= 8'h2F;  // '/'
@@ -232,7 +232,7 @@ module oled_keypad (
                                 end
                                 vga_expr_length <= expression_length;
                                 vga_output_complete <= 1;  // Pulse for 1 cycle
-                                
+
                                 // Clear expression completely
                                 expression_length <= 0;
                                 cursor_pos <= 0;

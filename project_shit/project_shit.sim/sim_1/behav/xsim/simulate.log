@@ -1,0 +1,97 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb_calc_mode_text_display.uut.font_rom.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+========================================
+Calculator Mode Text Display Testbench
+========================================
+
+[TIME 40000] Reset released, starting tests...
+Initial state:
+  text_length =  0
+  debug_display_length =  0
+  display_buffer[7:0] = 0x00
+
+========================================
+TEST 1: Press key '1' (key_code = 5'd1)
+========================================
+[TIME 120000] After pressing '1':
+  text_length =  1 (expected: 1)
+  debug_display_length =  1 (expected: 1)
+  display_buffer[7:0] = 0x31 (expected: 0x31 = '1')
+  ✓ TEST 1 PASSED: Parser accumulated '1' correctly
+
+========================================
+TEST 2: Press key '2' (key_code = 5'd2)
+========================================
+[TIME 200000] After pressing '2':
+  text_length =  2 (expected: 2)
+  display_buffer[7:0] = 0x31 (expected: 0x31 = '1')
+  display_buffer[15:8] = 0x32 (expected: 0x32 = '2')
+  ✓ TEST 2 PASSED: Parser accumulated '2' correctly
+
+========================================
+TEST 3: Press key '3' (key_code = 5'd3)
+========================================
+[TIME 280000] After pressing '3':
+  text_length =  3 (expected: 3)
+  display_buffer[7:0]   = 0x31 (expected: 0x31 = '1')
+  display_buffer[15:8]  = 0x32 (expected: 0x32 = '2')
+  display_buffer[23:16] = 0x33 (expected: 0x33 = '3')
+  ✓ TEST 3 PASSED: Parser accumulated '123' correctly
+
+========================================
+TEST 4: VGA Text Rendering
+========================================
+
+Scanning VGA coordinates for character '1' rendering...
+[TIME 330000] VGA output at (15, 15):
+  vga_data = 0xfff
+  Expected: Font pixel data (should not be 0x888 or 0xFFF uniformly)
+
+Scanning 8x8 region at (15,15) to (22,22)...
+  (x=15, y=15): vga_data = 0xfff
+  (x=15, y=16): vga_data = 0xfff
+  (x=15, y=17): vga_data = 0xfff
+  (x=15, y=18): vga_data = 0xfff
+  (x=15, y=19): vga_data = 0xfff
+  (x=15, y=20): vga_data = 0xfff
+  (x=15, y=21): vga_data = 0x000
+  (x=15, y=22): vga_data = 0xfff
+
+Scan results:
+  Total pixels: 64
+  Black pixels (0x000): 19
+  ✓ TEST 4 PASSED: Font rendering detected (19 black pixels)
+
+========================================
+TEST 5: Border Rendering
+========================================
+[TIME 2280000] Border pixel at (15, 10):
+  vga_data = 0x000 (expected: 0x000 = black)
+  ✓ TEST 5 PASSED: Border renders correctly
+
+========================================
+TEST 6: Background Rendering
+========================================
+[TIME 2310000] Background pixel at (100, 20):
+  vga_data = 0xfff (expected: 0xFFF = white)
+  ✓ TEST 6 PASSED: Background renders correctly
+
+========================================
+TEST SUMMARY
+========================================
+Final parser state:
+  text_length =  3
+  debug_display_length =  3
+  Buffer contents (hex): 333231
+  Buffer contents (ASCII):
+    Char 0: 0x31 ('1')
+    Char 1: 0x32 ('2')
+    Char 2: 0x33 ('3')
+
+========================================
+Testbench Complete
+========================================
+$finish called at time : 2310 ns : File "C:/Users/xiang/ee2026_Project/project_vivado/sim/tb_calc_mode_text_display.v" Line 303

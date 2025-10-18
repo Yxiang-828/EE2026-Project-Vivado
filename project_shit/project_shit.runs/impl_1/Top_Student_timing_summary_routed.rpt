@@ -1,0 +1,1404 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sun Oct 19 00:51:42 2025
+| Host         : Plup1 running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -file Top_Student_timing_summary_routed.rpt -pb Top_Student_timing_summary_routed.pb -rpx Top_Student_timing_summary_routed.rpx -warn_on_violation
+| Design       : Top_Student
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.22 2018-03-21
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  false
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 115 register/latch pins with no clock driven by root clock pin: display_handler_inst/clk_6p25m/SLOW_CLOCK_reg/Q (HIGH)
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 228 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There are 6 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay
+---------------------------
+ There are 35 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      2.817        0.000                      0                 1847        0.069        0.000                      0                 1847        4.500        0.000                       0                   924  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock        Waveform(ns)       Period(ns)      Frequency(MHz)
+-----        ------------       ----------      --------------
+sys_clk_pin  {0.000 5.000}      10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+sys_clk_pin         2.817        0.000                      0                 1847        0.069        0.000                      0                 1847        4.500        0.000                       0                   924  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk_pin
+  To Clock:  sys_clk_pin
+
+Setup :            0  Failing Endpoints,  Worst Slack        2.817ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.069ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             2.817ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[1][1]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.875ns  (logic 1.304ns (18.968%)  route 5.571ns (81.032%))
+  Logic Levels:           5  (LUT2=2 LUT5=1 LUT6=2)
+  Clock Path Skew:        -0.104ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.783ns = ( 14.783 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.188ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.938    10.882    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X44Y15         LUT6 (Prop_lut6_I5_O)        0.124    11.006 r  oled_keypad_inst/expression_buffer[1][7]_i_1/O
+                         net (fo=8, routed)           0.944    11.950    oled_keypad_inst/expression_buffer[1][7]_i_1_n_0
+    SLICE_X52Y18         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[1][1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.442    14.783    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X52Y18         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[1][1]/C
+                         clock pessimism              0.188    14.971    
+                         clock uncertainty           -0.035    14.936    
+    SLICE_X52Y18         FDRE (Setup_fdre_C_CE)      -0.169    14.767    oled_keypad_inst/expression_buffer_reg[1][1]
+  -------------------------------------------------------------------
+                         required time                         14.767    
+                         arrival time                         -11.950    
+  -------------------------------------------------------------------
+                         slack                                  2.817    
+
+Slack (MET) :             2.920ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[21][0]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.809ns  (logic 1.304ns (19.152%)  route 5.505ns (80.848%))
+  Logic Levels:           5  (LUT2=2 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.784ns = ( 14.784 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.925    10.869    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X38Y11         LUT5 (Prop_lut5_I4_O)        0.124    10.993 r  oled_keypad_inst/expression_buffer[21][7]_i_1/O
+                         net (fo=8, routed)           0.891    11.884    oled_keypad_inst/expression_buffer[21][7]_i_1_n_0
+    SLICE_X32Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.443    14.784    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X32Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][0]/C
+                         clock pessimism              0.260    15.044    
+                         clock uncertainty           -0.035    15.009    
+    SLICE_X32Y10         FDRE (Setup_fdre_C_CE)      -0.205    14.804    oled_keypad_inst/expression_buffer_reg[21][0]
+  -------------------------------------------------------------------
+                         required time                         14.804    
+                         arrival time                         -11.884    
+  -------------------------------------------------------------------
+                         slack                                  2.920    
+
+Slack (MET) :             2.920ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[21][2]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.809ns  (logic 1.304ns (19.152%)  route 5.505ns (80.848%))
+  Logic Levels:           5  (LUT2=2 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.784ns = ( 14.784 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.925    10.869    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X38Y11         LUT5 (Prop_lut5_I4_O)        0.124    10.993 r  oled_keypad_inst/expression_buffer[21][7]_i_1/O
+                         net (fo=8, routed)           0.891    11.884    oled_keypad_inst/expression_buffer[21][7]_i_1_n_0
+    SLICE_X32Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.443    14.784    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X32Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][2]/C
+                         clock pessimism              0.260    15.044    
+                         clock uncertainty           -0.035    15.009    
+    SLICE_X32Y10         FDRE (Setup_fdre_C_CE)      -0.205    14.804    oled_keypad_inst/expression_buffer_reg[21][2]
+  -------------------------------------------------------------------
+                         required time                         14.804    
+                         arrival time                         -11.884    
+  -------------------------------------------------------------------
+                         slack                                  2.920    
+
+Slack (MET) :             2.920ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[21][6]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.809ns  (logic 1.304ns (19.152%)  route 5.505ns (80.848%))
+  Logic Levels:           5  (LUT2=2 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.784ns = ( 14.784 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.925    10.869    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X38Y11         LUT5 (Prop_lut5_I4_O)        0.124    10.993 r  oled_keypad_inst/expression_buffer[21][7]_i_1/O
+                         net (fo=8, routed)           0.891    11.884    oled_keypad_inst/expression_buffer[21][7]_i_1_n_0
+    SLICE_X32Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][6]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.443    14.784    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X32Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][6]/C
+                         clock pessimism              0.260    15.044    
+                         clock uncertainty           -0.035    15.009    
+    SLICE_X32Y10         FDRE (Setup_fdre_C_CE)      -0.205    14.804    oled_keypad_inst/expression_buffer_reg[21][6]
+  -------------------------------------------------------------------
+                         required time                         14.804    
+                         arrival time                         -11.884    
+  -------------------------------------------------------------------
+                         slack                                  2.920    
+
+Slack (MET) :             2.979ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[10][6]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.744ns  (logic 1.304ns (19.335%)  route 5.440ns (80.665%))
+  Logic Levels:           5  (LUT2=2 LUT4=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.779ns = ( 14.779 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.977    10.921    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X40Y15         LUT4 (Prop_lut4_I2_O)        0.124    11.045 r  oled_keypad_inst/expression_buffer[10][7]_i_1/O
+                         net (fo=8, routed)           0.775    11.820    oled_keypad_inst/expression_buffer[10][7]_i_1_n_0
+    SLICE_X33Y16         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[10][6]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.438    14.779    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X33Y16         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[10][6]/C
+                         clock pessimism              0.260    15.039    
+                         clock uncertainty           -0.035    15.004    
+    SLICE_X33Y16         FDRE (Setup_fdre_C_CE)      -0.205    14.799    oled_keypad_inst/expression_buffer_reg[10][6]
+  -------------------------------------------------------------------
+                         required time                         14.799    
+                         arrival time                         -11.820    
+  -------------------------------------------------------------------
+                         slack                                  2.979    
+
+Slack (MET) :             2.979ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[10][7]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.744ns  (logic 1.304ns (19.335%)  route 5.440ns (80.665%))
+  Logic Levels:           5  (LUT2=2 LUT4=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.036ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.779ns = ( 14.779 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.977    10.921    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X40Y15         LUT4 (Prop_lut4_I2_O)        0.124    11.045 r  oled_keypad_inst/expression_buffer[10][7]_i_1/O
+                         net (fo=8, routed)           0.775    11.820    oled_keypad_inst/expression_buffer[10][7]_i_1_n_0
+    SLICE_X33Y16         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[10][7]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.438    14.779    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X33Y16         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[10][7]/C
+                         clock pessimism              0.260    15.039    
+                         clock uncertainty           -0.035    15.004    
+    SLICE_X33Y16         FDRE (Setup_fdre_C_CE)      -0.205    14.799    oled_keypad_inst/expression_buffer_reg[10][7]
+  -------------------------------------------------------------------
+                         required time                         14.799    
+                         arrival time                         -11.820    
+  -------------------------------------------------------------------
+                         slack                                  2.979    
+
+Slack (MET) :             2.999ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[21][7]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.730ns  (logic 1.304ns (19.376%)  route 5.426ns (80.624%))
+  Logic Levels:           5  (LUT2=2 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.784ns = ( 14.784 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.925    10.869    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X38Y11         LUT5 (Prop_lut5_I4_O)        0.124    10.993 r  oled_keypad_inst/expression_buffer[21][7]_i_1/O
+                         net (fo=8, routed)           0.812    11.805    oled_keypad_inst/expression_buffer[21][7]_i_1_n_0
+    SLICE_X31Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][7]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.443    14.784    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X31Y10         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[21][7]/C
+                         clock pessimism              0.260    15.044    
+                         clock uncertainty           -0.035    15.009    
+    SLICE_X31Y10         FDRE (Setup_fdre_C_CE)      -0.205    14.804    oled_keypad_inst/expression_buffer_reg[21][7]
+  -------------------------------------------------------------------
+                         required time                         14.804    
+                         arrival time                         -11.805    
+  -------------------------------------------------------------------
+                         slack                                  2.999    
+
+Slack (MET) :             3.008ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[5][1]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.648ns  (logic 1.304ns (19.616%)  route 5.344ns (80.384%))
+  Logic Levels:           5  (LUT2=2 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.104ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.783ns = ( 14.783 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.188ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.897    10.840    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X46Y17         LUT5 (Prop_lut5_I4_O)        0.124    10.964 r  oled_keypad_inst/expression_buffer[5][7]_i_1/O
+                         net (fo=8, routed)           0.759    11.723    oled_keypad_inst/expression_buffer[5][7]_i_1_n_0
+    SLICE_X51Y18         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[5][1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.442    14.783    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X51Y18         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[5][1]/C
+                         clock pessimism              0.188    14.971    
+                         clock uncertainty           -0.035    14.936    
+    SLICE_X51Y18         FDRE (Setup_fdre_C_CE)      -0.205    14.731    oled_keypad_inst/expression_buffer_reg[5][1]
+  -------------------------------------------------------------------
+                         required time                         14.731    
+                         arrival time                         -11.723    
+  -------------------------------------------------------------------
+                         slack                                  3.008    
+
+Slack (MET) :             3.008ns  (required time - arrival time)
+  Source:                 button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/expression_buffer_reg[5][2]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.648ns  (logic 1.304ns (19.616%)  route 5.344ns (80.384%))
+  Logic Levels:           5  (LUT2=2 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.104ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.783ns = ( 14.783 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.075ns
+    Clock Pessimism Removal (CPR):    0.188ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.554     5.075    button_debouncer_array_inst/debouncer_inst_4/clk_IBUF_BUFG
+    SLICE_X28Y19         FDRE                                         r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y19         FDRE (Prop_fdre_C_Q)         0.456     5.531 r  button_debouncer_array_inst/debouncer_inst_4/btn_out_reg/Q
+                         net (fo=4, routed)           1.355     6.886    button_debouncer_array_inst/debouncer_inst_1/btn_out_reg_0[0]
+    SLICE_X47Y20         LUT5 (Prop_lut5_I2_O)        0.124     7.010 r  button_debouncer_array_inst/debouncer_inst_1/expression_length[4]_i_13/O
+                         net (fo=4, routed)           0.679     7.689    oled_keypad_inst/btn_out_reg
+    SLICE_X47Y20         LUT6 (Prop_lut6_I5_O)        0.124     7.813 r  oled_keypad_inst/expression_length[4]_i_3/O
+                         net (fo=3, routed)           0.900     8.713    oled_keypad_inst/expression_length[4]_i_3_n_0
+    SLICE_X40Y19         LUT2 (Prop_lut2_I0_O)        0.150     8.863 r  oled_keypad_inst/key_valid_i_1/O
+                         net (fo=5, routed)           0.754     9.618    oled_keypad_inst/key_valid_i_1_n_0
+    SLICE_X44Y13         LUT2 (Prop_lut2_I0_O)        0.326     9.944 r  oled_keypad_inst/expression_buffer[1][7]_i_8/O
+                         net (fo=30, routed)          0.897    10.840    oled_keypad_inst/expression_buffer[1][7]_i_8_n_0
+    SLICE_X46Y17         LUT5 (Prop_lut5_I4_O)        0.124    10.964 r  oled_keypad_inst/expression_buffer[5][7]_i_1/O
+                         net (fo=8, routed)           0.759    11.723    oled_keypad_inst/expression_buffer[5][7]_i_1_n_0
+    SLICE_X51Y18         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[5][2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.442    14.783    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X51Y18         FDRE                                         r  oled_keypad_inst/expression_buffer_reg[5][2]/C
+                         clock pessimism              0.188    14.971    
+                         clock uncertainty           -0.035    14.936    
+    SLICE_X51Y18         FDRE (Setup_fdre_C_CE)      -0.205    14.731    oled_keypad_inst/expression_buffer_reg[5][2]
+  -------------------------------------------------------------------
+                         required time                         14.731    
+                         arrival time                         -11.723    
+  -------------------------------------------------------------------
+                         slack                                  3.008    
+
+Slack (MET) :             3.015ns  (required time - arrival time)
+  Source:                 display_handler_inst/vga_sync_unit/h_count_reg_reg[3]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            welcome_mode_module_inst/welcome_drawer_vga_inst/pixel_column_d_reg[2]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        6.181ns  (logic 1.538ns (24.884%)  route 4.643ns (75.116%))
+  Logic Levels:           5  (LUT2=1 LUT3=1 LUT5=1 LUT6=2)
+  Clock Path Skew:        -0.041ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.788ns = ( 14.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.089ns
+    Clock Pessimism Removal (CPR):    0.260ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.568     5.089    display_handler_inst/vga_sync_unit/clk_IBUF_BUFG
+    SLICE_X48Y10         FDCE                                         r  display_handler_inst/vga_sync_unit/h_count_reg_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y10         FDCE (Prop_fdce_C_Q)         0.456     5.545 f  display_handler_inst/vga_sync_unit/h_count_reg_reg[3]/Q
+                         net (fo=48, routed)          1.455     7.000    display_handler_inst/vga_sync_unit/Q[3]
+    SLICE_X48Y15         LUT3 (Prop_lut3_I1_O)        0.152     7.152 r  display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_15/O
+                         net (fo=2, routed)           0.654     7.806    display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_15_n_0
+    SLICE_X48Y13         LUT6 (Prop_lut6_I3_O)        0.332     8.138 f  display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_10/O
+                         net (fo=3, routed)           0.788     8.927    display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_10_n_0
+    SLICE_X51Y13         LUT5 (Prop_lut5_I4_O)        0.150     9.077 r  display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_5/O
+                         net (fo=8, routed)           0.701     9.778    display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_5_n_0
+    SLICE_X50Y14         LUT6 (Prop_lut6_I0_O)        0.332    10.110 r  display_handler_inst/vga_sync_unit/char_code_reg[6]_i_1/O
+                         net (fo=8, routed)           0.449    10.558    display_handler_inst/vga_sync_unit/char_code_reg_reg[0]
+    SLICE_X50Y14         LUT2 (Prop_lut2_I0_O)        0.116    10.674 r  display_handler_inst/vga_sync_unit/pixel_column_d[2]_i_1/O
+                         net (fo=6, routed)           0.595    11.270    welcome_mode_module_inst/welcome_drawer_vga_inst/SR[0]
+    SLICE_X50Y14         FDRE                                         r  welcome_mode_module_inst/welcome_drawer_vga_inst/pixel_column_d_reg[2]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         1.447    14.788    welcome_mode_module_inst/welcome_drawer_vga_inst/clk_IBUF_BUFG
+    SLICE_X50Y14         FDRE                                         r  welcome_mode_module_inst/welcome_drawer_vga_inst/pixel_column_d_reg[2]/C
+                         clock pessimism              0.260    15.048    
+                         clock uncertainty           -0.035    15.013    
+    SLICE_X50Y14         FDRE (Setup_fdre_C_R)       -0.728    14.285    welcome_mode_module_inst/welcome_drawer_vga_inst/pixel_column_d_reg[2]
+  -------------------------------------------------------------------
+                         required time                         14.285    
+                         arrival time                         -11.270    
+  -------------------------------------------------------------------
+                         slack                                  3.015    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.069ns  (arrival time - required time)
+  Source:                 oled_keypad_inst/s1_cell_font_row_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/s2_font_row_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.438ns  (logic 0.187ns (42.693%)  route 0.251ns (57.307%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.947ns
+    Source Clock Delay      (SCD):    1.436ns
+    Clock Pessimism Removal (CPR):    0.249ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.553     1.436    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X32Y21         FDRE                                         r  oled_keypad_inst/s1_cell_font_row_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X32Y21         FDRE (Prop_fdre_C_Q)         0.141     1.577 r  oled_keypad_inst/s1_cell_font_row_reg[2]/Q
+                         net (fo=1, routed)           0.251     1.828    oled_keypad_inst/s1_cell_font_row_reg_n_0_[2]
+    SLICE_X37Y21         LUT3 (Prop_lut3_I2_O)        0.046     1.874 r  oled_keypad_inst/s2_font_row[2]_i_1/O
+                         net (fo=1, routed)           0.000     1.874    oled_keypad_inst/s2_font_row[2]_i_1_n_0
+    SLICE_X37Y21         FDRE                                         r  oled_keypad_inst/s2_font_row_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.820     1.947    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X37Y21         FDRE                                         r  oled_keypad_inst/s2_font_row_reg[2]/C
+                         clock pessimism             -0.249     1.698    
+    SLICE_X37Y21         FDRE (Hold_fdre_C_D)         0.107     1.805    oled_keypad_inst/s2_font_row_reg[2]
+  -------------------------------------------------------------------
+                         required time                         -1.805    
+                         arrival time                           1.874    
+  -------------------------------------------------------------------
+                         slack                                  0.069    
+
+Slack (MET) :             0.076ns  (arrival time - required time)
+  Source:                 oled_keypad_inst/s1_in_keypad_cell_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/s2_in_keypad_cell_reg/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.410ns  (logic 0.164ns (39.989%)  route 0.246ns (60.011%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.948ns
+    Source Clock Delay      (SCD):    1.435ns
+    Clock Pessimism Removal (CPR):    0.249ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.552     1.435    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X34Y22         FDRE                                         r  oled_keypad_inst/s1_in_keypad_cell_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.164     1.599 r  oled_keypad_inst/s1_in_keypad_cell_reg/Q
+                         net (fo=10, routed)          0.246     1.845    oled_keypad_inst/s1_in_keypad_cell
+    SLICE_X37Y20         FDRE                                         r  oled_keypad_inst/s2_in_keypad_cell_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.821     1.948    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X37Y20         FDRE                                         r  oled_keypad_inst/s2_in_keypad_cell_reg/C
+                         clock pessimism             -0.249     1.699    
+    SLICE_X37Y20         FDRE (Hold_fdre_C_D)         0.070     1.769    oled_keypad_inst/s2_in_keypad_cell_reg
+  -------------------------------------------------------------------
+                         required time                         -1.769    
+                         arrival time                           1.845    
+  -------------------------------------------------------------------
+                         slack                                  0.076    
+
+Slack (MET) :             0.078ns  (arrival time - required time)
+  Source:                 oled_keypad_inst/s1_cell_font_row_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/s2_font_row_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.447ns  (logic 0.186ns (41.618%)  route 0.261ns (58.382%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.947ns
+    Source Clock Delay      (SCD):    1.436ns
+    Clock Pessimism Removal (CPR):    0.249ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.553     1.436    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X32Y21         FDRE                                         r  oled_keypad_inst/s1_cell_font_row_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X32Y21         FDRE (Prop_fdre_C_Q)         0.141     1.577 r  oled_keypad_inst/s1_cell_font_row_reg[1]/Q
+                         net (fo=1, routed)           0.261     1.838    oled_keypad_inst/s1_cell_font_row_reg_n_0_[1]
+    SLICE_X37Y21         LUT3 (Prop_lut3_I2_O)        0.045     1.883 r  oled_keypad_inst/s2_font_row[1]_i_1/O
+                         net (fo=1, routed)           0.000     1.883    oled_keypad_inst/s2_font_row[1]_i_1_n_0
+    SLICE_X37Y21         FDRE                                         r  oled_keypad_inst/s2_font_row_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.820     1.947    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X37Y21         FDRE                                         r  oled_keypad_inst/s2_font_row_reg[1]/C
+                         clock pessimism             -0.249     1.698    
+    SLICE_X37Y21         FDRE (Hold_fdre_C_D)         0.107     1.805    oled_keypad_inst/s2_font_row_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.805    
+                         arrival time                           1.883    
+  -------------------------------------------------------------------
+                         slack                                  0.078    
+
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 oled_keypad_inst/s1_cell_font_row_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/s2_font_row_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.433ns  (logic 0.186ns (42.910%)  route 0.247ns (57.090%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.947ns
+    Source Clock Delay      (SCD):    1.436ns
+    Clock Pessimism Removal (CPR):    0.249ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.553     1.436    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X32Y21         FDRE                                         r  oled_keypad_inst/s1_cell_font_row_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X32Y21         FDRE (Prop_fdre_C_Q)         0.141     1.577 r  oled_keypad_inst/s1_cell_font_row_reg[0]/Q
+                         net (fo=1, routed)           0.247     1.825    oled_keypad_inst/s1_cell_font_row_reg_n_0_[0]
+    SLICE_X37Y21         LUT3 (Prop_lut3_I2_O)        0.045     1.870 r  oled_keypad_inst/s2_font_row[0]_i_1/O
+                         net (fo=1, routed)           0.000     1.870    oled_keypad_inst/s2_font_row[0]_i_1_n_0
+    SLICE_X37Y21         FDRE                                         r  oled_keypad_inst/s2_font_row_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.820     1.947    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X37Y21         FDRE                                         r  oled_keypad_inst/s2_font_row_reg[0]/C
+                         clock pessimism             -0.249     1.698    
+    SLICE_X37Y21         FDRE (Hold_fdre_C_D)         0.092     1.790    oled_keypad_inst/s2_font_row_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.790    
+                         arrival time                           1.870    
+  -------------------------------------------------------------------
+                         slack                                  0.079    
+
+Slack (MET) :             0.091ns  (arrival time - required time)
+  Source:                 oled_keypad_inst/in_input_reg_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            oled_keypad_inst/oled_data_reg[15]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.444ns  (logic 0.186ns (41.914%)  route 0.258ns (58.086%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.948ns
+    Source Clock Delay      (SCD):    1.437ns
+    Clock Pessimism Removal (CPR):    0.249ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.554     1.437    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X36Y20         FDRE                                         r  oled_keypad_inst/in_input_reg_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X36Y20         FDRE (Prop_fdre_C_Q)         0.141     1.578 r  oled_keypad_inst/in_input_reg_reg/Q
+                         net (fo=1, routed)           0.258     1.836    oled_keypad_inst/in_input_reg
+    SLICE_X33Y20         LUT5 (Prop_lut5_I0_O)        0.045     1.881 r  oled_keypad_inst/oled_data[15]_i_1/O
+                         net (fo=1, routed)           0.000     1.881    oled_keypad_inst/oled_data[15]_i_1_n_0
+    SLICE_X33Y20         FDRE                                         r  oled_keypad_inst/oled_data_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.821     1.948    oled_keypad_inst/clk_IBUF_BUFG
+    SLICE_X33Y20         FDRE                                         r  oled_keypad_inst/oled_data_reg[15]/C
+                         clock pessimism             -0.249     1.699    
+    SLICE_X33Y20         FDRE (Hold_fdre_C_D)         0.091     1.790    oled_keypad_inst/oled_data_reg[15]
+  -------------------------------------------------------------------
+                         required time                         -1.790    
+                         arrival time                           1.881    
+  -------------------------------------------------------------------
+                         slack                                  0.091    
+
+Slack (MET) :             0.104ns  (arrival time - required time)
+  Source:                 display_handler_inst/clk_6p25m/COUNT_reg[27]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            display_handler_inst/clk_6p25m/COUNT_reg[28]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.476ns  (logic 0.355ns (74.570%)  route 0.121ns (25.430%))
+  Logic Levels:           2  (CARRY4=2)
+  Clock Path Skew:        0.267ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.958ns
+    Source Clock Delay      (SCD):    1.447ns
+    Clock Pessimism Removal (CPR):    0.244ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.564     1.447    display_handler_inst/clk_6p25m/clk_IBUF_BUFG
+    SLICE_X33Y49         FDRE                                         r  display_handler_inst/clk_6p25m/COUNT_reg[27]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X33Y49         FDRE (Prop_fdre_C_Q)         0.141     1.588 r  display_handler_inst/clk_6p25m/COUNT_reg[27]/Q
+                         net (fo=2, routed)           0.120     1.708    display_handler_inst/clk_6p25m/COUNT_reg[27]
+    SLICE_X33Y49         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.160     1.868 r  display_handler_inst/clk_6p25m/COUNT_reg[24]_i_1/CO[3]
+                         net (fo=1, routed)           0.001     1.869    display_handler_inst/clk_6p25m/COUNT_reg[24]_i_1_n_0
+    SLICE_X33Y50         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.054     1.923 r  display_handler_inst/clk_6p25m/COUNT_reg[28]_i_1/O[0]
+                         net (fo=1, routed)           0.000     1.923    display_handler_inst/clk_6p25m/COUNT_reg[28]_i_1_n_7
+    SLICE_X33Y50         FDRE                                         r  display_handler_inst/clk_6p25m/COUNT_reg[28]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.830     1.958    display_handler_inst/clk_6p25m/clk_IBUF_BUFG
+    SLICE_X33Y50         FDRE                                         r  display_handler_inst/clk_6p25m/COUNT_reg[28]/C
+                         clock pessimism             -0.244     1.714    
+    SLICE_X33Y50         FDRE (Hold_fdre_C_D)         0.105     1.819    display_handler_inst/clk_6p25m/COUNT_reg[28]
+  -------------------------------------------------------------------
+                         required time                         -1.819    
+                         arrival time                           1.923    
+  -------------------------------------------------------------------
+                         slack                                  0.104    
+
+Slack (MET) :             0.112ns  (arrival time - required time)
+  Source:                 welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/ADDRARDADDR[9]
+                            (rising edge-triggered cell RAMB18E1 clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.348ns  (logic 0.141ns (40.497%)  route 0.207ns (59.502%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.053ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.997ns
+    Source Clock Delay      (SCD):    1.445ns
+    Clock Pessimism Removal (CPR):    0.498ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.562     1.445    welcome_mode_module_inst/welcome_drawer_vga_inst/clk_IBUF_BUFG
+    SLICE_X48Y15         FDRE                                         r  welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y15         FDRE (Prop_fdre_C_Q)         0.141     1.586 r  welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[3]/Q
+                         net (fo=1, routed)           0.207     1.793    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[6]
+    RAMB18_X1Y6          RAMB18E1                                     r  welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/ADDRARDADDR[9]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.869     1.997    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/clka
+    RAMB18_X1Y6          RAMB18E1                                     r  welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+                         clock pessimism             -0.498     1.499    
+    RAMB18_X1Y6          RAMB18E1 (Hold_ramb18e1_CLKARDCLK_ADDRARDADDR[9])
+                                                      0.183     1.682    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram
+  -------------------------------------------------------------------
+                         required time                         -1.682    
+                         arrival time                           1.793    
+  -------------------------------------------------------------------
+                         slack                                  0.112    
+
+Slack (MET) :             0.114ns  (arrival time - required time)
+  Source:                 welcome_mode_module_inst/welcome_drawer_vga_inst/row_index_reg_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/ADDRARDADDR[3]
+                            (rising edge-triggered cell RAMB18E1 clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.350ns  (logic 0.141ns (40.246%)  route 0.209ns (59.754%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.053ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.997ns
+    Source Clock Delay      (SCD):    1.445ns
+    Clock Pessimism Removal (CPR):    0.498ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.562     1.445    welcome_mode_module_inst/welcome_drawer_vga_inst/clk_IBUF_BUFG
+    SLICE_X49Y14         FDRE                                         r  welcome_mode_module_inst/welcome_drawer_vga_inst/row_index_reg_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X49Y14         FDRE (Prop_fdre_C_Q)         0.141     1.586 r  welcome_mode_module_inst/welcome_drawer_vga_inst/row_index_reg_reg[0]/Q
+                         net (fo=1, routed)           0.209     1.795    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[0]
+    RAMB18_X1Y6          RAMB18E1                                     r  welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/ADDRARDADDR[3]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.869     1.997    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/clka
+    RAMB18_X1Y6          RAMB18E1                                     r  welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+                         clock pessimism             -0.498     1.499    
+    RAMB18_X1Y6          RAMB18E1 (Hold_ramb18e1_CLKARDCLK_ADDRARDADDR[3])
+                                                      0.183     1.682    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram
+  -------------------------------------------------------------------
+                         required time                         -1.682    
+                         arrival time                           1.795    
+  -------------------------------------------------------------------
+                         slack                                  0.114    
+
+Slack (MET) :             0.115ns  (arrival time - required time)
+  Source:                 welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/ADDRARDADDR[8]
+                            (rising edge-triggered cell RAMB18E1 clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.351ns  (logic 0.141ns (40.122%)  route 0.210ns (59.878%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.053ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.997ns
+    Source Clock Delay      (SCD):    1.445ns
+    Clock Pessimism Removal (CPR):    0.498ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.562     1.445    welcome_mode_module_inst/welcome_drawer_vga_inst/clk_IBUF_BUFG
+    SLICE_X48Y15         FDRE                                         r  welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y15         FDRE (Prop_fdre_C_Q)         0.141     1.586 r  welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[2]/Q
+                         net (fo=1, routed)           0.210     1.797    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/addra[5]
+    RAMB18_X1Y6          RAMB18E1                                     r  welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/ADDRARDADDR[8]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.869     1.997    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/clka
+    RAMB18_X1Y6          RAMB18E1                                     r  welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+                         clock pessimism             -0.498     1.499    
+    RAMB18_X1Y6          RAMB18E1 (Hold_ramb18e1_CLKARDCLK_ADDRARDADDR[8])
+                                                      0.183     1.682    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram
+  -------------------------------------------------------------------
+                         required time                         -1.682    
+                         arrival time                           1.797    
+  -------------------------------------------------------------------
+                         slack                                  0.115    
+
+Slack (MET) :             0.115ns  (arrival time - required time)
+  Source:                 display_handler_inst/clk_6p25m/COUNT_reg[27]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            display_handler_inst/clk_6p25m/COUNT_reg[30]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.487ns  (logic 0.366ns (75.144%)  route 0.121ns (24.856%))
+  Logic Levels:           2  (CARRY4=2)
+  Clock Path Skew:        0.267ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.958ns
+    Source Clock Delay      (SCD):    1.447ns
+    Clock Pessimism Removal (CPR):    0.244ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.564     1.447    display_handler_inst/clk_6p25m/clk_IBUF_BUFG
+    SLICE_X33Y49         FDRE                                         r  display_handler_inst/clk_6p25m/COUNT_reg[27]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X33Y49         FDRE (Prop_fdre_C_Q)         0.141     1.588 r  display_handler_inst/clk_6p25m/COUNT_reg[27]/Q
+                         net (fo=2, routed)           0.120     1.708    display_handler_inst/clk_6p25m/COUNT_reg[27]
+    SLICE_X33Y49         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.160     1.868 r  display_handler_inst/clk_6p25m/COUNT_reg[24]_i_1/CO[3]
+                         net (fo=1, routed)           0.001     1.869    display_handler_inst/clk_6p25m/COUNT_reg[24]_i_1_n_0
+    SLICE_X33Y50         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.065     1.934 r  display_handler_inst/clk_6p25m/COUNT_reg[28]_i_1/O[2]
+                         net (fo=1, routed)           0.000     1.934    display_handler_inst/clk_6p25m/COUNT_reg[28]_i_1_n_5
+    SLICE_X33Y50         FDRE                                         r  display_handler_inst/clk_6p25m/COUNT_reg[30]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=923, routed)         0.830     1.958    display_handler_inst/clk_6p25m/clk_IBUF_BUFG
+    SLICE_X33Y50         FDRE                                         r  display_handler_inst/clk_6p25m/COUNT_reg[30]/C
+                         clock pessimism             -0.244     1.714    
+    SLICE_X33Y50         FDRE (Hold_fdre_C_D)         0.105     1.819    display_handler_inst/clk_6p25m/COUNT_reg[30]
+  -------------------------------------------------------------------
+                         required time                         -1.819    
+                         arrival time                           1.934    
+  -------------------------------------------------------------------
+                         slack                                  0.115    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         sys_clk_pin
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y3    calc_mode_module_inst/font_rom/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y3    calc_mode_module_inst/font_rom/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y4    graph_mode_module_inst/font_rom/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y4    graph_mode_module_inst/font_rom/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y8    oled_keypad_inst/font_rom/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y8    oled_keypad_inst/font_rom/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y6    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB18_X1Y6    welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     BUFG/I              n/a            2.155         10.000      7.845      BUFGCTRL_X0Y0  clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X38Y9    ascii_converter_inst/ascii_char_reg[0]/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         5.000       4.500      SLICE_X48Y12   display_handler_inst/rgb_reg_reg[10]/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         5.000       4.500      SLICE_X48Y12   display_handler_inst/rgb_reg_reg[11]/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         5.000       4.500      SLICE_X48Y12   display_handler_inst/rgb_reg_reg[5]/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         5.000       4.500      SLICE_X48Y12   display_handler_inst/rgb_reg_reg[7]/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         5.000       4.500      SLICE_X48Y12   display_handler_inst/rgb_reg_reg[9]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y6    shared_equation_buffer_reg[18]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y3    shared_equation_buffer_reg[194]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X42Y3    shared_equation_buffer_reg[196]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y3    shared_equation_buffer_reg[198]/C
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y6    shared_equation_buffer_reg[19]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X44Y26   button_debouncer_array_inst/debouncer_inst_1/btn_ff_reg/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X45Y24   button_debouncer_array_inst/debouncer_inst_1/btn_out_reg/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X43Y26   button_debouncer_array_inst/debouncer_inst_1/btn_sync_reg/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X43Y26   button_debouncer_array_inst/debouncer_inst_1/btn_sync_reg/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y27   button_debouncer_array_inst/debouncer_inst_3/count_reg[4]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y27   button_debouncer_array_inst/debouncer_inst_3/count_reg[5]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y27   button_debouncer_array_inst/debouncer_inst_3/count_reg[6]/C
+High Pulse Width  Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X39Y27   button_debouncer_array_inst/debouncer_inst_3/count_reg[7]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X28Y17   button_debouncer_array_inst/debouncer_inst_4/btn_ff_reg/C
+High Pulse Width  Fast    FDCE/C              n/a            0.500         5.000       4.500      SLICE_X54Y17   current_main_mode_reg[1]/C
+
+
+

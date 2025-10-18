@@ -139,5 +139,13 @@ Your group's work will be assessed through both individual and group components.
 - Race conditions
 - Uninitialized registers
 - Incorrect bit widths
-- Missing resets</content>
+- Missing resets
+
+## XDC Constraints File Rules
+- **CRITICAL:** When editing `.xdc` constraint files, you are ONLY allowed to:
+  - Remove `#` to uncomment lines (enable constraints)
+  - Add `#` to comment lines (disable constraints)
+- **NO OTHER EDITS** are permitted to the XDC file
+- Do NOT modify pin assignments, package pins, or any syntax
+- Always use the original Basys3 template as the source of truth</content>
 <parameter name="filePath">c:\Users\xiang\ee2026_Project\instructions.md

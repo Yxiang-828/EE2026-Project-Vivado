@@ -90,13 +90,17 @@ module Top_Student (
         wire [11:0] calculator_screen_vga;
         wire [11:0] grapher_screen_vga;
 
-        // VGA Screen Data
-        assign vga_pixel_data =
+        // VGA Screen Data - Combinatorial selection
+        wire [11:0] selected_vga_data =
             (current_main_mode == MODE_OFF)        ? off_screen_vga :
             (current_main_mode == MODE_WELCOME)    ? welcome_screen_vga :
             (current_main_mode == MODE_CALCULATOR) ? calculator_screen_vga :
             (current_main_mode == MODE_GRAPHER)    ? grapher_screen_vga :
             12'h000;
+
+        // VGA Output Register - Prevents glitches during mode switching
+        reg [11:0] vga_pixel_data_reg;
+        assign vga_pixel_data = vga_pixel_data_reg;
 
         // Instantiate display handler to manage OLED and VGA
         display_handler display_handler_inst(
@@ -184,7 +188,7 @@ module Top_Student (
 
     // Enable keypad only in calculator or grapher mode
     wire keypad_enable = (current_main_mode == MODE_CALCULATOR | current_main_mode == MODE_GRAPHER);
-    
+
     // NO DOUBLE-GATING! Keypad already handles enable internally
     wire keypad_key_valid = keypad_key_valid_raw;  // Direct connection
 
@@ -200,85 +204,109 @@ module Top_Student (
     );
 
     // -------------------
-    // --- DATA PARSER ---
+    // --- ASCII CONVERTER ---
     // -------------------
+    wire [7:0] ascii_char;
+    wire ascii_valid;
 
-    // Parser outputs
-    wire [3:0] parser_digit_value;
-    wire parser_digit_valid;
-    wire [3:0] parser_operator_code;
-    wire parser_operator_valid;
-    wire parser_dot_pressed;
-
-    data_parser data_parser_inst(
+    key_to_ascii_converter ascii_converter_inst(
         .clk(clk),
         .rst(reset),
         .key_code(keypad_key_code),
         .key_valid(keypad_key_valid),
-        .digit_value(parser_digit_value),
-        .digit_valid(parser_digit_valid),
-        .operator_code(parser_operator_code),
-        .operator_valid(parser_operator_valid),
-        .dot_pressed(parser_dot_pressed)
+        .ascii_char(ascii_char),
+        .char_valid(ascii_valid)
     );
 
-    // Debug: Show parser outputs on LEDs (Basys3 has only 14 LEDs)
-    // EFFICIENT DEBUG DISPLAY:
-    // LED[13:12] = current_mode (2 bits)
-    // LED[11:6]  = display_length from active mode (6 bits)
-    // LED[5]     = key_valid (gated)
-    // LED[4:0]   = key_code (5 bits)
-    wire [5:0] active_display_length = (current_main_mode == MODE_CALCULATOR) ? calc_display_length :
-                                       (current_main_mode == MODE_GRAPHER) ? graph_equation_length : 6'h0;
+    // -------------------
+    // --- SHARED EQUATION BUFFER ---
+    // -------------------
+    reg [255:0] shared_equation_buffer;  // 32 chars × 8 bits = 256 bits (packed array)
+    reg [4:0] shared_equation_length = 0;     // 0-31 characters
+    reg shared_equation_complete = 0;         // Set when '=' pressed
 
+    // SHARED BUFFER MANAGEMENT - Central input processing
+    always @(posedge clk) begin
+        if (reset) begin
+            shared_equation_length <= 0;
+            shared_equation_complete <= 0;
+        end else if (ascii_valid && !shared_equation_complete) begin
+            case (ascii_char)
+                8'h43: begin  // 'C' - Clear
+                    shared_equation_length <= 0;
+                    shared_equation_complete <= 0;
+                end
+                8'h44: begin  // 'D' - Delete
+                    if (shared_equation_length > 0) begin
+                        shared_equation_length <= shared_equation_length - 1;
+                    end
+                end
+                8'h3D: begin  // '=' - Complete equation
+                    shared_equation_complete <= 1;
+                end
+                default: begin  // Regular character - append if space
+                    if (shared_equation_length < 31) begin
+                        shared_equation_buffer[shared_equation_length*8 +: 8] <= ascii_char;
+                        shared_equation_length <= shared_equation_length + 1;
+                    end
+                end
+            endcase
+        end
+    end
+
+    // VGA Output Register Update - Synchronize to prevent mode switching glitches
+    always @(posedge clk) begin
+        if (reset) begin
+            vga_pixel_data_reg <= 12'h000;  // Initialize to black on reset
+        end else begin
+            vga_pixel_data_reg <= selected_vga_data;
+        end
+    end
+
+    // Debug: Show shared equation state on LEDs
     assign led = {
-        current_main_mode,      // LED[13:12] - Mode indicator
-        active_display_length,  // LED[11:6]  - Text buffer length
-        keypad_key_valid,       // LED[5]     - Key press indicator (gated)
-        keypad_key_code         // LED[4:0]   - Current key code
+        current_main_mode,          // LED[13:12] - Mode indicator
+        shared_equation_length,     // LED[11:6]  - Shared equation length (0-31)
+        keypad_key_valid,           // LED[5]     - Key press indicator
+        keypad_key_code             // LED[4:0]   - Current key code
     };
 
     // 7-Segment Display: Show status feedback
-    // For now, display operator_valid and dot_pressed as simple indicators
-    // Format: Display "----" when idle, flash patterns for loading/completion
-    // TODO: Add proper 7-segment controller in future phases for better UX
-    assign seg = {parser_dot_pressed, 7'b1111111};  // Dot on seg[7] (DP), all segments off
-    assign an = {2'b11, parser_operator_valid, ~parser_operator_valid};  // Flash digit 0/1 when operator pressed
+    assign seg = 8'b11111111;  // All segments off for now
+    assign an = 4'b1111;       // All digits off
 
     // -------------------------
     // --- CALCULATOR MODULE ---
     // -------------------------
-    wire [5:0] calc_display_length;
-
     calc_mode_module calc_mode_module_inst(
         .clk(clk),
         .reset(reset),
-        .key_code(keypad_key_code),
-        .key_valid(keypad_key_valid),
+        // SHARED BUFFER INPUTS (READ-ONLY)
+        .shared_buffer(shared_equation_buffer),
+        .shared_length(shared_equation_length),
+        .shared_complete(shared_equation_complete),
         .pixel_index(pixel_index),
         .oled_data(calculator_screen_oled),
         .vga_x(vga_x),
         .vga_y(vga_y),
-        .vga_data(calculator_screen_vga),
-        .debug_display_length(calc_display_length)
+        .vga_data(calculator_screen_vga)
     );
 
     // ----------------------
     // --- GRAPHER MODULE ---
     // ----------------------
-    wire [5:0] graph_equation_length;
-
     graph_mode_module graph_mode_module_inst(
         .clk(clk),
         .reset(reset),
-        .key_code(keypad_key_code),
-        .key_valid(keypad_key_valid),
+        // SHARED BUFFER INPUTS (READ-ONLY)
+        .shared_buffer(shared_equation_buffer),
+        .shared_length(shared_equation_length),
+        .shared_complete(shared_equation_complete),
         .pixel_index(pixel_index),
         .oled_data(grapher_screen_oled),
         .vga_x(vga_x),
         .vga_y(vga_y),
-        .vga_data(grapher_screen_vga),
-        .debug_equation_length(graph_equation_length)
+        .vga_data(grapher_screen_vga)
     );
 
     // New Mode Logic: accept handshake requests from submodules
