@@ -12,8 +12,8 @@ module graph_mode_module(
     input reset,
 
     // SHARED BUFFER INPUTS (READ-ONLY)
-    input [255:0] shared_buffer,  // Shared equation buffer (packed: 32 chars × 8 bits)
-    input [4:0] shared_length,         // Current equation length
+    input [511:0] shared_buffer,  // Shared equation buffer (packed: 64 chars × 8 bits)
+    input [6:0] shared_length,         // Current equation length
     input shared_complete,             // Equation completed flag
 
     // OLED display output (not used in graph mode)
@@ -23,11 +23,26 @@ module graph_mode_module(
     // VGA display output
     input [9:0] vga_x,
     input [9:0] vga_y,
+    input vga_p_tick,
     output reg [11:0] vga_data
 );
 
     // OLED not used in grapher mode
     assign oled_data = 16'h0000;
+
+    // ========================================================================
+    // COORDINATE REGISTRATION - Prevents glitches from rapid coordinate changes
+    // ========================================================================
+    reg [9:0] vga_x_reg, vga_y_reg;
+    always @(posedge clk) begin
+        if (reset) begin
+            vga_x_reg <= 0;
+            vga_y_reg <= 0;
+        end else if (vga_p_tick) begin
+            vga_x_reg <= vga_x;
+            vga_y_reg <= vga_y;
+        end
+    end
 
     // ========================================================================
     // SHARED BUFFER USAGE - Read-only access to shared equation
@@ -39,28 +54,29 @@ module graph_mode_module(
     // ========================================================================
     localparam TEXT_BOX_Y_START = 25;  // Moved down so top border is visible
     localparam TEXT_BOX_Y_END = 65;    // Same height, moved down
-    localparam TEXT_BOX_X_START = 10;
-    localparam TEXT_BOX_X_END = 630;
+    localparam TEXT_BOX_X_START = 60;
+    localparam TEXT_BOX_X_END = 580;
 
     localparam GRAPH_Y_START = 75;     // Adjusted for new text box position
     localparam GRAPH_Y_END = 470;
 
     localparam CHAR_WIDTH = 8;
     localparam CHAR_HEIGHT = 8;
-    localparam TEXT_START_X = 15;
+    localparam TEXT_START_X = 68;
     localparam TEXT_START_Y = 41;  // Centered: (25+65)/2 - 4 = 45-4 = 41
 
     // Calculate character position
-    wire [9:0] text_x = vga_x - TEXT_START_X;
-    wire [9:0] text_y = vga_y - TEXT_START_Y;
+    wire [9:0] text_x = vga_x_reg - TEXT_START_X;
+    wire [9:0] text_y = vga_y_reg - TEXT_START_Y;
     wire [5:0] char_index = text_x[9:3];  // Divide by 8
     wire [2:0] char_col = 7 - text_x[2:0];    // Mod 8, flipped for correct orientation
     wire [2:0] char_row = text_y[2:0];    // Mod 8
 
     // Simple text rendering bounds (prevent drawing outside text area and clones)
-    wire in_text_render_area = (vga_x >= TEXT_START_X &&
-                                vga_y >= TEXT_START_Y &&
-                                vga_y < TEXT_START_Y + CHAR_HEIGHT &&  // Only 1 row of text to prevent clones
+    wire in_text_render_area = (vga_x_reg >= TEXT_START_X &&
+                                vga_y_reg >= TEXT_START_Y &&
+                                vga_y_reg < TEXT_START_Y + CHAR_HEIGHT &&  // Only 1 row of text to prevent clones
+                                vga_x_reg < TEXT_START_X + (shared_length * CHAR_WIDTH) &&  // Prevent horizontal clones
                                 char_index < shared_length);  // Only render actual characters
 
     // Get current character from shared buffer
@@ -81,14 +97,14 @@ module graph_mode_module(
     // ========================================================================
     // VGA OUTPUT LOGIC
     // ========================================================================
-    wire in_text_box = (vga_y >= TEXT_BOX_Y_START && vga_y <= TEXT_BOX_Y_END &&
-                        vga_x >= TEXT_BOX_X_START && vga_x <= TEXT_BOX_X_END);
+    wire in_text_box = (vga_y_reg >= TEXT_BOX_Y_START && vga_y_reg <= TEXT_BOX_Y_END &&
+                        vga_x_reg >= TEXT_BOX_X_START && vga_x_reg <= TEXT_BOX_X_END);
 
-    wire in_graph_area = (vga_y >= GRAPH_Y_START && vga_y <= GRAPH_Y_END &&
-                          vga_x >= TEXT_BOX_X_START && vga_x <= TEXT_BOX_X_END);
+    wire in_graph_area = (vga_y_reg >= GRAPH_Y_START && vga_y_reg <= GRAPH_Y_END &&
+                          vga_x_reg >= TEXT_BOX_X_START && vga_x_reg <= TEXT_BOX_X_END);
 
-    wire is_border = (vga_y == TEXT_BOX_Y_START || vga_y == TEXT_BOX_Y_END ||
-                      vga_x == TEXT_BOX_X_START || vga_x == TEXT_BOX_X_END);
+    wire is_border = (vga_y_reg == TEXT_BOX_Y_START || vga_y_reg == TEXT_BOX_Y_END ||
+                      vga_x_reg == TEXT_BOX_X_START || vga_x_reg == TEXT_BOX_X_END);
 
     always @(*) begin
         if (in_text_render_area) begin

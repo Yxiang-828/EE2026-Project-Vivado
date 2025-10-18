@@ -12,7 +12,8 @@ module display_handler(
     output VGA_Vsync,
     output [11:0] VGA_RGB,
     output [9:0] vga_x,
-    output [9:0] vga_y
+    output [9:0] vga_y,
+    output vga_p_tick
 );
     
     // Clock for OLED

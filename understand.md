@@ -91,27 +91,24 @@ localparam KEY_SIN  = 5'b01111;  // 'sin'
 localparam KEY_COS  = 5'b10000;  // 'cos'
 localparam KEY_TAN  = 5'b10001;  // 'tan'
 localparam KEY_LN   = 5'b10010;  // 'ln'
-localparam KEY_EXP  = 5'b10011;  // 'e^x'
-localparam KEY_SQRT = 5'b10100;  // '√'
-
-// Key Type: SPECIAL UNARY
-localparam KEY_NEG = 5'b10101;   // '±' (negate)
+localparam KEY_SQRT = 5'b10011;  // '√'
 
 // Key Type: CONSTANTS
-localparam KEY_PI = 5'b10110;    // 'π'
-localparam KEY_E  = 5'b10111;    // 'e'
+localparam KEY_PI = 5'b10100;    // 'π'
+localparam KEY_E  = 5'b10101;    // 'e'
 
 // Key Type: UTILITY
-localparam KEY_DOT   = 5'b11000;  // '.'
-localparam KEY_EQUAL = 5'b11001;  // '='
-localparam KEY_CLEAR = 5'b11010;  // 'C'
+localparam KEY_DOT   = 5'b10110;  // '.'
+localparam KEY_EQUAL = 5'b10111;  // '='
+localparam KEY_CLEAR = 5'b11000;  // 'C'
 
 // Key Type: PARENTHESES
-localparam KEY_LPAREN = 5'b11011;  // '('
-localparam KEY_RPAREN = 5'b11100;  // ')'
+localparam KEY_LPAREN = 5'b11001;  // '('
+localparam KEY_RPAREN = 5'b11010;  // ')'
 
 // Key Type: CONTROL (NEW)
-localparam KEY_DELETE = 5'b11101;  // 'D' (delete)
+localparam KEY_DELETE = 5'b11011;  // 'D' (delete)
+localparam KEY_FACTORIAL = 5'b11100; // '!' (factorial)
 ```
 
 ### Modified Button Press Logic

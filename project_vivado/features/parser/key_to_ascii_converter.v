@@ -27,11 +27,11 @@ module key_to_ascii_converter(
     localparam KEY_ADD = 5'd10, KEY_SUB = 5'd11, KEY_MUL = 5'd12, KEY_DIV = 5'd13;
     localparam KEY_POW = 5'd14;
     localparam KEY_SIN = 5'd15, KEY_COS = 5'd16, KEY_TAN = 5'd17, KEY_LN = 5'd18;
-    localparam KEY_EXP = 5'd19, KEY_SQRT = 5'd20, KEY_NEG = 5'd21;
-    localparam KEY_PI = 5'd22, KEY_E = 5'd23;
-    localparam KEY_DOT = 5'd24, KEY_EQUAL = 5'd25, KEY_CLEAR = 5'd26;
-    localparam KEY_LPAREN = 5'd27, KEY_RPAREN = 5'd28;
-    localparam KEY_DELETE = 5'd29;
+    localparam KEY_SQRT = 5'd19;
+    localparam KEY_PI = 5'd20, KEY_E = 5'd21;
+    localparam KEY_DOT = 5'd22, KEY_EQUAL = 5'd23, KEY_CLEAR = 5'd24;
+    localparam KEY_LPAREN = 5'd25, KEY_RPAREN = 5'd26;
+    localparam KEY_DELETE = 5'd27, KEY_FACTORIAL = 5'd28;
 
     always @(posedge clk) begin
         if (rst) begin
@@ -72,7 +72,6 @@ module key_to_ascii_converter(
                     KEY_COS: ascii_char <= 8'h63;     // 'c' (for cos)
                     KEY_TAN: ascii_char <= 8'h74;     // 't' (for tan)
                     KEY_LN: ascii_char <= 8'h6C;      // 'l' (for ln)
-                    KEY_EXP: ascii_char <= 8'h65;     // 'e' (for exp)
                     KEY_SQRT: ascii_char <= 8'hFB;    // '√' (square root)
                     KEY_PI: ascii_char <= 8'hE3;      // 'π' (pi)
                     KEY_E: ascii_char <= 8'h65;       // 'e' (Euler's number)
@@ -80,7 +79,7 @@ module key_to_ascii_converter(
                     // Control
                     KEY_CLEAR: ascii_char <= 8'h43;   // 'C'
                     KEY_DELETE: ascii_char <= 8'h44;  // 'D'
-                    KEY_NEG: ascii_char <= 8'h2D;     // '-' (for negative)
+                    KEY_FACTORIAL: ascii_char <= 8'h21; // '!' (factorial)
 
                     default: ascii_char <= 8'h3F;     // '?' for unknown
                 endcase

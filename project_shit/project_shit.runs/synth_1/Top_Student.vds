@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Sun Oct 19 00:50:05 2025
-# Process ID: 40984
+# Start of session at: Sun Oct 19 02:47:58 2025
+# Process ID: 33704
 # Current directory: C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1
 # Command line: vivado.exe -log Top_Student.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top_Student.tcl
 # Log file: C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/Top_Student.vds
@@ -15,12 +15,11 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 42864 
-WARNING: [Synth 8-2611] redeclaration of ansi port current_main_mode is not allowed [C:/Users/xiang/ee2026_Project/project_vivado/main.v:313]
+INFO: Helper process launched with PID 39240 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 398.328 ; gain = 111.441
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 386.781 ; gain = 100.246
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/xiang/ee2026_Project/project_vivado/main.v:13]
+INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/xiang/ee2026_Project/project_vivado/main.v:11]
 	Parameter MODE_OFF bound to: 2'b00 
 	Parameter MODE_WELCOME bound to: 2'b01 
 	Parameter MODE_CALCULATOR bound to: 2'b10 
@@ -84,7 +83,7 @@ INFO: [Synth 8-226] default block is never used [C:/Users/xiang/ee2026_Project/p
 INFO: [Synth 8-226] default block is never used [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/Oled_Display.v:198]
 WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/Oled_Display.v:346]
 INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (2#1) [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/Oled_Display.v:36]
-WARNING: [Synth 8-350] instance 'oled_display_inst' of module 'Oled_Display' requires 14 connections, but only 10 given [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/display_handler.v:27]
+WARNING: [Synth 8-350] instance 'oled_display_inst' of module 'Oled_Display' requires 14 connections, but only 10 given [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/display_handler.v:28]
 INFO: [Synth 8-6157] synthesizing module 'vga_sync' [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/vga_sync.v:1]
 	Parameter H_DISPLAY bound to: 640 - type: integer 
 	Parameter H_L_BORDER bound to: 48 - type: integer 
@@ -135,13 +134,13 @@ INFO: [Synth 8-6157] synthesizing module 'welcome_drawer_vga' [C:/Users/xiang/ee
 	Parameter SELECTION_BG_COLOR bound to: 12'b111111111111 
 	Parameter TEXT_COLOR bound to: 12'b111111111111 
 	Parameter BG_COLOR bound to: 12'b000000000000 
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_font' [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-40984-Plup1/realtime/blk_mem_gen_font_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_font' (9#1) [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-40984-Plup1/realtime/blk_mem_gen_font_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_font' [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-33704-Plup1/realtime/blk_mem_gen_font_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_font' (9#1) [C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/.Xil/Vivado-33704-Plup1/realtime/blk_mem_gen_font_stub.v:6]
 WARNING: [Synth 8-350] instance 'font_rom_inst' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_drawer_vga.v:110]
 WARNING: [Synth 8-6014] Unused sequential element char_index_reg_reg was removed.  [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_drawer_vga.v:174]
 INFO: [Synth 8-6155] done synthesizing module 'welcome_drawer_vga' (10#1) [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_drawer_vga.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'welcome_mode_module' (11#1) [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/welcome_mode/welcome_mode_module.v:3]
-WARNING: [Synth 8-350] instance 'welcome_mode_module_inst' of module 'welcome_mode_module' requires 12 connections, but only 11 given [C:/Users/xiang/ee2026_Project/project_vivado/main.v:156]
+WARNING: [Synth 8-350] instance 'welcome_mode_module_inst' of module 'welcome_mode_module' requires 12 connections, but only 11 given [C:/Users/xiang/ee2026_Project/project_vivado/main.v:153]
 INFO: [Synth 8-6157] synthesizing module 'oled_keypad' [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:8]
 	Parameter OLED_WIDTH bound to: 96 - type: integer 
 	Parameter OLED_HEIGHT bound to: 64 - type: integer 
@@ -186,25 +185,24 @@ INFO: [Synth 8-6157] synthesizing module 'oled_keypad' [C:/Users/xiang/ee2026_Pr
 	Parameter KEY_COS bound to: 5'b10000 
 	Parameter KEY_TAN bound to: 5'b10001 
 	Parameter KEY_LN bound to: 5'b10010 
-	Parameter KEY_EXP bound to: 5'b10011 
-	Parameter KEY_SQRT bound to: 5'b10100 
-	Parameter KEY_NEG bound to: 5'b10101 
-	Parameter KEY_PI bound to: 5'b10110 
-	Parameter KEY_E bound to: 5'b10111 
-	Parameter KEY_DOT bound to: 5'b11000 
-	Parameter KEY_EQUAL bound to: 5'b11001 
-	Parameter KEY_CLEAR bound to: 5'b11010 
-	Parameter KEY_LPAREN bound to: 5'b11011 
-	Parameter KEY_RPAREN bound to: 5'b11100 
-	Parameter KEY_DELETE bound to: 5'b11101 
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:276]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:292]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:339]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:360]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:689]
-WARNING: [Synth 8-350] instance 'font_rom' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:859]
+	Parameter KEY_SQRT bound to: 5'b10011 
+	Parameter KEY_PI bound to: 5'b10100 
+	Parameter KEY_E bound to: 5'b10101 
+	Parameter KEY_DOT bound to: 5'b10110 
+	Parameter KEY_EQUAL bound to: 5'b10111 
+	Parameter KEY_CLEAR bound to: 5'b11000 
+	Parameter KEY_LPAREN bound to: 5'b11001 
+	Parameter KEY_RPAREN bound to: 5'b11010 
+	Parameter KEY_DELETE bound to: 5'b11011 
+	Parameter KEY_FACTORIAL bound to: 5'b11100 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:275]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:291]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:338]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:359]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:688]
+WARNING: [Synth 8-350] instance 'font_rom' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:858]
 INFO: [Synth 8-6155] done synthesizing module 'oled_keypad' (12#1) [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:8]
-WARNING: [Synth 8-350] instance 'oled_keypad_inst' of module 'oled_keypad' requires 12 connections, but only 8 given [C:/Users/xiang/ee2026_Project/project_vivado/main.v:195]
+WARNING: [Synth 8-350] instance 'oled_keypad_inst' of module 'oled_keypad' requires 12 connections, but only 8 given [C:/Users/xiang/ee2026_Project/project_vivado/main.v:190]
 INFO: [Synth 8-6157] synthesizing module 'key_to_ascii_converter' [C:/Users/xiang/ee2026_Project/project_vivado/features/parser/key_to_ascii_converter.v:10]
 	Parameter KEY_0 bound to: 5'b00000 
 	Parameter KEY_1 bound to: 5'b00001 
@@ -225,44 +223,42 @@ INFO: [Synth 8-6157] synthesizing module 'key_to_ascii_converter' [C:/Users/xian
 	Parameter KEY_COS bound to: 5'b10000 
 	Parameter KEY_TAN bound to: 5'b10001 
 	Parameter KEY_LN bound to: 5'b10010 
-	Parameter KEY_EXP bound to: 5'b10011 
-	Parameter KEY_SQRT bound to: 5'b10100 
-	Parameter KEY_NEG bound to: 5'b10101 
-	Parameter KEY_PI bound to: 5'b10110 
-	Parameter KEY_E bound to: 5'b10111 
-	Parameter KEY_DOT bound to: 5'b11000 
-	Parameter KEY_EQUAL bound to: 5'b11001 
-	Parameter KEY_CLEAR bound to: 5'b11010 
-	Parameter KEY_LPAREN bound to: 5'b11011 
-	Parameter KEY_RPAREN bound to: 5'b11100 
-	Parameter KEY_DELETE bound to: 5'b11101 
+	Parameter KEY_SQRT bound to: 5'b10011 
+	Parameter KEY_PI bound to: 5'b10100 
+	Parameter KEY_E bound to: 5'b10101 
+	Parameter KEY_DOT bound to: 5'b10110 
+	Parameter KEY_EQUAL bound to: 5'b10111 
+	Parameter KEY_CLEAR bound to: 5'b11000 
+	Parameter KEY_LPAREN bound to: 5'b11001 
+	Parameter KEY_RPAREN bound to: 5'b11010 
+	Parameter KEY_DELETE bound to: 5'b11011 
+	Parameter KEY_FACTORIAL bound to: 5'b11100 
 INFO: [Synth 8-6155] done synthesizing module 'key_to_ascii_converter' (13#1) [C:/Users/xiang/ee2026_Project/project_vivado/features/parser/key_to_ascii_converter.v:10]
 INFO: [Synth 8-6157] synthesizing module 'calc_mode_module' [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:10]
 	Parameter TEXT_BOX_Y_START bound to: 25 - type: integer 
 	Parameter TEXT_BOX_Y_END bound to: 65 - type: integer 
-	Parameter TEXT_BOX_X_START bound to: 10 - type: integer 
-	Parameter TEXT_BOX_X_END bound to: 630 - type: integer 
+	Parameter TEXT_BOX_X_START bound to: 60 - type: integer 
+	Parameter TEXT_BOX_X_END bound to: 580 - type: integer 
 	Parameter CHAR_WIDTH bound to: 8 - type: integer 
 	Parameter CHAR_HEIGHT bound to: 8 - type: integer 
-	Parameter TEXT_START_X bound to: 15 - type: integer 
+	Parameter TEXT_START_X bound to: 68 - type: integer 
 	Parameter TEXT_START_Y bound to: 41 - type: integer 
-WARNING: [Synth 8-350] instance 'font_rom' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:71]
+WARNING: [Synth 8-350] instance 'font_rom' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:90]
 INFO: [Synth 8-6155] done synthesizing module 'calc_mode_module' (14#1) [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/calc_mode_module.v:10]
 INFO: [Synth 8-6157] synthesizing module 'graph_mode_module' [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/graph_mode_module.v:10]
 	Parameter TEXT_BOX_Y_START bound to: 25 - type: integer 
 	Parameter TEXT_BOX_Y_END bound to: 65 - type: integer 
-	Parameter TEXT_BOX_X_START bound to: 10 - type: integer 
-	Parameter TEXT_BOX_X_END bound to: 630 - type: integer 
+	Parameter TEXT_BOX_X_START bound to: 60 - type: integer 
+	Parameter TEXT_BOX_X_END bound to: 580 - type: integer 
 	Parameter GRAPH_Y_START bound to: 75 - type: integer 
 	Parameter GRAPH_Y_END bound to: 470 - type: integer 
 	Parameter CHAR_WIDTH bound to: 8 - type: integer 
 	Parameter CHAR_HEIGHT bound to: 8 - type: integer 
-	Parameter TEXT_START_X bound to: 15 - type: integer 
+	Parameter TEXT_START_X bound to: 68 - type: integer 
 	Parameter TEXT_START_Y bound to: 41 - type: integer 
-WARNING: [Synth 8-350] instance 'font_rom' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/graph_mode_module.v:74]
+WARNING: [Synth 8-350] instance 'font_rom' of module 'blk_mem_gen_font' requires 6 connections, but only 4 given [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/graph_mode_module.v:90]
 INFO: [Synth 8-6155] done synthesizing module 'graph_mode_module' (15#1) [C:/Users/xiang/ee2026_Project/project_vivado/Submodules/graph_mode_module.v:10]
-INFO: [Synth 8-6155] done synthesizing module 'Top_Student' (16#1) [C:/Users/xiang/ee2026_Project/project_vivado/main.v:13]
-WARNING: [Synth 8-3917] design Top_Student has port led[13] driven by constant 0
+INFO: [Synth 8-6155] done synthesizing module 'Top_Student' (16#1) [C:/Users/xiang/ee2026_Project/project_vivado/main.v:11]
 WARNING: [Synth 8-3917] design Top_Student has port seg[7] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port seg[6] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port seg[5] driven by constant 1
@@ -275,7 +271,6 @@ WARNING: [Synth 8-3917] design Top_Student has port an[3] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port an[2] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port an[1] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port an[0] driven by constant 1
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port reset
 WARNING: [Synth 8-3331] design graph_mode_module has unconnected port shared_complete
 WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[12]
 WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[11]
@@ -353,7 +348,7 @@ WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[2]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[1]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 490.875 ; gain = 203.988
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 500.984 ; gain = 214.449
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -362,15 +357,15 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
-WARNING: [Synth 8-3295] tying undriven pin oled_display_inst:reset to constant 0 [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/display_handler.v:27]
+WARNING: [Synth 8-3295] tying undriven pin oled_display_inst:reset to constant 0 [C:/Users/xiang/ee2026_Project/project_vivado/Accessories/display_handler.v:28]
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 490.875 ; gain = 203.988
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 500.984 ; gain = 214.449
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 490.875 ; gain = 203.988
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 500.984 ; gain = 214.449
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -403,20 +398,20 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 832.020 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 859.977 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'calc_mode_module_inst/font_rom' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'graph_mode_module_inst/font_rom' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'oled_keypad_inst/font_rom' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 833.570 ; gain = 546.684
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 861.488 ; gain = 574.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 833.570 ; gain = 546.684
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 861.488 ; gain = 574.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -426,7 +421,7 @@ Applied set_property DONT_TOUCH = true for calc_mode_module_inst/font_rom. (cons
 Applied set_property DONT_TOUCH = true for graph_mode_module_inst/font_rom. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for welcome_mode_module_inst/welcome_drawer_vga_inst/font_rom_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 833.570 ; gain = 546.684
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 861.488 ; gain = 574.953
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
@@ -638,7 +633,6 @@ INFO: [Synth 8-5544] ROM "page1_chars" won't be mapped to Block RAM because addr
 INFO: [Synth 8-5544] ROM "page1_chars" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "page1_chars" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "oled_data1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/xiang/ee2026_Project/project_vivado/main.v:234]
 INFO: [Synth 8-5546] ROM "shared_equation_complete" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -678,14 +672,17 @@ INFO: [Synth 8-5546] ROM "shared_equation_complete" won't be mapped to RAM becau
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 833.570 ; gain = 546.684
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 861.488 ; gain = 574.953
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
++------+-----------------+------------+----------+
+|      |RTL Partition    |Replication |Instances |
++------+-----------------+------------+----------+
+|1     |Top_Student__GB0 |           1|     39578|
+|2     |Top_Student__GB1 |           1|     17162|
+|3     |Top_Student__GB2 |           1|     16597|
++------+-----------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -694,72 +691,79 @@ Detailed RTL Component Info :
 	   2 Input     32 Bit       Adders := 5     
 	   2 Input     17 Bit       Adders := 1     
 	   2 Input     10 Bit       Adders := 4     
+	   2 Input      8 Bit       Adders := 3     
 	   3 Input      8 Bit       Adders := 2     
+	   2 Input      7 Bit       Adders := 4     
 	   3 Input      7 Bit       Adders := 2     
 	   2 Input      6 Bit       Adders := 3     
-	   2 Input      5 Bit       Adders := 9     
+	   2 Input      5 Bit       Adders := 8     
 	   2 Input      3 Bit       Adders := 17    
 	   2 Input      2 Bit       Adders := 1     
 +---Registers : 
-	              256 Bit    Registers := 2     
+	              512 Bit    Registers := 1     
+	              256 Bit    Registers := 1     
 	               40 Bit    Registers := 1     
 	               17 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
 	               12 Bit    Registers := 3     
-	               10 Bit    Registers := 4     
+	               10 Bit    Registers := 8     
 	                8 Bit    Registers := 37    
+	                7 Bit    Registers := 2     
 	                6 Bit    Registers := 1     
-	                5 Bit    Registers := 8     
+	                5 Bit    Registers := 7     
 	                3 Bit    Registers := 15    
 	                2 Bit    Registers := 4     
 	                1 Bit    Registers := 40    
 +---Muxes : 
-	   2 Input    256 Bit        Muxes := 4     
-	   4 Input    256 Bit        Muxes := 1     
+	   2 Input    512 Bit        Muxes := 5     
+	   3 Input    512 Bit        Muxes := 2     
+	   9 Input    512 Bit        Muxes := 1     
+	   4 Input    512 Bit        Muxes := 1     
 	   2 Input     40 Bit        Muxes := 3     
 	   2 Input     32 Bit        Muxes := 4     
 	  32 Input     32 Bit        Muxes := 1     
 	  32 Input     20 Bit        Muxes := 1     
 	   2 Input     17 Bit        Muxes := 1     
+	   5 Input     16 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 3     
 	   3 Input     16 Bit        Muxes := 1     
-	   5 Input     16 Bit        Muxes := 1     
-	   2 Input     12 Bit        Muxes := 10    
-	   3 Input     12 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 9     
+	   3 Input     12 Bit        Muxes := 2     
 	   5 Input     12 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 45    
-	   6 Input      8 Bit        Muxes := 1     
-	   8 Input      8 Bit        Muxes := 1     
-	  11 Input      8 Bit        Muxes := 3     
-	   7 Input      8 Bit        Muxes := 1     
 	  14 Input      8 Bit        Muxes := 1     
 	   5 Input      8 Bit        Muxes := 3     
+	  11 Input      8 Bit        Muxes := 3     
 	   4 Input      8 Bit        Muxes := 1     
-	   4 Input      7 Bit        Muxes := 6     
-	   2 Input      7 Bit        Muxes := 174   
-	   3 Input      7 Bit        Muxes := 45    
-	  32 Input      6 Bit        Muxes := 1     
+	   6 Input      8 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	   7 Input      8 Bit        Muxes := 1     
+	   3 Input      7 Bit        Muxes := 46    
+	   4 Input      7 Bit        Muxes := 7     
+	   2 Input      7 Bit        Muxes := 175   
+	   4 Input      6 Bit        Muxes := 2     
 	   2 Input      6 Bit        Muxes := 2     
 	   5 Input      6 Bit        Muxes := 1     
-	   4 Input      6 Bit        Muxes := 2     
-	   2 Input      5 Bit        Muxes := 9     
-	  32 Input      5 Bit        Muxes := 1     
+	  32 Input      6 Bit        Muxes := 1     
 	   4 Input      5 Bit        Muxes := 4     
+	   2 Input      5 Bit        Muxes := 8     
 	   5 Input      5 Bit        Muxes := 1     
 	  18 Input      5 Bit        Muxes := 1     
 	  11 Input      5 Bit        Muxes := 1     
 	  12 Input      5 Bit        Muxes := 1     
-	   3 Input      5 Bit        Muxes := 1     
-	   5 Input      3 Bit        Muxes := 2     
+	  32 Input      5 Bit        Muxes := 1     
+	   9 Input      4 Bit        Muxes := 1     
 	   4 Input      3 Bit        Muxes := 5     
+	   5 Input      3 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 22    
-	   4 Input      2 Bit        Muxes := 3     
-	   2 Input      2 Bit        Muxes := 17    
+	   4 Input      2 Bit        Muxes := 4     
+	   9 Input      2 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 16    
 	   3 Input      2 Bit        Muxes := 2     
 	   5 Input      2 Bit        Muxes := 3     
 	  10 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 257   
-	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 258   
+	   4 Input      1 Bit        Muxes := 4     
 	   5 Input      1 Bit        Muxes := 40    
 	  11 Input      1 Bit        Muxes := 1     
 	  14 Input      1 Bit        Muxes := 32    
@@ -774,96 +778,79 @@ Hierarchical RTL Component report
 Module Top_Student 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input      5 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 3     
+	   2 Input      7 Bit       Adders := 4     
 +---Registers : 
-	              256 Bit    Registers := 1     
+	              512 Bit    Registers := 1     
 	               12 Bit    Registers := 1     
-	                5 Bit    Registers := 2     
+	                7 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
-	   2 Input    256 Bit        Muxes := 4     
-	   4 Input    256 Bit        Muxes := 1     
+	   2 Input    512 Bit        Muxes := 5     
+	   3 Input    512 Bit        Muxes := 2     
+	   9 Input    512 Bit        Muxes := 1     
+	   4 Input    512 Bit        Muxes := 1     
 	   5 Input     16 Bit        Muxes := 1     
 	   5 Input     12 Bit        Muxes := 1     
-	   3 Input      5 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 2     
-	   2 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 5     
-	   4 Input      1 Bit        Muxes := 1     
-Module flexible_timer 
+	   3 Input      7 Bit        Muxes := 1     
+	   4 Input      7 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   9 Input      4 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 3     
+	   9 Input      2 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 3     
+Module calc_mode_module 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-+---Registers : 
-	                1 Bit    Registers := 1     
-+---Muxes : 
-	   2 Input     32 Bit        Muxes := 1     
-Module Oled_Display 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     17 Bit       Adders := 1     
-	   2 Input      6 Bit       Adders := 1     
-+---Registers : 
-	               40 Bit    Registers := 1     
-	               17 Bit    Registers := 1     
-	                6 Bit    Registers := 1     
-+---Muxes : 
-	   2 Input     40 Bit        Muxes := 3     
-	  32 Input     32 Bit        Muxes := 1     
-	   2 Input     32 Bit        Muxes := 2     
-	  32 Input     20 Bit        Muxes := 1     
-	   2 Input     17 Bit        Muxes := 1     
-	  32 Input      6 Bit        Muxes := 1     
-	   2 Input      6 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 2     
-	  32 Input      5 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
-Module vga_sync 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     10 Bit       Adders := 2     
-	   2 Input      2 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
 +---Registers : 
 	               10 Bit    Registers := 2     
-	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 2     
-Module display_handler 
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 2     
+	   3 Input     12 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module graph_mode_module 
 Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
 +---Registers : 
-	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input     12 Bit        Muxes := 1     
+	   3 Input     12 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+Module key_to_ascii_converter 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module debouncer__1 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 3     
+Module debouncer__2 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 3     
+Module debouncer__3 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 3     
+Module debouncer__4 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 3     
 Module debouncer 
 Detailed RTL Component Info : 
 +---Registers : 
 	                1 Bit    Registers := 3     
-Module welcome_drawer_vga 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 3     
-	   2 Input      3 Bit       Adders := 3     
-+---Registers : 
-	               12 Bit    Registers := 1     
-	               10 Bit    Registers := 2     
-	                8 Bit    Registers := 2     
-	                3 Bit    Registers := 2     
-	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 2     
-+---Muxes : 
-	   2 Input     12 Bit        Muxes := 5     
-	   2 Input      8 Bit        Muxes := 5     
-	   6 Input      8 Bit        Muxes := 1     
-	   8 Input      8 Bit        Muxes := 1     
-	  11 Input      8 Bit        Muxes := 2     
-	   7 Input      8 Bit        Muxes := 1     
-	   2 Input      6 Bit        Muxes := 1     
-	   5 Input      6 Bit        Muxes := 1     
-	   5 Input      3 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 10    
 Module oled_keypad 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -913,29 +900,74 @@ Detailed RTL Component Info :
 	  11 Input      1 Bit        Muxes := 1     
 	  14 Input      1 Bit        Muxes := 32    
 	   7 Input      1 Bit        Muxes := 1     
-Module key_to_ascii_converter 
+Module welcome_drawer_vga 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input      3 Bit       Adders := 3     
++---Registers : 
+	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 5     
+	   2 Input      8 Bit        Muxes := 5     
+	   6 Input      8 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	  11 Input      8 Bit        Muxes := 2     
+	   7 Input      8 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+	   5 Input      6 Bit        Muxes := 1     
+	   5 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 10    
+Module flexible_timer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module Oled_Display 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               40 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     40 Bit        Muxes := 3     
+	  32 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 2     
+	  32 Input     20 Bit        Muxes := 1     
+	   2 Input     17 Bit        Muxes := 1     
+	  32 Input      6 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	  32 Input      5 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module vga_sync 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
+Module display_handler 
 Detailed RTL Component Info : 
 +---Registers : 
-	                8 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
-Module calc_mode_module 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     10 Bit       Adders := 1     
-	   2 Input      3 Bit       Adders := 1     
-+---Muxes : 
-	   2 Input     12 Bit        Muxes := 3     
-	   2 Input      8 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 1     
-Module graph_mode_module 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     10 Bit       Adders := 1     
-	   2 Input      3 Bit       Adders := 1     
+	               12 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     12 Bit        Muxes := 1     
-	   3 Input     12 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -952,14 +984,13 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-4471] merging register 'cursor_pos_reg[4:0]' into 'cursor_pos_reg[4:0]' [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:203]
-WARNING: [Synth 8-6014] Unused sequential element cursor_pos_reg was removed.  [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:203]
-INFO: [Synth 8-4471] merging register 'shared_equation_length_reg[4:0]' into 'shared_equation_length_reg[4:0]' [C:/Users/xiang/ee2026_Project/project_vivado/main.v:231]
-WARNING: [Synth 8-6014] Unused sequential element shared_equation_length_reg was removed.  [C:/Users/xiang/ee2026_Project/project_vivado/main.v:231]
+INFO: [Synth 8-4471] merging register 'shared_equation_length_reg[6:0]' into 'shared_equation_length_reg[6:0]' [C:/Users/xiang/ee2026_Project/project_vivado/main.v:238]
+WARNING: [Synth 8-6014] Unused sequential element shared_equation_length_reg was removed.  [C:/Users/xiang/ee2026_Project/project_vivado/main.v:238]
 INFO: [Synth 8-5546] ROM "shared_equation_complete" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3917] design Top_Student has port led[13] driven by constant 0
+INFO: [Synth 8-4471] merging register 'cursor_pos_reg[4:0]' into 'cursor_pos_reg[4:0]' [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:202]
+WARNING: [Synth 8-6014] Unused sequential element cursor_pos_reg was removed.  [C:/Users/xiang/ee2026_Project/project_vivado/features/keypad/oled_keypad.v:202]
+INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 WARNING: [Synth 8-3917] design Top_Student has port seg[7] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port seg[6] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port seg[5] driven by constant 1
@@ -972,73 +1003,50 @@ WARNING: [Synth 8-3917] design Top_Student has port an[3] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port an[2] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port an[1] driven by constant 1
 WARNING: [Synth 8-3917] design Top_Student has port an[0] driven by constant 1
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port reset
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port shared_complete
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[12]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[11]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[10]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[9]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[8]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[7]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[6]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[5]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[4]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[3]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[2]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[1]
-WARNING: [Synth 8-3331] design graph_mode_module has unconnected port pixel_index[0]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[12]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[11]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[10]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[9]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[8]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[7]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[6]
-WARNING: [Synth 8-3331] design calc_mode_module has unconnected port pixel_index[5]
-INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[1]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[2]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[3]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[4]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[5]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[6]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[7]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[8]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[9]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[10]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (welcome_mode_module_inst/\welcome_drawer_vga_inst/char_code_reg_reg[7] )
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[11]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[12]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[13]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[0]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[1]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[2]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[3]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[4]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[5]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[6]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[7]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[8]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[9]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[10]' (FDSE) to 'welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[14]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3886] merging instance 'vga_pixel_data_reg_reg[0]' (FDR) to 'vga_pixel_data_reg_reg[1]'
-INFO: [Synth 8-3886] merging instance 'vga_pixel_data_reg_reg[1]' (FDR) to 'vga_pixel_data_reg_reg[2]'
-INFO: [Synth 8-3886] merging instance 'vga_pixel_data_reg_reg[2]' (FDR) to 'vga_pixel_data_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'vga_pixel_data_reg_reg[3]' (FDR) to 'vga_pixel_data_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'vga_pixel_data_reg_reg[4]' (FDR) to 'vga_pixel_data_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'vga_pixel_data_reg_reg[8]' (FDR) to 'vga_pixel_data_reg_reg[9]'
-INFO: [Synth 8-3886] merging instance 'display_handler_inst/rgb_reg_reg[0]' (FDCE) to 'display_handler_inst/rgb_reg_reg[1]'
-INFO: [Synth 8-3886] merging instance 'display_handler_inst/rgb_reg_reg[1]' (FDCE) to 'display_handler_inst/rgb_reg_reg[2]'
-INFO: [Synth 8-3886] merging instance 'display_handler_inst/rgb_reg_reg[2]' (FDCE) to 'display_handler_inst/rgb_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'display_handler_inst/rgb_reg_reg[3]' (FDCE) to 'display_handler_inst/rgb_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'display_handler_inst/rgb_reg_reg[4]' (FDCE) to 'display_handler_inst/rgb_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'display_handler_inst/rgb_reg_reg[8]' (FDCE) to 'display_handler_inst/rgb_reg_reg[9]'
-WARNING: [Synth 8-3332] Sequential element (welcome_drawer_vga_inst/vga_x_d_reg[1]) is unused and will be removed from module welcome_mode_module.
-WARNING: [Synth 8-3332] Sequential element (welcome_drawer_vga_inst/vga_x_d_reg[0]) is unused and will be removed from module welcome_mode_module.
-WARNING: [Synth 8-3332] Sequential element (welcome_drawer_vga_inst/vga_y_d_reg[1]) is unused and will be removed from module welcome_mode_module.
-WARNING: [Synth 8-3332] Sequential element (welcome_drawer_vga_inst/vga_y_d_reg[0]) is unused and will be removed from module welcome_mode_module.
-WARNING: [Synth 8-3332] Sequential element (welcome_drawer_vga_inst/char_code_reg_reg[7]) is unused and will be removed from module welcome_mode_module.
+WARNING: [Synth 8-3331] design Top_Student has unconnected port JB[2]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port PS2Clk
+WARNING: [Synth 8-3331] design Top_Student has unconnected port PS2Data
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[14]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[13]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[12]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[11]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[10]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[9]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[8]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[7]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[6]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[5]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[4]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[3]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[2]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[1]
+WARNING: [Synth 8-3331] design Top_Student has unconnected port sw[0]
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[1]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[2]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[3]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[4]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[5]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[6]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[7]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[8]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[9]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[10]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/\welcome_mode_module_inst/welcome_drawer_vga_inst/char_code_reg_reg[7] )
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[11]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[12]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[13]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[0]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[1]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[2]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[3]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[4]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[5]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[6]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[7]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[8]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[9]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[10]' (FDSE) to 'i_2/welcome_mode_module_inst/welcome_drawer_vga_inst/vga_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[14]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
 WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[255]) is unused and will be removed from module oled_keypad.
 WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[254]) is unused and will be removed from module oled_keypad.
 WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[253]) is unused and will be removed from module oled_keypad.
@@ -1134,19 +1142,32 @@ WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[164]) is unused a
 WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[163]) is unused and will be removed from module oled_keypad.
 WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[162]) is unused and will be removed from module oled_keypad.
 WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[161]) is unused and will be removed from module oled_keypad.
+WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[160]) is unused and will be removed from module oled_keypad.
+WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[159]) is unused and will be removed from module oled_keypad.
+WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[158]) is unused and will be removed from module oled_keypad.
+WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[157]) is unused and will be removed from module oled_keypad.
+WARNING: [Synth 8-3332] Sequential element (vga_expression_reg[156]) is unused and will be removed from module oled_keypad.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3886] merging instance 'oled_keypad_inst/oled_data_reg[0]' (FDR) to 'oled_keypad_inst/oled_data_reg[15]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][1] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][3] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][4] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][6] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\s1_char_col_calc_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (oled_keypad_inst/\expression_buffer_reg[31][7] )
+INFO: [Synth 8-3886] merging instance 'i_2/vga_pixel_data_reg_reg[0]' (FDR) to 'i_2/vga_pixel_data_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_2/vga_pixel_data_reg_reg[1]' (FDR) to 'i_2/vga_pixel_data_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_2/vga_pixel_data_reg_reg[4]' (FDR) to 'i_2/vga_pixel_data_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_2/vga_pixel_data_reg_reg[8]' (FDR) to 'i_2/vga_pixel_data_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'i_2/display_handler_inst/rgb_reg_reg[0]' (FDCE) to 'i_2/display_handler_inst/rgb_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_2/display_handler_inst/rgb_reg_reg[1]' (FDCE) to 'i_2/display_handler_inst/rgb_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_2/display_handler_inst/rgb_reg_reg[4]' (FDCE) to 'i_2/display_handler_inst/rgb_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_2/display_handler_inst/rgb_reg_reg[8]' (FDCE) to 'i_2/display_handler_inst/rgb_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'i_2/oled_keypad_inst/oled_data_reg[0]' (FDR) to 'i_2/oled_keypad_inst/oled_data_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\s1_char_col_calc_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/oled_keypad_inst/\expression_buffer_reg[31][7] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 833.570 ; gain = 546.684
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:45 . Memory (MB): peak = 861.488 ; gain = 574.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1165,41 +1186,58 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
++------+-----------------+------------+----------+
+|      |RTL Partition    |Replication |Instances |
++------+-----------------+------------+----------+
+|1     |Top_Student__GB0 |           1|      7819|
+|2     |Top_Student__GB1 |           1|      1217|
+|3     |Top_Student__GB2 |           1|      4431|
++------+-----------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 833.570 ; gain = 546.684
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 861.488 ; gain = 574.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 843.703 ; gain = 556.816
+Finished Timing Optimization : Time (s): cpu = 00:01:12 ; elapsed = 00:01:17 . Memory (MB): peak = 991.875 ; gain = 705.340
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
++------+-----------------------+------------+----------+
+|      |RTL Partition          |Replication |Instances |
++------+-----------------------+------------+----------+
+|1     |button_debouncer_array |           1|       355|
+|2     |Top_Student_GT0        |           1|     12240|
++------+-----------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[248] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[249] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[250] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[251] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[252] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[253] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[254] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\shared_equation_buffer_reg[255] )
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[0]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[1]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[1]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[6]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[6]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[2]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[5]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[4]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[4]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[3]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[3]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[8]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[8]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[9]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_x_reg_reg[7]' (FDRE) to 'graph_mode_module_inst/vga_x_reg_reg[7]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[3]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[3]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[5]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[0]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[1]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[1]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[2]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[9]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[8]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[8]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[6]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[6]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[7]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[7]'
+INFO: [Synth 8-3886] merging instance 'calc_mode_module_inst/vga_y_reg_reg[4]' (FDRE) to 'graph_mode_module_inst/vga_y_reg_reg[4]'
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:35 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Technology Mapping : Time (s): cpu = 00:01:14 ; elapsed = 00:01:19 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1240,15 +1278,6 @@ CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has unconnected pin dina[2]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has unconnected pin dina[1]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \oled_keypad_inst/font_rom  has unconnected pin dina[0]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin wea[0]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[7]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[6]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[5]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[4]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[3]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[2]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[1]
-CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[0]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_rom  has unconnected pin wea[0]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_rom  has unconnected pin dina[7]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_rom  has unconnected pin dina[6]
@@ -1258,8 +1287,17 @@ CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_ro
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_rom  has unconnected pin dina[2]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_rom  has unconnected pin dina[1]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module \graph_mode_module_inst/font_rom  has unconnected pin dina[0]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin wea[0]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[7]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[6]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[5]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[4]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[3]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[2]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[1]
+CRITICAL WARNING: [Synth 8-4442] BlackBox module \calc_mode_module_inst/font_rom  has unconnected pin dina[0]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished IO Insertion : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1272,7 +1310,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1284,25 +1322,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1324,18 +1362,18 @@ Report Cell Usage:
 |3     |blk_mem_gen_font__2 |     1|
 |4     |blk_mem_gen_font__3 |     1|
 |5     |BUFG                |     2|
-|6     |CARRY4              |    90|
-|7     |LUT1                |    24|
-|8     |LUT2                |   148|
-|9     |LUT3                |   176|
-|10    |LUT4                |   177|
-|11    |LUT5                |   356|
-|12    |LUT6                |   924|
-|13    |MUXF7               |    80|
-|14    |MUXF8               |    11|
-|15    |FDCE                |    34|
+|6     |CARRY4              |    96|
+|7     |LUT1                |    26|
+|8     |LUT2                |   222|
+|9     |LUT3                |   196|
+|10    |LUT4                |   293|
+|11    |LUT5                |   577|
+|12    |LUT6                |  1927|
+|13    |MUXF7               |   100|
+|14    |MUXF8               |    45|
+|15    |FDCE                |    36|
 |16    |FDE_1               |    32|
-|17    |FDRE                |   947|
+|17    |FDRE                |  1250|
 |18    |FDSE                |    11|
 |19    |IBUF                |     7|
 |20    |OBUF                |    49|
@@ -1346,32 +1384,32 @@ Report Instance Areas:
 +------+------------------------------+-----------------------+------+
 |      |Instance                      |Module                 |Cells |
 +------+------------------------------+-----------------------+------+
-|1     |top                           |                       |  3101|
-|2     |  ascii_converter_inst        |key_to_ascii_converter |   189|
-|3     |  button_debouncer_array_inst |button_debouncer_array |   224|
+|1     |top                           |                       |  4902|
+|2     |  ascii_converter_inst        |key_to_ascii_converter |  1095|
+|3     |  button_debouncer_array_inst |button_debouncer_array |   223|
 |4     |    debouncer_inst_0          |debouncer              |    45|
-|5     |    debouncer_inst_1          |debouncer_0            |    46|
+|5     |    debouncer_inst_1          |debouncer_0            |    44|
 |6     |    debouncer_inst_2          |debouncer_1            |    44|
-|7     |    debouncer_inst_3          |debouncer_2            |    45|
-|8     |    debouncer_inst_4          |debouncer_3            |    44|
-|9     |  calc_mode_module_inst       |calc_mode_module       |    52|
-|10    |  display_handler_inst        |display_handler        |   976|
-|11    |    clk_6p25m                 |flexible_timer         |    58|
-|12    |    oled_display_inst         |Oled_Display           |   467|
-|13    |    vga_sync_unit             |vga_sync               |   445|
-|14    |  graph_mode_module_inst      |graph_mode_module      |    10|
-|15    |  oled_keypad_inst            |oled_keypad            |  1237|
-|16    |  welcome_mode_module_inst    |welcome_mode_module    |    83|
-|17    |    welcome_drawer_vga_inst   |welcome_drawer_vga     |    83|
+|7     |    debouncer_inst_3          |debouncer_2            |    44|
+|8     |    debouncer_inst_4          |debouncer_3            |    46|
+|9     |  calc_mode_module_inst       |calc_mode_module       |    61|
+|10    |  display_handler_inst        |display_handler        |   733|
+|11    |    clk_6p25m                 |flexible_timer         |    57|
+|12    |    oled_display_inst         |Oled_Display           |   557|
+|13    |    vga_sync_unit             |vga_sync               |   111|
+|14    |  graph_mode_module_inst      |graph_mode_module      |   388|
+|15    |  oled_keypad_inst            |oled_keypad            |  1152|
+|16    |  welcome_mode_module_inst    |welcome_mode_module    |    87|
+|17    |    welcome_drawer_vga_inst   |welcome_drawer_vga     |    87|
 +------+------------------------------+-----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:15 ; elapsed = 00:01:20 . Memory (MB): peak = 1027.793 ; gain = 741.258
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 36 critical warnings and 378 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:30 . Memory (MB): peak = 895.453 ; gain = 265.871
-Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 895.453 ; gain = 608.566
+Synthesis finished with 0 errors, 36 critical warnings and 304 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:06 ; elapsed = 00:01:14 . Memory (MB): peak = 1027.793 ; gain = 380.754
+Synthesis Optimization Complete : Time (s): cpu = 00:01:15 ; elapsed = 00:01:21 . Memory (MB): peak = 1027.793 ; gain = 741.258
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 220 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 280 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -1380,11 +1418,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDE_1 => FDRE (inverted pins: C): 32 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-327 Infos, 252 Warnings, 36 Critical Warnings and 0 Errors encountered.
+333 Infos, 243 Warnings, 36 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:38 . Memory (MB): peak = 895.453 ; gain = 620.082
+synth_design: Time (s): cpu = 00:01:17 ; elapsed = 00:01:23 . Memory (MB): peak = 1027.793 ; gain = 752.770
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/xiang/ee2026_Project/project_shit/project_shit.runs/synth_1/Top_Student.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_Student_utilization_synth.rpt -pb Top_Student_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 895.453 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sun Oct 19 00:50:47 2025...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1027.793 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Oct 19 02:49:25 2025...
