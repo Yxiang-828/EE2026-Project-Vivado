@@ -1,1 +1,0 @@
--wto "7d623577ef5c4f0599d28b880e56a4ec" --incr --debug "typical" --relax --mt "2" -L "blk_mem_gen_v8_4_1" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "tb_vga_rendering_behav" "xil_defaultlib.tb_vga_rendering" "xil_defaultlib.glbl" -log "elaborate.log" 
