@@ -267,12 +267,8 @@ graph TD
 
 ## License
 
-[Add your license information here]
+[Purely an EE2026 Project]
 
 ## Contributors
 
-[Add contributor information here]
-
-## Acknowledgments
-
-[Add any acknowledgments here]
+[Yao Xiang, Yi Yang, Sean, Ryan]
