@@ -1,345 +1,213 @@
-# EE2026-Project-Vivado
+# EE2026 FPGA Calculator & Grapher
 
-This repository contains two separate Vivado projects for the EE2026 FPGA-based calculator system. The projects are split because the Basys 3 FPGA's LUT budget (approximately 20,800 LUTs) is insufficient to accommodate both the main calculator functionality and the polynomial solving algorithms in a single design. The polynomial solver alone consumes significant LUT resources due to its complex FSM and fixed-point arithmetic operations.
+This repository contains the Verilog source code for a multifunction FPGA-based calculator system designed for the Basys 3 board. The project is separated into two primary applications due to the LUT (Look-Up Table) budget constraints of the Artix-7 FPGA:
 
-1. **Forryan Project** (`forryannyy/`): The main calculator application with multiple modes (welcome, calculator, grapher).
-2. **Polynomial Project** (`project_gner/`): A dedicated project for polynomial root finding using Newton-Raphson method with fixed-point arithmetic.
+1.  **Forryan Project (`Top_Student.v`):** The main user-facing application. This project includes a welcome screen, a full scientific calculator, and a 2D function grapher.
+2.  **Polynomial Project (`poly_mode_module.v`):** A dedicated, high-precision application for finding the real and complex roots of cubic polynomials using the Newton-Raphson method.
 
-## Table of Contents
-- [Forryan Project](#forryan-project)
-  - [Features](#features)
-  - [Architecture](#architecture)
-  - [Calculator Algorithm](#calculator-algorithm)
-  - [Graphing Algorithm](#graphing-algorithm)
-  - [Input/Output Systems](#inputoutput-systems)
-  - [Key Components](#key-components)
-  - [Mode Flow](#mode-flow)
-- [Polynomial Project](#polynomial-project)
-- [Algorithm Implementation](#algorithm-implementation)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Dependencies](#dependencies)
+## Forryan Project (Main Calculator & Grapher)
 
----
-
-## Forryan Project
-
-The main calculator application built for the Basys 3 FPGA board (Artix-7 XC7A35T). This project implements core calculator functionality with welcome, calculator, and grapher modes. **Note**: Polynomial solving functionality was separated into a dedicated project (project_gner) because integrating it would exceed the Basys 3's LUT budget of ~20,800 LUTs.
-
-### Features
-- **Multi-Mode Operation**: Welcome screen, calculator, and grapher modes
-- **Input Methods**: Button controls and PS/2 keyboard support
-- **Display**: Dual OLED displays for keypad/parameters and VGA for graphical output
-- **Calculator**: Expression evaluation with arithmetic, trigonometric, and power functions
-- **Grapher**: Multi-function plotting supporting linear, quadratic, cubic, and transcendental functions
-
-### Architecture
+This is the main application, managed by `Top_Student.v`. It integrates the welcome screen, calculator mode, and grapher mode, multiplexing I/O between them.
 
 ```mermaid
 graph TD
-    A[Top_Student Module] --> B[Mode Controller]
-    B --> C[Welcome Mode]
-    B --> D[Calculator Mode]
-    B --> E[Grapher Mode]
+    subgraph "Basys 3 Hardware"
+        btn[Buttons]
+        sw[Switches]
+        oled_jb[OLED JB Keypad]
+        oled_ja[OLED JA Params]
+        vga[VGA Monitor]
+    end
 
-    D --> F[Expression Parser]
-    F --> G[Precedence Evaluator]
-    G --> H[ALU Bridge]
-    H --> I[Arithmetic Modules]
-    H --> J[Trigonometric Modules]
+    subgraph "Top_Student Module"
+        A[Top_Student] --> B[Mode FSM]
+        B --> C[welcome_mode_module]
+        B --> D[calc_mode_top]
+        B --> E[grapher_module_slim]
 
-    E --> K[Function Renderer]
-    K --> L[Pixel Evaluator]
-    L --> M[Multi-Function Plotter]
+        A --> F[I/O Mux]
+        F --> oled_jb
+        F --> oled_ja
+        F --> vga
 
-    A --> N[VGA Multiplexer]
-    A --> O[OLED Multiplexer]
-    A --> P[PS/2 Keyboard Interface]
-    A --> Q[Button Debouncers]
+        G[Shared Input Chain] --> D
+        G --> E
 
-### Input/Output Systems
-
-**Dual Display Architecture**:
-- **OLED Displays**: 128x64 pixel monochrome displays for keypad input and parameter display
-- **VGA Output**: 640x480 resolution for high-detail graphing and welcome screens
-- **Display Multiplexing**: Automatic routing based on current mode
-
-**Input Processing**:
-- **PS/2 Keyboard**: Full ASCII character input with key-to-ASCII conversion
-- **Button Interface**: 5 debounced buttons for mode navigation
-- **Shared Equation Buffer**: 512-bit buffer for expression storage across modes
-
-**Key Components**:
-- `oled_keypad.v`: OLED display driver with keypad layout rendering
-- `key_to_ascii_convertor.v`: PS/2 scan code to ASCII translation
-- `debouncer.v`: Hardware debouncing for button inputs
-- `vga_sync.v`: VGA timing controller for 640x480@60Hz
+        btn --> G
+        sw --> A
+    end
 ```
 
-### Key Components
-- **Top_Student.v**: Main top-level module handling mode switching and I/O multiplexing
-- **Welcome_Module.v**: Welcome screen with mode selection
-- **Calculator_Module.v**: Expression evaluation with precedence-based parsing
-- **Grapher_Module.v**: Multi-function graphing with pixel-based rendering
+### `Top_Student.v` - Main Controller
 
-### Calculator Algorithm
+  * **Purpose:** The top-level module for the main application. It manages the overall system state and routes data to the correct modules and peripherals.
+  * **Logic:**
+      * [cite\_start]**Mode FSM:** A state machine switches `current_main_mode` based on user input[cite: 1482].
+          * [cite\_start]`MODE_OFF`: `sw[15]` is low (system is in reset)[cite: 1479].
+          * `MODE_WELCOME`: The initial state. [cite\_start]It waits for a mode selection [cite: 1481, 1540-1541].
+          * [cite\_start]`MODE_CALCULATOR`: Activated from the welcome screen[cite: 1481].
+          * [cite\_start]`MODE_GRAPHER`: Activated from the welcome screen[cite: 1482].
+      * [cite\_start]**Mode Handshake:** Transitions from `MODE_WELCOME` are handled by a handshake (`mode_req`, `mode_target`, `mode_ack`) initiated by the `welcome_mode_module` [cite: 1506, 1523, 1542-1543].
+      * **I/O Multiplexing:** `Top_Student` multiplexes the outputs for the two OLEDs (JA and JB) and the VGA screen. [cite\_start]For example, the `jb_oled_data` wire is fed by `shared_keypad_oled` when in calculator or grapher mode [cite: 1485, 1489-1490][cite\_start], and the `ja_oled_data` wire is fed by `grapher_screen_oled` or `calculator_screen_oled_ja` depending on the mode [cite: 1491-1494].
+      * [cite\_start]**Display Drivers:** It instantiates three `display_handler` modules: one for the JB OLED (keypad), one for the JA OLED (parameters), and one for the VGA display [cite: 1501-1505].
 
-The calculator implements a complete expression evaluator supporting arithmetic and transcendental functions.
+-----
 
-**Expression Parsing (Shunting-Yard Algorithm)**:
-- Converts infix notation to postfix using operator precedence
-- Supports parentheses for grouping
-- Handles operator precedence: `^` (power) > `*`/`/` > `+`/`-`
+### Shared Input System (Input Chain)
 
-**Supported Operations**:
-- **Arithmetic**: Addition, subtraction, multiplication, division
-- **Power Functions**: `x^y` (exponentiation)
-- **Logarithmic**: `log2(x)` (base-2 logarithm)
-- **Trigonometric**: `sin(x)`, `cos(x)`, `tan(x)`
-- **Constants**: π (pi), e (Euler's number)
-
-**ALU Implementation**:
-- Fixed-point arithmetic (Q16.8 format: 16 integer bits, 8 fractional bits)
-- Dedicated hardware modules for each operation:
-  - `adder_module`: Addition/subtraction with overflow detection
-  - `multiply_module`: Multiplication with pipelined execution
-  - `divider_module`: Division with iterative algorithm
-  - `power_module`: Exponentiation using logarithmic identities
-  - `trigo_module`: Trigonometric functions using CORDIC algorithm
-
-**Execution Flow**:
-1. Parse ASCII input into tokens
-2. Convert to postfix notation using precedence evaluation
-3. Execute operations sequentially through ALU pipeline
-4. Display result on OLED screen
-
-### Graphing Algorithm
-
-The grapher renders multiple mathematical functions simultaneously on VGA display with real-time pixel evaluation.
-
-**Supported Function Types**:
-- **Linear**: `y = mx + b`
-- **Quadratic**: `y = ax² + bx + c`
-- **Cubic**: `y = ax³ + bx² + cx + d`
-- **Trigonometric**: `y = A·sin(x)`, `y = A·cos(x)`, `y = A·tan(x)`
-- **Exponential**: `y = A·e^x`
-- **Logarithmic**: `y = A·ln(x)`
-
-**Rendering Algorithm**:
-- **Pixel-Based Evaluation**: For each VGA pixel (640x480), evaluate all active functions
-- **Coordinate Mapping**: VGA coordinates (0-639, 0-479) mapped to mathematical domain
-- **Color Coding**: Automatic color assignment per function type (red=sin, blue=cos, green=linear, etc.)
-- **Grid Overlay**: 16-pixel grid lines for coordinate reference
-- **Intersection Detection**: Optional highlighting of function intersections
-
-**Performance Optimizations**:
-- Parallel evaluation of up to 2 functions simultaneously
-- Fixed-point arithmetic (9-bit signed coefficients)
-- Pipelined computation to meet VGA timing requirements (60Hz refresh)
-
-**Input Interface**:
-- Keyboard coefficient entry for each function
-- Real-time parameter adjustment
-- Function type selection via switches
-
-### Mode Flow
-
-```mermaid
-stateDiagram-v2
-    [*] --> OFF: sw[15]=0
-    OFF --> WELCOME: sw[15]=1
-
-    WELCOME --> CALCULATOR: btn[0]
-    WELCOME --> GRAPHER: btn[1]
-
-    CALCULATOR --> WELCOME: btn[4]
-    GRAPHER --> WELCOME: btn[4]
-```
-
----
-
-## Polynomial Project
-
-A dedicated Vivado project focused exclusively on polynomial root finding algorithms. **This project was created because the polynomial solver's FSM (finite state machine), fixed-point arithmetic operations, and IP core instantiations consume too many LUTs to fit alongside the calculator functionality in the Forryan project.**
-
-### Purpose
-This project isolates the polynomial solving components for:
-- Development of Newton-Raphson root finding FSM
-- Testing fixed-point arithmetic precision (Q18.6/S32.14)
-- Verification against Python reference implementation
-- LUT utilization analysis for resource budgeting
-
-### Key Features
-- **Newton-Raphson Method**: Iterative root finding for cubic polynomials using derivative-based refinement
-- **Fixed-Point Arithmetic**: Q18.6 input/output, S32.14 internal computation
-- **Hardware Acceleration**: Uses Xilinx divider and square root IP cores
-- **Comprehensive Testing**: 38 test cases covering various polynomial scenarios
-
-### Architecture
+This is a pipelined chain of modules that captures physical button presses from the `oled_keypad` and delivers a standardized ASCII stream to the active application mode.
 
 ```mermaid
 graph TD
-    A[Poly Solver FSM] --> B[Normalization]
-    B --> C[Newton-Raphson Root Finding]
-    C --> D[Polynomial Evaluation p(x)]
-    D --> E[Derivative p'(x)]
-    E --> F[Root Update: x - p(x)/p'(x)]
-    F --> G{Converged?}
-    G -->|No| C
-    G -->|Yes| H[Deflation]
-    H --> I[Quadratic Solver]
-    I --> J[Output Roots]
-
-    D --> K[Direct Polynomial Evaluation]
-    I --> L[Discriminant]
-    L --> M[Square Root]
-    M --> N[Babylonian Method]
+    A[btn_debounced] --> B(oled_keypad)
+    B -- key_code, key_valid --> C(key_to_ascii_convertor)
+    C -- ascii_char, is_multichar, multichar_data --> D(shared_equation_buffer)
+    D -- shared_buffer, shared_length --> E[App Modules (Calc/Graph)]
 ```
 
-### Test Coverage
-- **38 Test Cases**: Comprehensive suite covering:
-  - Simple polynomials: x²-1=0, x³-1=0
-  - Complex coefficients: a₃=±1-8, a₂=±1-8, a₁=±1-8, a₀=±1-8 (Q18.6 format)
-  - Edge cases: zero leading coefficients, repeated roots, near-zero discriminants
-  - Numerical stability: polynomials requiring high iteration counts
+1.  [cite\_start]**`debouncer.v`:** Takes the raw `btn` inputs and produces a stable, one-pulse-per-press `btn_debounced` signal to prevent multiple inputs [cite: 612-623, 1508].
+2.  **`oled_keypad.v`:** This module serves two functions:
+      * [cite\_start]**Display:** Renders the multi-page (Numbers, Functions, Variables) keypad on the JB OLED display[cite: 1322, 1331]. [cite\_start]It also renders the current equation from the `shared_buffer`, auto-scrolling if the length exceeds 10 characters [cite: 1366-1368, 1374, 1377-1399].
+      * [cite\_start]**Input:** Watches `btn_debounced` for navigation (Up, Down, Left, Right) [cite: 1343-1354] and selection (Center). [cite\_start]When a key is selected, it generates a `key_valid` pulse and the corresponding `key_code` (e.g., `KEY_SIN`, `KEY_5`) [cite: 1328, 1355-1365].
+3.  [cite\_start]**`key_to_ascii_convertor.v`:** Translates the `key_code` into a standard `ascii_char` [cite: 1034-1057].
+      * [cite\_start]**Multi-Char Logic:** For function keys like `KEY_SIN`, it asserts `is_multichar`, sets `char_count` to 3, and places the full string ("nis") onto the `multichar_data` bus [cite: 1032, 1060-1061].
+4.  **`shared_equation_buffer.v`:** The final module in the chain. [cite\_start]It listens for `ascii_valid`[cite: 941, 949].
+      * [cite\_start]**Single Char:** If `is_multichar` is false, it appends the single `ascii_char` to the `shared_equation_buffer` [cite: 959, 981-983].
+      * [cite\_start]**Multi Char:** If `is_multichar` is true, an internal FSM (`STATE_WRITE_1`, `STATE_WRITE_2`, etc.) writes each character from `multichar_data` to the buffer sequentially over multiple clock cycles [cite: 942, 978-981, 983-992].
+      * **Control:** It also handles control characters directly, such as 'C' (`is_clear_reg`) to reset the buffer length to 0 and 'D' (`is_delete_reg`). [cite\_start]The delete logic is "smart," detecting function words like "sin" or "ln" and deleting the entire block instead of one character [cite: 951-952, 964-967, 992-1002].
 
-### Files
-- `poly_solver.v`: Main solver FSM with Newton-Raphson implementation
-- `sqrt_iterative.v`: Square root using Babylonian method
-- `div_iterative.v`: Division wrapper for fixed-point operations
-- Testbenches: `tb_poly_solver_Q12_4.v`, `tb_poly_solver_Q18_6.v`
+-----
 
----
+### Calculator Mode (`calc_mode_top.v`)
 
-## Algorithm Implementation
+  * **Purpose:** A complete scientific calculator that parses and evaluates infix expressions.
+  * **Execution Chain:** This mode uses a pipelined execution flow to check, parse, and solve the expression.
 
-### 1. Newton-Raphson Root Finding
-**Purpose**: Find roots of cubic polynomials using derivative-based iterative refinement.
+<!-- end list -->
 
-**Mathematical Basis**:
-```
-For polynomial p(x) = a₃x³ + a₂x² + a₁x + a₀
-Newton-Raphson iteration: xₙ₊₁ = xₙ - p(xₙ)/p'(xₙ)
-Where p'(x) = 3a₃x² + 2a₂x + a₁
-```
-
-**Implementation Details**:
-- Fixed-point arithmetic: Q18.6 input coefficients, S32.14 internal computations
-- Initial guesses: x₀ = 1.0, x₀ = -1.0, x₀ = 0.5 for finding multiple roots
-- Convergence tolerance: ε = 2^(-14) (in S32.14 format)
-- Maximum iterations: 20 per root to prevent infinite loops
-
-### 2. Polynomial Evaluation (Direct Method)
-**Purpose**: Compute p(x) and p'(x) for Newton-Raphson updates.
-
-**Direct Evaluation for Cubic**:
-```
-p(x) = a₃x³ + a₂x² + a₁x + a₀
-     = a₃x³ + a₂x² + a₁x + a₀  (computed directly)
+```mermaid
+graph TD
+    A[User presses '='] --> B(eh_stream_capture)
+    B -- start_pulse, eh_buf --> C(error_handling)
+    C -- ok_pulse (if no error) --> D(expr_execute_no_check)
+    D -- alu_op, alu_a, alu_b --> E(team_alu_bridge)
+    E -- (result) --> F[VGA & OLED Drawers]
+    C -- chk_err_any --> G[7-Segment Error Display]
 ```
 
-**Derivative Calculation**:
-```
-p'(x) = 3a₃x² + 2a₂x + a₁
-     = 3a₃x² + 2a₂x + a₁  (computed directly)
-```
+1.  [cite\_start]**`eh_stream_capture.v`:** When the calculator is active, this module independently captures `ascii_char` inputs into a local 32-byte buffer (`eh_buf`)[cite: 1637]. [cite\_start]When it sees the '=' character (`8'h3D`), it stops capturing and emits a one-cycle `start_pulse`[cite: 1016, 1636].
+2.  [cite\_start]**`error_handling.v`:** This `start_pulse` triggers the error checker[cite: 1638]. [cite\_start]It's a complex FSM that scans the `eh_buf` [cite: 1079, 1148-1157] for syntax errors.
+      * [cite\_start]It checks for empty input (`E_EMPTY`) [cite: 1076, 1149][cite\_start], mismatched parentheses (`E_PAREN`) [cite: 1076, 1153][cite\_start], invalid operator sequences like "5 \* + 3" (`E_SEQ`) [cite: 1076, 1151][cite\_start], invalid number formats (`E_NUMFMT`) [cite: 1077, 1162][cite\_start], and number range overflows (`E_RANGE_IN`)[cite: 1077, 1212].
+      * It also features a dedicated "RHS Division-by-Zero Scanner" that activates when a '/' is seen. [cite\_start]It scans ahead to see if the *literal* number on the right-hand side is zero (e.g., "5 / 0.0") and flags `E_DIV0` [cite: 1077, 1084, 1119-1136].
+3.  [cite\_start]**`expr_execute_no_check.v`:** If the `error_handling` module finishes (`chk_done`) with no errors (`~chk_err_any`), an `ok_pulse` is generated[cite: 1642]. [cite\_start]This pulse starts the main expression evaluator[cite: 1645]. [cite\_start]This module uses a `precedence_eval` unit to convert the infix expression to postfix and sends operations (opcode, operands) to the ALU bridge[cite: 2486].
+4.  **`team_alu_bridge.v`:** This is the core ALU. [cite\_start]It's an FSM that manages various multi-cycle arithmetic units[cite: 1814]. [cite\_start]It receives an `alu_op` and routes the request[cite: 1782].
+      * [cite\_start]`OP_ADD`/`OP_SUB` are combinational [cite: 1784, 1788-1790, 1825, 1836].
+      * [cite\_start]`OP_MUL`, `OP_DIV`, `OP_POW`, `OP_LOG2`, `OP_SIN`, `OP_COS`, `OP_TAN` trigger their respective hardware modules (`multiply_module`, `divider_module`, etc.) [cite: 1784, 1791-1800, 1826-1830].
+      * [cite\_start]`OP_LN` is a special two-step operation: it first computes `log2(x)` using `u_log`, then multiplies that result by a Q16.8 constant for $\ln(2)$ (`Q168_LN2`) using `u_mul` [cite: 1784, 1786, 1816, 1828, 1831-1835].
 
-### 3. Root Classification and Deflation
-**Strategy**: Find one real root using Newton-Raphson, then deflate the polynomial to reduce degree.
+<!-- end list -->
 
-**Process**:
-1. Apply Newton-Raphson with initial guess x₀ = 1.0
-2. If convergence fails (|xₙ₊₁ - xₙ| > ε), try x₀ = -1.0, then x₀ = 0.5
-3. Once root r found, deflate: p(x) ÷ (x - r) = q(x) where q is quadratic
-4. Solve quadratic q(x) = 0 analytically for remaining roots
-5. Output three real roots (complex roots discarded)
+  * **Display Logic:**
+      * **VGA (`calculator_mode_output_drawer.v`):** This module renders the main UI on the VGA screen. [cite\_start]It draws an "Input Box" to display the `shared_buffer` (what the user is typing) [cite: 1985, 1993-1995, 2001-2006] [cite\_start]and an "Answer Box" to display the final `exec_result` [cite: 1986, 1998-2000]. [cite\_start]It contains a large block of logic to convert the 25-bit signed Q16.8 `number_input` into a decimal ASCII string, handling sign, integer, and fractional parts (up to 2 decimal places) [cite: 2059-2129].
+      * **7-Segment (`sevenseg_driver.v`):** This is used exclusively for error reporting in this mode. [cite\_start]`calc_mode_top` maps the `eh_err_code_l` to 4-character error messages (e.g., `E_PAREN` becomes "EPAR", `E_DIV0` becomes "EZER") [cite: 1661-1662, 1667-1674] [cite\_start]and displays them on the 7-segment display [cite: 1693-1694].
 
-### 4. Quadratic Formula Implementation
-**Standard Quadratic Solution**:
-```
-For ax² + bx + c = 0
-Discriminant D = b² - 4ac
-Roots: [-b ± √D] / 2a
-```
+-----
 
-**Fixed-Point Handling**:
-- Careful calculation of discriminant
-- Square root computation using Babylonian method
-- Division by 2a using fixed-point scaling
+### Grapher Mode (`grapher_module_slim.v`)
 
-### 5. Fixed-Point Division
-**Method**: Scale dividend by 2^14 (fractional bits) before integer division to maintain precision.
+  * **Purpose:** To parse, store, and render up to two mathematical functions simultaneously on the VGA display.
+  * [cite\_start]**Sub-Modes:** This module has two distinct operating modes based on `sw[3]`[cite: 1703]:
+    1.  [cite\_start]**Equation Mode (`sw[3] = 0`):** The shared input chain is active[cite: 1703, 1712]. The user types a full equation (e.g., "y=3x^2-x+4").
+    2.  [cite\_start]**Manual Mode (`sw[3] = 1`):** The `graph_select_screen` is displayed on the VGA [cite: 1703, 1708-1710]. The user first selects a function type (e.g., "Linear", "Quadratic"), and then uses the keypad to enter numerical coefficients for that function.
 
-**Formula**:
-```
-result_Q18.6 = (num_S32.14 << 14) / divisor_S32.14
-```
+<!-- end list -->
 
-**IP Usage**: Xilinx Divider Generator v5.0 (64-bit dividend, 32-bit divisor, signed operations)
-
-### 6. Square Root Implementation
-**Algorithm**: Babylonian (Hero's) method for computing √S.
-
-**Iteration**:
-```
-x₀ = S >> 1  (initial guess: S divided by 2)
-xₙ₊₁ = (xₙ + S/xₙ) / 2
-Convergence: |xₙ₊₁ - xₙ| < 2^(-14) (ε = 16 in S32.14 format)
+```mermaid
+graph TD
+    A[Grapher Mode Active] --> B{sw[3] state?}
+    B -- 0 (Equation) --> C[equation_parser]
+    B -- 1 (Manual) --> D[graph_select_screen]
+    D --> E[number_parser & parameter_input]
+    C --> F[graph_renderer]
+    E --> F
+    F --> G[VGA Display]
 ```
 
-**Implementation**: Maximum 15 iterations, hardware timeout protection
+  * **Parsing Logic:**
+      * [cite\_start]**`equation_parser.v`:** Active only in Equation Mode[cite: 1712]. [cite\_start]It activates on the `shared_equation_complete` signal[cite: 1712, 2677]. [cite\_start]This is a large FSM that moves through states like `STATE_CHECK_FUNCTION`, `STATE_PARSE_SIGN`, `STATE_PARSE_COEFF`, `STATE_PARSE_X`, and `STATE_CHECK_POWER` [cite: 2666-2668]. [cite\_start]It parses the string and accumulates coefficients into an array (`coeff[0:3]`) based on the power of 'x' it finds (e.g., `coeff[3]` for $x^3$, `coeff[1]` for $x$, `coeff[0]` for the constant) [cite: 2670, 2764-2765]. [cite\_start]It also identifies function names like "sin", "cos", "exp" [cite: 2688-2715]. [cite\_start]It outputs the final 9-bit signed coefficients [cite: 2661, 2770-2780].
+      * [cite\_start]**`number_parser.v`:** Active only in Manual Mode[cite: 2159]. [cite\_start]It parses a single number (e.g., "-12") entered by the user, respecting `sw[3]` for signed/unsigned mode [cite: 2159, 2167, 2183-2193]. [cite\_start]It outputs a 9-bit signed number[cite: 2159].
+      * [cite\_start]**`parameter_input.v`:** Manages the state for Manual Mode, tracking which parameter (e.g., 'A', 'B', 'C') is currently being edited[cite: 1739].
+  * **Rendering Logic:**
+      * **`graph_renderer.v`:** This is the main rendering engine. [cite\_start]It takes the coefficients for two function "slots" (from either the parser or manual entry)[cite: 1, 1767].
+      * [cite\_start]It instantiates a separate drawing module for each function type: `cubic_graph` (which is a general-purpose $ax^3+bx^2+cx+d$ engine, also used for linear and quadratic), `sincos_graph`, `tan_graph`, `exp_graph`, and `ln_graph` [cite: 32-38].
+      * [cite\_start]Each of these engines is a deeply pipelined FSM (e.g., `cubic_graph` uses 6 stages [cite: 115-148]) that calculates the expected `y` value for every `x` pixel coordinate from the `vga_sync` module.
+      * [cite\_start]The `sincos_graph`, `tan_graph`, `exp_graph`, and `ln_graph` modules use Block RAM ROMs (`sin_table_ver_two.mem`, `tan_table_ver_two.mem`, `exp_table.mem`, `ln_table.mem`) to store pre-calculated lookup tables for high-speed evaluation [cite: 163-164, 210-211, 251-252, 298-299].
+      * [cite\_start]`graph_renderer` also contains a 7-stage pipeline and FSM to detect and find the coordinates of intersections between the two functions or the axes [cite: 51, 56-59, 61-71, 79-105].
+  * **Display Logic:**
+      * **`grapher_screen_oled.v`:** Displays contextual information on the second (JA) OLED. [cite\_start]In Manual Mode, it shows the parameters being entered (e.g., "A: [ 12]", "B: [ -5]") [cite: 379-390]. [cite\_start]It also has a special screen (`show_intersect_screen`) that displays the (X, Y) coordinates of a found intersection, converting the pixel values back into mathematical grid units [cite: 357, 475-505].
 
----
+-----
 
-## Getting Started
+## Polynomial Project (Root Finder)
 
-### Prerequisites
-- Vivado 2018.2.2 (exact version used for development)
-- Basys 3 FPGA board (Artix-7 XC7A35T, for Forryan project)
+This is a separate, high-precision application dedicated to solving cubic polynomial equations. It does not run concurrently with the Forryan project. It is managed by `poly_mode_module.v` and uses `poly_solver.v` as its computational core.
 
-### Setup
-1. Clone the repository
-2. Open the desired project in Vivado:
-   - Forryan: `forryannyy/forryannyy.xpr`
-   - Polynomial: `project_gner/project_gner.xpr`
-3. Generate bitstream and program the FPGA
+### `poly_mode_module.v` - UI & Coefficient Entry
 
+  * **Purpose:** Provides the top-level control and user interface for the polynomial solver.
+  * **Logic:**
+      * **Coefficient Entry:** Manages the entry of the four cubic coefficients (A, B, C, D). [cite\_start]It uses `active_coeff_index` to track which coefficient is being edited[cite: 1221].
+      * [cite\_start]**Input Validation:** It listens for keyboard strobes (`poly_key_strobe`) and implements "smart input validation" to enforce a specific numerical format (e.g., max 2 integer digits, max 3 fractional digits, minus sign only at start) [cite: 1216, 1226-1229, 1304-1315].
+      * [cite\_start]**Parsing:** When '=' is pressed (`ASCII_EQUALS`), it advances to the next coefficient [cite: 1297-1303]. [cite\_start]For each coefficient, it calls the `parse_coefficient` function [cite: 1297-1299]. [cite\_start]This function reads the input string (e.g., "-1.25"), manually builds the integer and fractional parts, and converts them into a 24-bit **Q18.6 fixed-point format** [cite: 1241-1272]. [cite\_start]For example, the integer part is shifted (`int_val << 6`) and added to the scaled fractional part [cite: 1271-1272].
+      * [cite\_start]**Solver Trigger:** After the final coefficient ('D') is entered and parsed, it asserts the `solve_trigger` signal for one cycle to start the `poly_solver` [cite: 1302-1303].
+  * [cite\_start]**Display:** It instantiates `poly_drawer_vga` to render the UI, which shows the four coefficient input boxes and, once `solve_done` is high, displays the three calculated roots [cite: 1316-1318].
 
----
+### `poly_solver.v` - Newton-Raphson FSM
 
-## Project Structure
+  * **Purpose:** This is the core solver. It's a large, pipelined Finite State Machine that finds the three roots of the cubic equation $ax^3+bx^2+cx+d=0$ provided by `poly_mode_module`.
+  * [cite\_start]**Internal Format:** The solver immediately converts the incoming 24-bit Q18.6 coefficients into a higher-precision internal 32-bit **Q22.14 format** (`SHIFT_IO_TO_INT`) to maintain precision during calculations [cite: 2502-2503].
+
+<!-- end list -->
+
+```mermaid
+graph TD
+    IDLE -->|start| NORMALIZE[NORMALIZE: Scale Coeffs]
+    NORMALIZE --> NR_INIT[NR_INIT: Select 1st Guess]
+    NR_INIT --> NR_LOOP[NR_LOOP: p(x), p'(x)]
+    NR_LOOP --> NR_DIV{p(x)/p'(x)}
+    NR_DIV --> NR_UPDATE[NR_UPDATE: x = x - (p/p')]
+    NR_UPDATE --> NR_LOOP
+    NR_LOOP -- |Converged or Timeout| --> DEFLATE[DEFLATE: (Cubic) / (x-r1)]
+    NR_LOOP -- |Hard Timeout| --> ERROR
+    DEFLATE --> QUAD_SOLVE[QUAD_SOLVE: Find r2, r3]
+    QUAD_SOLVE --> OUTPUT[OUTPUT: Display Roots]
+    OUTPUT --> IDLE
 ```
-ee2026_Project/
-├── forryannyy/              # Main calculator project (Basys 3)
-│   ├── forryannyy.xpr       # Vivado 2018.2.2 project file
-│   └── forryannyy.srcs/
-│       └── sources_1/new/   # Verilog HDL sources (calculator, grapher, OLED/VGA)
-├── project_gner/            # Polynomial solver project (Basys 3)
-│   ├── project_gner.xpr     # Vivado 2018.2.2 project file
-│   └── project_gner.srcs/
-│       └── sources_1/imports/sources/features/polynomial/  # Newton-Raphson FSM
-├── docs/                    # Documentation and specifications
-├── consolidated_sources/    # Reference Verilog implementations
-├── sim_*/                   # Testbench simulation projects (Q8.8, Q12.4, Q18.6)
-└── *.tcl, *.bat             # TCL build scripts and Windows batch files
-```
 
----
+  * **Algorithm & FSM Logic:**
+    1.  [cite\_start]**`NORMALIZE`:** The FSM starts here[cite: 2554]. [cite\_start]It normalizes the Q22.14 coefficients by right-shifting them (`>>> calc_norm_shift`) based on the magnitude of coefficient 'a' to prevent overflows during multiplication [cite: 2531-2534, 2558-2561].
+    2.  [cite\_start]**`NR_INIT`:** It selects an initial guess `x` for the first root[cite: 2568]. [cite\_start]The guess is chosen based on coefficient properties (e.g., if coefficients are balanced, $x = -b/2$) [cite: 2569-2573]. It resets the `iter_count`.
+    3.  [cite\_start]**Newton-Raphson Loop (`NR_X2_CALC`...`NR_UPDATE`) [cite: 2576-2605]:** This is the main iterative loop to find one real root.
+          * [cite\_start]**`NR_FX_...` states:** Calculates $p(x) = ax^3 + bx^2 + cx + d$ using pipelined multipliers [cite: 2583-2589].
+          * [cite\_start]**`NR_FPX_...` states:** Calculates the derivative $p'(x) = 3ax^2 + 2bx + c$ [cite: 2589-2595].
+          * **`NR_DIV_REQ`:** Checks for convergence. [cite\_start]If $|p(x)|$ is near zero or `iter_count` \> `MAX_ITER`, the loop terminates [cite: 2596-2599]. Otherwise, it requests a division: $p(x) / p'(x)$.
+          * [cite\_start]**`NR_DIV_WAIT`:** Waits for the `divider_generator_0_inst` (a Xilinx IP core) to complete [cite: 2509, 2517, 2600-2602].
+          * [cite\_start]**`NR_UPDATE`:** Calculates the new guess $x_{n+1} = x_n - (p(x) / p'(x))$ and loops back to `NR_X2_CALC` [cite: 2603-2605].
+    4.  [cite\_start]**`DEFLATE_...` States [cite: 2605-2623]:** Once one real root (`x`) is found, the FSM performs synthetic division to deflate the polynomial, i.e., $(ax^3+...d) / (x - \text{root})$. This results in a new quadratic polynomial $a_2x^2 + b_2x + c_2$. [cite\_start]The new coefficients `a2`, `b2`, and `c2` are stored[cite: 2617, 2622].
+    5.  [cite\_start]**`QUAD_...` States (Quadratic Solver) [cite: 2626-2656]:** The FSM now solves the remaining quadratic.
+          * [cite\_start]**`QUAD_INIT_...`:** Calculates the discriminant $D = b_2^2 - 4a_2c_2$ [cite: 2626-2632].
+          * [cite\_start]**`QUAD_SQRT_START`/`WAIT`:** If $D$ is non-zero, it calls the `sqrt_iterative` module to calculate $\sqrt{|D|}$ [cite: 2632-2636].
+          * [cite\_start]**`QUAD_DIV1_...`/`DIV2_...`:** It performs two more divisions to calculate $(-b_2 \pm \sqrt{D}) / 2a_2$ [cite: 2640-2650].
+          * [cite\_start]**`QUAD_SOLVE`:** If $D \ge 0$, the two roots are real [cite: 2651-2652]. [cite\_start]If $D < 0$, the roots are complex: $\text{real\_part} = -b_2 / 2a_2$ and $\text{imag\_part} = \pm \sqrt{-D} / 2a_2$ [cite: 2653-2655].
+    6.  [cite\_start]**`OUTPUT`:** The three roots (one from NR, two from quadratic) are converted back from Q22.14 to Q18.6 (`>>> SHIFT_INT_TO_IO`) [cite: 2503, 2625, 2651-2655] [cite\_start]and `done` is asserted[cite: 2656].
 
-## Dependencies
-- **Hardware**: Digilent Basys 3 (Artix-7 XC7A35T), 2x OLED displays (SSD1306), VGA monitor
-- **IP Cores**:
-  - Divider Generator v5.0 (64-bit dividend, 32-bit divisor, signed operations)
-  - Block Memory Generator v8.4 (for font ROM and coefficient storage)
-- **Software**: Vivado 2018.2.2, Python 3.8+ for verification
+### `sqrt_iterative.v` (Babylonian Method)
 
----
-
-## Contributing
-1. Validate changes against all 38 polynomial test cases using `poly_solver_test.py`
-2. Maintain Q18.6 input/output and S32.14 internal fixed-point precision
-3. Check LUT utilization doesn't exceed Basys 3 budget (~20,800 LUTs)
-4. Update Mermaid diagrams for any FSM or architectural changes
-
-## License
-This project is part of EE2026 coursework.
+  * **Purpose:** A helper module for `poly_solver` that calculates the square root of a 32-bit Q22.14 number.
+  * **Algorithm:** Implements the Babylonian method, which is an iterative algorithm where $x_{n+1} = (x_n + S / x_n) / 2$.
+  * **Logic:**
+    1.  [cite\_start]**`IDLE`:** Waits for a `start` pulse [cite: 1959-1965].
+    2.  [cite\_start]**`INIT`:** On `start`, it saves `input_val` and sets the initial guess `x` to `input_val >> 1`[cite: 1961, 1963]. [cite\_start]It then asserts `div_req` to ask the `poly_solver`'s divider to calculate $S / x$ (`input_saved` / `x`)[cite: 1967].
+    3.  [cite\_start]**`DIV_WAIT`:** Waits for `div_done` from the arbiter [cite: 1968-1972].
+    4.  [cite\_start]**`CHECK`:** When the division is done, it gets the `div_quotient` and calculates the new guess: $x_{\text{new}} = (x + \text{div\_quotient}) >> 1$ [cite: 1970-1971]. [cite\_start]It calculates the difference `diff` between $x$ and $x_{\text{new}}$[cite: 1972].
+    5.  [cite\_start]If `diff` is small enough (or `iter` \> `MAX_SQRT_ITER`), it asserts `done` and outputs `x_new` [cite: 1954, 1973-1975]. [cite\_start]Otherwise, it sets $x = x_{\text{new}}$ and loops back to `INIT` for another iteration[cite: 1976].
