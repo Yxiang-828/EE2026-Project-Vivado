@@ -148,9 +148,9 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Grapher Mode Active] --> B{sw[3] state?}
-    B -->|0 Equation| C[equation_parser]
-    B -->|1 Manual| D[graph_select_screen]
+    A[Grapher Mode Active] --> B{Check sw3 state}
+    B -->|0 Equation Mode| C[equation_parser]
+    B -->|1 Manual Mode| D[graph_select_screen]
     D --> E[number_parser & parameter_input]
     C --> F[graph_renderer]
     E --> F
