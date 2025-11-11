@@ -1,0 +1,243 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sun Nov  9 01:39:29 2025
+| Host         : Plup1 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
+| Design       : Top_Student
+| Device       : xc7a35t
+----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |   174 |
+| Unused register locations in slices containing registers |   476 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            1 |
+|      8 |           27 |
+|     10 |           23 |
+|     12 |           57 |
+|     14 |            6 |
+|    16+ |           60 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |           13698 |         1226 |
+| No           | No                    | Yes                    |              82 |           21 |
+| No           | Yes                   | No                     |             984 |          255 |
+| Yes          | No                    | No                     |             600 |           81 |
+| Yes          | No                    | Yes                    |            2276 |          404 |
+| Yes          | Yes                   | No                     |            1828 |          480 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+
+|  Clock Signal  |                            Enable Signal                            |                           Set/Reset Signal                          | Slice Load Count | Bel Load Count |
++----------------+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+
+| ~clk6p25m      |                                                                     |                                                                     |                1 |              2 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[182]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/fractional_digits_reg[0][3][0]                 | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[421]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/integer_digits_reg[2][3][0]                    | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/integer_digits_reg[1][3][0]                    | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/fractional_digits_reg[2][3][0]                 | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[270]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_lengths_reg[0][3][0]                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/input_digit_index_reg[3][0]                    | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/E[0]                                           | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[6]_0                | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                2 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[485]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                3 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[207]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[278]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_lengths[1][3]_i_1_n_0                          | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_lengths[2][3]_i_1_n_0                          | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_lengths[3][3]_i_1_n_0                          | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[214]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[366]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[165]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                3 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/fractional_digits_reg[1][3][0]                 | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/fractional_digits_reg[3][3][0]                 | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/poly_coeff_lengths_reg[1][3][0]                | ascii_converter_inst/poly_coeff_lengths_reg[1][3]_0[0]              |                2 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/poly_coeff_lengths_reg[0][3][0]                | ascii_converter_inst/poly_coeff_lengths_reg[0][3]_0[0]              |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/poly_coeff_lengths_reg[2][3][0]                | ascii_converter_inst/poly_coeff_lengths_reg[2][3]_0[0]              |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/poly_coeff_lengths_reg[3][3][0]                | ascii_converter_inst/SR[0]                                          |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/integer_digits_reg[3][3][0]                    | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |              8 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[231]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[510]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[462]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[414]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[39]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[103]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[374]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[126]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[247]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[254]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[446]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[174]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[260]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[158]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[238]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[78]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[430]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[398]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[454]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[478]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[198]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                3 |             10 |
+|  clk_IBUF_BUFG | welcome_mode_module_inst/welcome_drawer_vga_inst/vga_x_d[9]_i_1_n_0 | display_handler_inst/vga_sync_unit/char_code_reg_reg[6]_0           |                3 |             10 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[494]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                4 |             10 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][53]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][69]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][5]_i_1_n_0                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][69]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][13]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][61]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][37]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][13]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][45]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][21]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][29]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][45]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][61]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][77]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][29]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][5]_i_1_n_0                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][53]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][5]_i_1_n_0                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][5]_i_1_n_0                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][61]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][29]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                4 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][37]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][53]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                4 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][69]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                4 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][77]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][37]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][13]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][45]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][13]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][21]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[111]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[143]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[15]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[191]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[223]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[31]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[0][45]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[438]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[406]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[470]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[47]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[502]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                5 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[71]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[95]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[63]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                6 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_str_reg[1][24][0]                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_str_reg[1][24][1]                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                4 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][21]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG |                                                                     | display_handler_inst/oled_display_inst/s1_cell_font_col_reg[2]_2[0] |                2 |             12 |
+|  clk_IBUF_BUFG |                                                                     | oled_keypad_inst/s2_font_col                                        |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][53]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                1 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][69]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[2][77]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                4 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][77]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[1][61]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             12 |
+|  clk_IBUF_BUFG | welcome_mode_module_inst/welcome_drawer_vga_inst/vga_x_d[9]_i_1_n_0 | display_handler_inst/vga_sync_unit/row_index_reg_reg[0][0]          |                2 |             12 |
+|  clk_IBUF_BUFG | poly_mode_inst/coeff_str[3][37]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             12 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[151]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                7 |             14 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[119]_0              | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                7 |             14 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[87]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                7 |             14 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[55]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                7 |             14 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_buffer_reg[23]_0               | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |                7 |             14 |
+|  clk_IBUF_BUFG |                                                                     | display_handler_inst/vga_sync_unit/SR[0]                            |                7 |             14 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/div_timeout[7]_i_1_n_0                   | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             16 |
+|  clk_IBUF_BUFG | poly_solver_inst/arb_timeout[7]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             16 |
+|  clk_IBUF_BUFG | oled_keypad_inst/key_code[4]_i_1_n_0                                | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                2 |             20 |
+|  clk_IBUF_BUFG | display_handler_inst/vga_sync_unit/v_count_reg0                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                5 |             20 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/state_reg[5]_rep__0                      | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                6 |             20 |
+|  clk_IBUF_BUFG | oled_keypad_inst/led_OBUF[5]                                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                3 |             26 |
+| ~clk6p25m      |                                                                     | display_handler_inst/oled_display_inst/frame_counter[16]_i_1_n_0    |                5 |             34 |
+| ~clk6p25m      | display_handler_inst/oled_display_inst/delay[0]_i_1_n_0             |                                                                     |                5 |             40 |
+|  clk_IBUF_BUFG | poly_solver_inst/pipe_mul_c_reg[14]__1_0                            | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             42 |
+|  clk_IBUF_BUFG | poly_solver_inst/pipe_mul_b_reg[14]__1_0                            | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                7 |             42 |
+|  clk_IBUF_BUFG | poly_solver_inst/pipe_mul_a_reg[14]__1_0                            | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             42 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_0/count                  | button_debouncer_array_inst/debouncer_inst_0/btn_out0               |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_1/count                  | button_debouncer_array_inst/debouncer_inst_1/btn_out0               |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_4/count                  | button_debouncer_array_inst/debouncer_inst_4/btn_out0               |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_3/count                  | button_debouncer_array_inst/debouncer_inst_3/btn_out0               |                6 |             46 |
+|  clk_IBUF_BUFG | button_debouncer_array_inst/debouncer_inst_2/count                  | button_debouncer_array_inst/debouncer_inst_2/btn_out0               |                6 |             46 |
+|  clk_IBUF_BUFG | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0        | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |               10 |             48 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_val_reg[3][23][0]                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             48 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_val_reg[2][23][0]                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               10 |             48 |
+|  clk_IBUF_BUFG | welcome_mode_module_inst/welcome_drawer_vga_inst/vga_x_d[9]_i_1_n_0 |                                                                     |                6 |             48 |
+|  clk_IBUF_BUFG | poly_solver_inst/root1_real[23]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             48 |
+|  clk_IBUF_BUFG | poly_solver_inst/quad_result1[31]_i_2_n_0                           | poly_solver_inst/quad_result1[31]_i_1_n_0                           |               12 |             48 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_val_reg[1][23][0]                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               12 |             48 |
+|  clk_IBUF_BUFG | ascii_converter_inst/coeff_val_reg[0][23][0]                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             48 |
+|  clk_IBUF_BUFG | poly_solver_inst/quad_result2[31]_i_2_n_0                           | poly_solver_inst/quad_result2[31]_i_1_n_0                           |                8 |             48 |
+|  clk_IBUF_BUFG |                                                                     | calc_mode_module_inst/blink_counter[0]_i_1__0_n_0                   |                7 |             52 |
+|  clk_IBUF_BUFG |                                                                     | oled_keypad_inst/blink_counter[0]_i_1__1_n_0                        |                7 |             52 |
+|  clk_IBUF_BUFG |                                                                     | poly_mode_inst/poly_vga_inst/clear                                  |                7 |             52 |
+|  clk_IBUF_BUFG | poly_solver_inst/a2[30]_i_1_n_0                                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               11 |             62 |
+|  clk_IBUF_BUFG | poly_solver_inst/disc[31]_i_1_n_0                                   | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/fpx[31]_i_1_n_0                                    | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                8 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/fx[31]_i_1_n_0                                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               10 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/fx_check                                           |                                                                     |               11 |             64 |
+| ~clk6p25m      | display_handler_inst/oled_display_inst/state                        |                                                                     |                8 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/pipe_clip_c[31]_i_1_n_0                            | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                9 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/sqrt_out[31]_i_1_n_0                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               11 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/input_saved                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |                9 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/x_new[31]_i_1_n_0                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               11 |             64 |
+|  clk_IBUF_BUFG |                                                                     | display_handler_inst/clk_6p25m/clear                                |                8 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_input[31]_i_1_n_0                             |                                                                     |                6 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/x2[31]_i_1_n_0                                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               18 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/x3[31]_i_1_n_0                                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               24 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/E[0]                                     |                                                                     |               14 |             64 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/x[31]_i_1_n_0                            | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               11 |             72 |
+|  clk_IBUF_BUFG | poly_solver_inst/iter_count[4]_i_1_n_0                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               23 |             74 |
+|  clk_IBUF_BUFG | display_handler_inst/vga_sync_unit/E[0]                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               14 |             76 |
+| ~clk6p25m      |                                                                     | display_handler_inst/oled_display_inst/spi_word[39]_i_1_n_0         |               17 |             90 |
+|  clk_IBUF_BUFG | poly_solver_inst/two_a2                                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               21 |            126 |
+|  clk_IBUF_BUFG | poly_solver_inst/two_b                                              | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               26 |            126 |
+|  clk_IBUF_BUFG | poly_solver_inst/c2                                                 | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               16 |            128 |
+|  clk_IBUF_BUFG | poly_solver_inst/main_fsm_divisor[31]_i_1_n_0                       |                                                                     |               15 |            128 |
+|  clk_IBUF_BUFG | poly_solver_inst/num1[31]_i_1_n_0                                   |                                                                     |               16 |            128 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/div_dividend[63]_i_1_n_0                 | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               20 |            128 |
+|  clk_IBUF_BUFG | poly_solver_inst/sqrt_inst/div_ip_start_reg[0]                      | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               11 |            128 |
+|  clk_IBUF_BUFG | poly_solver_inst/pipe_clip_b                                        | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               25 |            128 |
+|  clk_IBUF_BUFG | poly_solver_inst/root2_real[23]_i_1_n_0                             | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               32 |            190 |
+|  clk_IBUF_BUFG |                                                                     | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               49 |            198 |
+|  clk_IBUF_BUFG | poly_solver_inst/a[31]_i_1_n_0                                      | poly_solver_inst/sqrt_inst/div_divisor_reg[0]_0                     |               44 |            256 |
+|  clk_IBUF_BUFG |                                                                     | ascii_converter_inst/shared_equation_length_reg[2]__0_rep__0_1      |              165 |            486 |
+|  clk_IBUF_BUFG |                                                                     |                                                                     |             1228 |          13714 |
++----------------+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+
+
+

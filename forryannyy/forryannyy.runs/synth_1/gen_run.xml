@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1762641160">
+  <File Type="PA-TCL" Name="Top_Student.tcl"/>
+  <File Type="REPORTS-TCL" Name="Top_Student_reports.tcl"/>
+  <File Type="RDS-RDS" Name="Top_Student.vds"/>
+  <File Type="RDS-UTIL" Name="Top_Student_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="Top_Student_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="Top_Student.dcp"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/Desktop/Oled_Display.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../../../MODS.srcs/sources_1/imports/Desktop/Oled_Display.v"/>
+        <Attr Name="ImportTime" Val="1677398246"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/adder_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/adder_module.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/calc_mode_top.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/calc_mode_top.v"/>
+        <Attr Name="ImportTime" Val="1762534840"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/calculator_mode_output_drawer.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/forryannyy/forryannyy.srcs/sources_1/new/calculator_mode_output_drawer.v"/>
+        <Attr Name="ImportTime" Val="1762603968"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/converter.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/converter.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/debouncer.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/debouncer.v"/>
+        <Attr Name="ImportTime" Val="1759748954"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/display_handler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/display_handler.v"/>
+        <Attr Name="ImportTime" Val="1759748920"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/divide_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/divide_module.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/eh_stream_capture.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/eh_stream_capture.v"/>
+        <Attr Name="ImportTime" Val="1762534338"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/equation_parser.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/sigmale/sigmale/sigmale.srcs/sources_1/new/equation_parser.v"/>
+        <Attr Name="ImportTime" Val="1762185808"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/error_handling.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/error_handling.v"/>
+        <Attr Name="ImportTime" Val="1762534346"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/expr_execute_no_check.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/expr_execute_no_check.v"/>
+        <Attr Name="ImportTime" Val="1762534401"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/flexible_timer.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/flexible_timer.v"/>
+        <Attr Name="ImportTime" Val="1759749095"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/graph_input_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/graph_input_module.v"/>
+        <Attr Name="ImportTime" Val="1760259836"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/graph_select_screen.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/graph_select_screen.v"/>
+        <Attr Name="ImportTime" Val="1761129900"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/grapher_mode.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/foryx/foryx.srcs/sources_1/new/grapher_mode.v"/>
+        <Attr Name="ImportTime" Val="1761660825"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/grapher_screen_oled.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/grapher_screen_oled.v"/>
+        <Attr Name="ImportTime" Val="1761129950"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/key_to_ascii_convertor.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/key_to_ascii_convertor.v"/>
+        <Attr Name="ImportTime" Val="1761044808"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/log2_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/log2_module.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/multiply_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/multiply_module.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/number_parser.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/sigmale/sigmale/sigmale.srcs/sources_1/new/number_parser.v"/>
+        <Attr Name="ImportTime" Val="1762233218"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/off_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/off_module.v"/>
+        <Attr Name="ImportTime" Val="1759749116"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/oled_keypad.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/oled_keypad.v"/>
+        <Attr Name="ImportTime" Val="1761044801"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/parameter_input.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/parameter_input.v"/>
+        <Attr Name="ImportTime" Val="1761129926"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/power_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/power_module.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/precedence_eval.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/precedence_eval.v"/>
+        <Attr Name="ImportTime" Val="1762534995"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pseudo_random_gen.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/pseudo_random_gen.v"/>
+        <Attr Name="ImportTime" Val="1761123055"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/quadratic_graph.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/quadratic_graph.v"/>
+        <Attr Name="ImportTime" Val="1761048267"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/sevenseg_driver.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/sevenseg_driver.v"/>
+        <Attr Name="ImportTime" Val="1762534374"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/shared_equation_buffer.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/FDP.srcs/sources_1/new/shared_equation_buffer.v"/>
+        <Attr Name="ImportTime" Val="1761055972"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/sw_debouncer.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/graphwithsubmodesswthree/graphwithsubmodesswthree.srcs/sources_1/new/sw_debouncer.v"/>
+        <Attr Name="ImportTime" Val="1761143715"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/team_alu_bridge.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/team_alu_bridge.v"/>
+        <Attr Name="ImportTime" Val="1762535014"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/trigo_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../Desktop/ALU_3.xpr/ALU_3/ALU_3.srcs/sources_1/new/trigo_module.v"/>
+        <Attr Name="ImportTime" Val="1762263545"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/vga_sync.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/vga_sync.v"/>
+        <Attr Name="ImportTime" Val="1759749028"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/welcome_drawer_oled.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/welcome_drawer_oled.v"/>
+        <Attr Name="ImportTime" Val="1759826907"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/welcome_drawer_vga.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/welcome_drawer_vga.v"/>
+        <Attr Name="ImportTime" Val="1759864368"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/welcome_mode_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/sources_1/new/welcome_mode_module.v"/>
+        <Attr Name="ImportTime" Val="1759862506"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Top_Student.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../../../../../../../SoundDisplay.srcs/sources_1/new/Top_Student.v"/>
+        <Attr Name="ImportTime" Val="1570395690"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/res/weights.coe">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../../../res/weights.coe"/>
+        <Attr Name="ImportTime" Val="1677159677"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/res/00.coe">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../../../res/00.coe"/>
+        <Attr Name="ImportTime" Val="1677159677"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/MODS/archive_project_summary.txt">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/archive_project_summary.txt"/>
+        <Attr Name="ImportTime" Val="1709183388"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/school/finalproj/FDP.xpr/FDP/archive_project_summary.txt">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/finalproj/FDP.xpr/FDP/archive_project_summary.txt"/>
+        <Attr Name="ImportTime" Val="1760014526"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Users/user/Downloads/ln_table.mem">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Users/user/Downloads/ln_table.mem"/>
+        <Attr Name="ImportTime" Val="1762396751"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Users/user/Downloads/exp_table.mem">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Users/user/Downloads/exp_table.mem"/>
+        <Attr Name="ImportTime" Val="1762396751"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/font.mem">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_New/addnewparamsandimproveeqnparserlogic/addnewparamsandimproveeqnparserlogic.srcs/sources_1/new/font.mem"/>
+        <Attr Name="ImportTime" Val="1762532251"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_font/font.coe">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../OneDrive/Desktop/Personal/EE2026_Final/forryannyy.xpr/forryannyy/forryannyy.srcs/sources_1/ip/blk_mem_gen_font/font.coe"/>
+        <Attr Name="ImportTime" Val="1759841556"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_log2_12bit/log2_table_12bit.coe">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../OneDrive/Desktop/Personal/EE2026_Final/forryannyy.xpr/forryannyy/forryannyy.srcs/sources_1/ip/blk_mem_gen_log2_12bit/log2_table_12bit.coe"/>
+        <Attr Name="ImportTime" Val="1762262367"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_pow2/pow2_rom.coe">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../OneDrive/Desktop/Personal/EE2026_Final/forryannyy.xpr/forryannyy/forryannyy.srcs/sources_1/ip/blk_mem_gen_pow2/pow2_rom.coe"/>
+        <Attr Name="ImportTime" Val="1762246391"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/forryannyy/archive_project_summary.txt">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../OneDrive/Desktop/Personal/EE2026_Final_2/S3_09_RYAN KOH_SEAN LEE_YAO XIANG_YI YANG_Archive.xpr/forryannyy/archive_project_summary.txt"/>
+        <Attr Name="ImportTime" Val="1762639218"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Users/user/Downloads/sin_table_ver_two.mem">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../OneDrive/Desktop/Personal/EE2026_Final_2/S3_09_RYAN KOH_SEAN LEE_YAO XIANG_YI YANG_Archive.xpr/forryannyy/forryannyy.srcs/sources_1/imports/Users/user/Downloads/sin_table_ver_two.mem"/>
+        <Attr Name="ImportTime" Val="1762641031"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Users/user/Downloads/tan_table_ver_two.mem">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../OneDrive/Desktop/Personal/EE2026_Final_2/S3_09_RYAN KOH_SEAN LEE_YAO XIANG_YI YANG_Archive.xpr/forryannyy/forryannyy.srcs/sources_1/imports/Users/user/Downloads/tan_table_ver_two.mem"/>
+        <Attr Name="ImportTime" Val="1762641031"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Top_Student"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/my_constraints.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../../../../../../../../../../../../../OneDrive/Desktop/Personal/EE2026_Project_2/Project.xpr/FDP/FDP.srcs/constrs_1/new/my_constraints.xdc"/>
+        <Attr Name="ImportTime" Val="1759839593"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_font"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_pow2"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_log2_12bit"/>
+</GenRun>

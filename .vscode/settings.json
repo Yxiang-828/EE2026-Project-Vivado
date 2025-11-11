@@ -1,0 +1,21 @@
+{
+    // SystemVerilog extension settings
+    "systemverilog.linter": "xvlog",
+    "systemverilog.launchConfiguration": "xvlog -sv",
+    "systemverilog.excludeIndexing": [
+        "**/*.vh",
+        "**/.*"
+    ],
+    // xvlog path for Vivado 2018.2
+    "systemverilog.linterPath": "C:\\Xilinx\\Vivado\\2018.2\\bin\\xvlog.bat",
+    // Alternative: Use Verilator if you have it
+    // "systemverilog.linter": "verilator",
+    // "systemverilog.launchConfiguration": "verilator --lint-only -Wall",
+    // File associations
+    "files.associations": {
+        "*.v": "verilog",
+        "*.sv": "systemverilog",
+        "*.vh": "verilog",
+        "*.svh": "systemverilog"
+    }
+}
