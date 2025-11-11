@@ -7,7 +7,7 @@ This repository contains the Verilog source code for a multifunction FPGA-based 
 
 ---
 
-## Forryan Project (Main Calculator & Grapher)
+## Main Project (Main Calculator & Grapher)
 
 This is the main application, managed by `Top_Student.v`. It integrates the welcome screen, calculator mode, and grapher mode, multiplexing I/O between them.
 
