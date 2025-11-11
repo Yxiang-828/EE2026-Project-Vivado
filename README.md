@@ -11,31 +11,52 @@ This is the main application, managed by `Top_Student.v`. It integrates the welc
 
 ```mermaid
 graph TD
+    %% Hardware Layer
     subgraph "Basys 3 Hardware"
-        btn[Buttons]
-        sw[Switches]
-        oled_jb[OLED JB Keypad]
-        oled_ja[OLED JA Params]
-        vga[VGA Monitor]
+        BTN[Buttons]
+        SW[Switches]
+        OLED_JB[OLED JB Keypad]
+        OLED_JA[OLED JA Params]
+        VGA[VGA Monitor]
     end
 
+    %% Application Layer
     subgraph "Top_Student Module"
-        A[Top_Student] --> B[Mode FSM]
-        B --> C[welcome_mode_module]
-        B --> D[calc_mode_top]
-        B --> E[grapher_module_slim]
+        TOP[Top_Student<br/>Main Controller]
 
-        A --> F[I/O Mux]
-        F --> oled_jb
-        F --> oled_ja
-        F --> vga
+        subgraph "Mode FSM"
+            MODE_FSM[Mode FSM]
+            WELCOME[welcome_mode_module]
+            CALC[calc_mode_top]
+            GRAPH[grapher_module_slim]
+        end
 
-        G[Shared Input Chain] --> D
-        G --> E
-
-        btn --> G
-        sw --> A
+        subgraph "I/O System"
+            IO_MUX[I/O Multiplexer]
+            INPUT_CHAIN[Shared Input Chain]
+        end
     end
+
+    %% Connections
+    BTN --> INPUT_CHAIN
+    SW --> TOP
+
+    TOP --> MODE_FSM
+    MODE_FSM --> WELCOME
+    MODE_FSM --> CALC
+    MODE_FSM --> GRAPH
+
+    INPUT_CHAIN --> CALC
+    INPUT_CHAIN --> GRAPH
+
+    CALC --> IO_MUX
+    GRAPH --> IO_MUX
+    WELCOME --> IO_MUX
+
+    IO_MUX --> OLED_JB
+    IO_MUX --> OLED_JA
+    IO_MUX --> VGA
+```
 ```
 
 ### `Top_Student.v` - Main Controller
@@ -62,7 +83,7 @@ graph TD
     A[btn_debounced] --> B(oled_keypad)
     B -- key_code, key_valid --> C(key_to_ascii_convertor)
     C -- ascii_char, is_multichar, multichar_data --> D(shared_equation_buffer)
-    D -- shared_buffer, shared_length --> E[App Modules (Calc/Graph)]
+    D -- shared_buffer, shared_length --> E["App Modules (Calc/Graph)"]
 ```
 
 1.  [cite\_start]**`debouncer.v`:** Takes the raw `btn` inputs and produces a stable, one-pulse-per-press `btn_debounced` signal to prevent multiple inputs [cite: 612-623, 1508].
@@ -124,7 +145,7 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Grapher Mode Active] --> B{sw[3] state?}
+    A[Grapher Mode Active] --> B{"sw[3] state?"}
     B -- 0 (Equation) --> C[equation_parser]
     B -- 1 (Manual) --> D[graph_select_screen]
     D --> E[number_parser & parameter_input]
@@ -173,11 +194,11 @@ This is a separate, high-precision application dedicated to solving cubic polyno
 graph TD
     IDLE -->|start| NORMALIZE[NORMALIZE: Scale Coeffs]
     NORMALIZE --> NR_INIT[NR_INIT: Select 1st Guess]
-    NR_INIT --> NR_LOOP[NR_LOOP: p(x), p'(x)]
-    NR_LOOP --> NR_DIV{p(x)/p'(x)}
-    NR_DIV --> NR_UPDATE[NR_UPDATE: x = x - (p/p')]
+    NR_INIT --> NR_LOOP["NR_LOOP: p(x), p'(x)"]
+    NR_LOOP --> NR_DIV["p(x)/p'(x)"]
+    NR_DIV --> NR_UPDATE["NR_UPDATE: x = x - (p/p')"]
     NR_UPDATE --> NR_LOOP
-    NR_LOOP -- |Converged or Timeout| --> DEFLATE[DEFLATE: (Cubic) / (x-r1)]
+    NR_LOOP -- |Converged or Timeout| --> DEFLATE["DEFLATE: (Cubic) / (x-r1)"]
     NR_LOOP -- |Hard Timeout| --> ERROR
     DEFLATE --> QUAD_SOLVE[QUAD_SOLVE: Find r2, r3]
     QUAD_SOLVE --> OUTPUT[OUTPUT: Display Roots]
